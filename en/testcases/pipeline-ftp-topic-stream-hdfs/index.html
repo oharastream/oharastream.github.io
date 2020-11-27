@@ -1,0 +1,969 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Create a new workspace with three nodes  Create two topic and upload a stream app jar into the workspace  Create a new pipeline, add some connectors, topics and a stream app  FTP source -&gt; Topic -&gt; Stream -&gt; Topic -&gt; HDFS sink  Prepare the required folders and test data on the FTP server  Start all connectors and stream app  Verify which test data was successfully dumped to HDFS  Create a new workspace with three nodes Add three nodes:">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/testcases/pipeline-ftp-topic-stream-hdfs/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/testcases/pipeline-ftp-topic-stream-hdfs/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/testcases/pipeline-ftp-topic-stream-hdfs/">
+  <meta property="og:title" content="FTP to Topic to Stream to HDFS | OharaStream">
+  <meta property="og:description" content="Create a new workspace with three nodes  Create two topic and upload a stream app jar into the workspace  Create a new pipeline, add some connectors, topics and a stream app  FTP source -&gt; Topic -&gt; Stream -&gt; Topic -&gt; HDFS sink  Prepare the required folders and test data on the FTP server  Start all connectors and stream app  Verify which test data was successfully dumped to HDFS  Create a new workspace with three nodes Add three nodes:"><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-15T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-06-22T17:36:56&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>FTP to Topic to Stream to HDFS | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/testcases/ohara-installation/">Test cases</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/testcases/ohara-installation/">Ohara installation</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/testcases/pipeline-ftp-topic-stream-hdfs/">FTP to Topic to Stream to HDFS</a>
+      </li>
+      
+      <li >
+        <a href="/en/testcases/pipeline-jdbc-topic-ftp/">JDBC to Topic to FTP</a>
+      </li>
+      
+      <li >
+        <a href="/en/testcases/pipeline-jdbc-topic-stream-topic-hdfs/">JDBC to Topic to Stream to HDFS</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</a></li>
+    <li><a href="#create-two-topics-and-upload-a-stream-app-jar-in-the-workspace">Create two topics and upload a stream app jar in the workspace</a></li>
+    <li><a href="#create-a-new-pipeline-add-some-connectors-topics-and-a-stream-app">Create a new pipeline, add some connectors, topics and a stream app</a></li>
+    <li><a href="#ftp-source---topic---stream---topic---hdfs-sink">FTP source -&gt; Topic -&gt; Stream -&gt; Topic -&gt; HDFS sink</a></li>
+    <li><a href="#prepare-the-required-folders-and-test-data-on-the-ftp-server">Prepare the required folders and test data on the FTP server</a></li>
+    <li><a href="#start-all-connectors-and-stream-app">Start all connectors and stream app</a></li>
+    <li><a href="#verify-which-test-data-was-successfully-dumped-to-hdfs">Verify which test data was successfully dumped to HDFS</a></li>
+    <li><a href="#how-to-create-democsv">How to create demo.csv?</a></li>
+    <li><a href="#how-to-get-ohara-it-streamjar">How to get ohara-it-stream.jar?</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>FTP to Topic to Stream to HDFS</h1>
+
+          <div class="article-style">
+            <ul>
+<li>
+<a href="#create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</a></li>
+<li>
+<a href="#create-two-topic-and-upload-a-stream-app-jar-into-the-workspace">Create two topic and upload a stream app jar into the workspace</a></li>
+<li>
+<a href="#create-a-new-pipeline--add-some-connectors--topics-and-a-stream-app">Create a new pipeline, add some connectors, topics and a stream app</a></li>
+<li>
+<a href="#ftp-source---topic---stream---topic---hdfs-sink">FTP source -&gt; Topic -&gt; Stream -&gt; Topic -&gt; HDFS sink</a></li>
+<li>
+<a href="#prepare-the-required-folders-and-test-data-on-the-ftp-server">Prepare the required folders and test data on the FTP server</a></li>
+<li>
+<a href="#start-all-connectors-and-stream-app">Start all connectors and stream app</a></li>
+<li>
+<a href="#verify-which-test-data-was-successfully-dumped-to-hdfs">Verify which test data was successfully dumped to HDFS</a></li>
+</ul>
+<h2 id="create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</h2>
+<p><strong>Add three nodes:</strong></p>
+<ol>
+<li>On the Nodes page, click the <kbd>NEW NODE</kbd> button.</li>
+<li>Enter <code>&lt;ohara_node_host&gt;</code> in the <strong>Node</strong> field.</li>
+<li>Enter <code>&lt;ohara_node_port&gt;</code> in the <strong>Port</strong> field.</li>
+<li>Enter <code>&lt;node_user&gt;</code> in the <strong>User</strong> field.</li>
+<li>Enter <code>&lt;node_password&gt;</code> in the <strong>Password</strong> field.</li>
+<li>Click <kbd>TEST CONNECTION</kbd> to test your connection.</li>
+<li>If the test passes, click <kbd>ADD</kbd>.</li>
+<li>Repeat the above steps to add <strong>three nodes</strong>.</li>
+</ol>
+<p><strong>Create a new workspace:</strong></p>
+<ol>
+<li>On the Workspaces page, click the <kbd>NEW WORKSPACE</kbd> button.</li>
+<li>Enter “wk00” in the <strong>Name</strong> field.</li>
+<li>Select all available nodes from the Node List.</li>
+<li>Click <kbd>ADD</kbd>.</li>
+</ol>
+<h2 id="create-two-topics-and-upload-a-stream-app-jar-in-the-workspace">Create two topics and upload a stream app jar in the workspace</h2>
+<p><strong>Add two topics:</strong></p>
+<ol>
+<li>On the <strong>Workspaces</strong> &gt; <strong>wk00</strong> &gt; <strong>TOPICS</strong> tab, click the <kbd>NEW TOPIC</kbd> button.</li>
+<li>Enter “t1” in the <strong>Topic name</strong> field and enter default value in other fields, click <kbd>ADD</kbd>.</li>
+<li>Enter “t2” in the <strong>Topic name</strong> field and enter default value in other fields, click <kbd>ADD</kbd>.</li>
+</ol>
+<p><strong>Add a stream jar:</strong></p>
+<ol>
+<li>On the <strong>Workspaces</strong> &gt; <strong>wk00</strong> &gt; <strong>STREAM JARS</strong> tab, click the <kbd>NEW JAR</kbd> button.</li>
+<li>Browse to the location of your jar file <code>ohara-it-stream.jar</code>, click the file, and click <kbd>Open</kbd>.
+<blockquote>
+<p>if You don&rsquo;t know how to build a stream app jar, see this 
+<a href="#how-to-get-ohara-it-streamjar">link</a> for how</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="create-a-new-pipeline-add-some-connectors-topics-and-a-stream-app">Create a new pipeline, add some connectors, topics and a stream app</h2>
+<ol>
+<li>On the <strong>Pipelines</strong> list page, click the <kbd>NEW PIPELINE</kbd> button.</li>
+<li>Enter “firstpipeline” in the <strong>Pipeline name</strong> field and select “wk00” from the Workspace name dropdown. Then, click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a source connector</strong> icon and select <strong>oharastream.ohara.connector.ftp.FTPSource</strong> from the list, then click <kbd>ADD</kbd>.</li>
+<li>Enter “ftpsource” in the <strong>myconnector</strong> field and click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a topic</strong> icon and select <strong>t1</strong> from the dropdown and click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a stream app</strong> icon and select <strong>ohara-it-stream.jar</strong> from the dropdown, then click <kbd>ADD</kbd>.</li>
+<li>Enter “dumb” in the <strong>mystream</strong> field and click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a topic</strong> icon and select <strong>t2</strong> from the dropdown, then click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a sink connector</strong> icon and select <strong>oharastream.ohara.connector.hdfs.sink.HDFSSink</strong> from the list, then click <kbd>ADD</kbd>.</li>
+<li>Enter “hdfssink” in the <strong>myconnector</strong> field and click <kbd>ADD</kbd>.</li>
+</ol>
+<h2 id="ftp-source---topic---stream---topic---hdfs-sink">FTP source -&gt; Topic -&gt; Stream -&gt; Topic -&gt; HDFS sink</h2>
+<p><strong>Set up ftpsource connector:</strong></p>
+<ol>
+<li>On the <strong>firstpipeline</strong> page, click the <strong>ftpsource</strong> graph in the pipeline graph.</li>
+<li>Select the <strong>COMMON</strong> tab and fill out the following config:
+<ol>
+<li>Enter “/demo/input” in the <strong>Input Folder</strong> field.</li>
+<li>Enter “/demo/completed” in the <strong>Completed Folder</strong> field.</li>
+<li>Enter “/demo/error” in the <strong>Error Folder</strong> field.</li>
+<li>Enter <code>&lt;ftp_server_ip&gt;</code> in the <strong>Hostname of Ftp Server</strong> field.</li>
+<li>Enter <code>&lt;ftp_server_port&gt;</code> in the <strong>Port of Ftp Server</strong> field.</li>
+<li>Enter <code>ftp_username</code> in the <strong>User of Ftp Server</strong> field.</li>
+<li>Enter <code>ftp_password</code> in the <strong>Password of Ftp Server</strong> field.</li>
+</ol>
+</li>
+<li>Select the <strong>CORE</strong> tab and choose <strong>t1</strong> from the <strong>Topics</strong> dropdown.</li>
+</ol>
+<p><strong>Set up <strong>dumb</strong> stream app:</strong></p>
+<ol>
+<li>Click the <strong>dumb</strong> graph in the pipeline graph.</li>
+<li>Enter “ohara1” to <strong>filter value</strong></li>
+<li>Click the <strong>CORE</strong> tab.</li>
+<li>Select <strong>t1</strong> from the <strong>From topic of data consuming from</strong> dropdown.</li>
+<li>Select <strong>t2</strong> from the <strong>To topic of data produce to</strong> dropdown.</li>
+</ol>
+<p><strong>Set up hdfssink connector:</strong></p>
+<ol>
+<li>Click the <strong>hdfssink</strong> graph in the pipeline graph.</li>
+<li>Select the <strong>COMMON</strong> tab and fill out the following config:
+<ol>
+<li>Enter “/data“ in the Output Folder field</li>
+<li>Change <strong>Flush Size</strong> value from “1000” to “5”</li>
+<li>Check the <strong>File Need Header</strong> checkbox</li>
+<li>Enter “hdfs://<code>&lt;hdfs_host&gt;</code>:<code>&lt;hdfs_port&gt;</code>” in the <strong>HDSF URL</strong> field</li>
+</ol>
+</li>
+<li>Select the <strong>CORE</strong> tab and choose <strong>t2</strong> from the <strong>Topics</strong> dropdown.</li>
+</ol>
+<h2 id="prepare-the-required-folders-and-test-data-on-the-ftp-server">Prepare the required folders and test data on the FTP server</h2>
+<ol>
+<li>Open a terminal, login to FTP server (or use a FTP client of your choice)</li>
+</ol>
+<pre><code>$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+</code></pre>
+<ol start="2">
+<li>Create the following folders on your FTP server</li>
+</ol>
+<pre><code>ftp&gt; mkdir demo
+ftp&gt; cd demo
+ftp&gt; mkdir input
+ftp&gt; mkdir completed
+ftp&gt; mkdir error
+ftp&gt; bye
+</code></pre>
+<ol start="3">
+<li>Copy the test file <code>demo.csv</code> to <strong>demo/input</strong> folder. See this 
+<a href="#how-to-create-democsv">link</a> to create demo CSV files</li>
+</ol>
+<h2 id="start-all-connectors-and-stream-app">Start all connectors and stream app</h2>
+<ol>
+<li>On the <strong>firstpipeline</strong> page.</li>
+<li>Click the <strong>Start pipeline</strong> icon.</li>
+</ol>
+<h2 id="verify-which-test-data-was-successfully-dumped-to-hdfs">Verify which test data was successfully dumped to HDFS</h2>
+<ol>
+<li>Open a terminal and ssh to HDFS server.</li>
+<li>List all CSV files in <strong>/data/wk00-t2/partition0</strong> folder:</li>
+</ol>
+<pre><code class="language-sh">$ hdfs dfs -ls /data/wk00-t2/partition0
+
+# You should see something similar like this in your terminal:
+/data/wk00-t2/partition0/part-000000000-000000005.csv
+</code></pre>
+<ol start="3">
+<li>View the content of <strong>part-000000000-000000005.csv</strong>:</li>
+</ol>
+<pre><code class="language-sh">$ hdfs dfs -cat /data/wk00-t2/partition0/part-000000000-000000005.csv
+
+# The result should be like the following:
+ID,NAME,CREATE_AT
+1,ohara1,2019-03-01 00:00:01
+</code></pre>
+<h2 id="how-to-create-democsv">How to create demo.csv?</h2>
+<ol>
+<li>Create the txt copy the date save to demo.csv</li>
+</ol>
+<pre><code>ID,NAME,CREATE_AT
+1,ohara1,2019-03-01 00:00:01
+2,ohara2,2019-03-01 00:00:02
+3,ohara3,2019-03-01 00:00:03
+4,ohara4,2019-03-01 00:00:04
+5,ohara5,2019-03-01 00:00:05
+</code></pre>
+<h2 id="how-to-get-ohara-it-streamjar">How to get ohara-it-stream.jar?</h2>
+<p>Open a new terminal from your machine and go to Ohara&rsquo;s source folder.</p>
+<pre><code class="language-sh">cd ohara/
+</code></pre>
+<p>Then <code>cd</code> to Stream DumbStream source folder.</p>
+<pre><code class="language-sh">cd ohara-it/src/main/scala/oharastream/ohara/it/stream/
+</code></pre>
+<p>Use Vi to edit <strong>DumbStream.scala</strong></p>
+<pre><code class="language-sh">vi DumbStream.scala
+</code></pre>
+<p>Enter &ldquo;I&rdquo; key from your keyboard to activate the &ldquo;INSERT&rdquo; mode</p>
+<pre><code>-- INSERT --
+</code></pre>
+<p>Overwrite DumbStream class from</p>
+<pre><code class="language-java">class DumbStream extends Stream {
+
+  override def start(ostream: OStream[Row], configs: StreamDefinitions): Unit = {
+
+    // do nothing but only start stream and write exactly data to output topic
+    ostream.start()
+  }
+}
+</code></pre>
+<p>To</p>
+<pre><code class="language-java">/*
+ * Copyright 2019 is-land
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package oharastream.ohara.it.stream
+import oharastream.ohara.common.data.Row
+import oharastream.ohara.common.setting.SettingDef
+import oharastream.ohara.stream.config.StreamSetting
+import oharastream.ohara.stream.{OStream, Stream}
+
+class DumbStream extends Stream {
+
+  override def config(): StreamDefinitions = StreamDefinitions
+    .`with`(
+      SettingDef
+        .builder()
+        .key(&quot;filterValue&quot;)
+        .displayName(&quot;filter value&quot;)
+        .documentation(&quot;filter the row that contains this value&quot;)
+        .build())
+
+  override def start(ostream: OStream[Row], configs: StreamDefinitions): Unit = {
+
+    ostream
+      // we filter row which the cell values contain the pre-defined &quot;filterValue&quot;. Note:
+      // 1) configs.string(&quot;filterValue&quot;) will try to get the value from env and it should NOT be null
+      // 2) we ignore case for the value (i.e., &quot;aa&quot; = &quot;AA&quot;)
+      .filter(
+      r =&gt;
+        r.cells()
+          .stream()
+          .anyMatch(c =&gt; {
+            c.value().toString.equalsIgnoreCase(configs.string(&quot;filterValue&quot;))
+          }))
+      .start()
+  }
+}
+</code></pre>
+<p>Press &ldquo;Esc&rdquo; key to leave the insert mode and enter <code>:wq</code> to save and exit from this file:</p>
+<pre><code>:wq
+</code></pre>
+<p>Build stream jar</p>
+<pre><code class="language-sh"># Make sure you're at the project root `/ohara`, then build the jar with:
+./gradlew clean :ohara-it:jar -PskipManager
+</code></pre>
+<p>Go to stream jar folder and list the jars that you have</p>
+<pre><code class="language-sh">cd ohara-it/build/libs/ &amp;&amp; ls
+
+# You should see something like this in your terminal:
+ohara-it-sink.jar ohara-it-source.jar ohara-it-stream.jar
+</code></pre>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jun 22, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/testcases/pipeline-ftp-topic-stream-hdfs.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Testcases | OharaStream</title>
+    <link>https://oharastream.github.io/en/testcases/</link>
+      <atom:link href="https://oharastream.github.io/en/testcases/index.xml" rel="self" type="application/rss+xml" />
+    <description>Testcases</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 15 Jun 2020 00:00:00 +0100</lastBuildDate>
+    <image>
+      <url>https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png</url>
+      <title>Testcases</title>
+      <link>https://oharastream.github.io/en/testcases/</link>
+    </image>
+    
+    <item>
+      <title>FTP to Topic to Stream to HDFS</title>
+      <link>https://oharastream.github.io/en/testcases/pipeline-ftp-topic-stream-hdfs/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0100</pubDate>
+      <guid>https://oharastream.github.io/en/testcases/pipeline-ftp-topic-stream-hdfs/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-a-new-workspace-with-three-nodes&#34;&gt;Create a new workspace with three nodes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-two-topic-and-upload-a-stream-app-jar-into-the-workspace&#34;&gt;Create two topic and upload a stream app jar into the workspace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-a-new-pipeline--add-some-connectors--topics-and-a-stream-app&#34;&gt;Create a new pipeline, add some connectors, topics and a stream app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#ftp-source---topic---stream---topic---hdfs-sink&#34;&gt;FTP source -&amp;gt; Topic -&amp;gt; Stream -&amp;gt; Topic -&amp;gt; HDFS sink&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#prepare-the-required-folders-and-test-data-on-the-ftp-server&#34;&gt;Prepare the required folders and test data on the FTP server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#start-all-connectors-and-stream-app&#34;&gt;Start all connectors and stream app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#verify-which-test-data-was-successfully-dumped-to-hdfs&#34;&gt;Verify which test data was successfully dumped to HDFS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;create-a-new-workspace-with-three-nodes&#34;&gt;Create a new workspace with three nodes&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Add three nodes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Nodes page, click the &lt;kbd&gt;NEW NODE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ohara_node_host&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Node&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ohara_node_port&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Port&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;node_user&amp;gt;&lt;/code&gt; in the &lt;strong&gt;User&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;node_password&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Password&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Click &lt;kbd&gt;TEST CONNECTION&lt;/kbd&gt; to test your connection.&lt;/li&gt;
+&lt;li&gt;If the test passes, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Repeat the above steps to add &lt;strong&gt;three nodes&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Create a new workspace:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Workspaces page, click the &lt;kbd&gt;NEW WORKSPACE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “wk00” in the &lt;strong&gt;Name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Select all available nodes from the Node List.&lt;/li&gt;
+&lt;li&gt;Click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-two-topics-and-upload-a-stream-app-jar-in-the-workspace&#34;&gt;Create two topics and upload a stream app jar in the workspace&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Add two topics:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;Workspaces&lt;/strong&gt; &amp;gt; &lt;strong&gt;wk00&lt;/strong&gt; &amp;gt; &lt;strong&gt;TOPICS&lt;/strong&gt; tab, click the &lt;kbd&gt;NEW TOPIC&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “t1” in the &lt;strong&gt;Topic name&lt;/strong&gt; field and enter default value in other fields, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “t2” in the &lt;strong&gt;Topic name&lt;/strong&gt; field and enter default value in other fields, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Add a stream jar:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;Workspaces&lt;/strong&gt; &amp;gt; &lt;strong&gt;wk00&lt;/strong&gt; &amp;gt; &lt;strong&gt;STREAM JARS&lt;/strong&gt; tab, click the &lt;kbd&gt;NEW JAR&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Browse to the location of your jar file &lt;code&gt;ohara-it-stream.jar&lt;/code&gt;, click the file, and click &lt;kbd&gt;Open&lt;/kbd&gt;.
+&lt;blockquote&gt;
+&lt;p&gt;if You don&amp;rsquo;t know how to build a stream app jar, see this 
+&lt;a href=&#34;#how-to-get-ohara-it-streamjar&#34;&gt;link&lt;/a&gt; for how&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-a-new-pipeline-add-some-connectors-topics-and-a-stream-app&#34;&gt;Create a new pipeline, add some connectors, topics and a stream app&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;Pipelines&lt;/strong&gt; list page, click the &lt;kbd&gt;NEW PIPELINE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “firstpipeline” in the &lt;strong&gt;Pipeline name&lt;/strong&gt; field and select “wk00” from the Workspace name dropdown. Then, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a source connector&lt;/strong&gt; icon and select &lt;strong&gt;oharastream.ohara.connector.ftp.FTPSource&lt;/strong&gt; from the list, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “ftpsource” in the &lt;strong&gt;myconnector&lt;/strong&gt; field and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a topic&lt;/strong&gt; icon and select &lt;strong&gt;t1&lt;/strong&gt; from the dropdown and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a stream app&lt;/strong&gt; icon and select &lt;strong&gt;ohara-it-stream.jar&lt;/strong&gt; from the dropdown, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “dumb” in the &lt;strong&gt;mystream&lt;/strong&gt; field and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a topic&lt;/strong&gt; icon and select &lt;strong&gt;t2&lt;/strong&gt; from the dropdown, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a sink connector&lt;/strong&gt; icon and select &lt;strong&gt;oharastream.ohara.connector.hdfs.sink.HDFSSink&lt;/strong&gt; from the list, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “hdfssink” in the &lt;strong&gt;myconnector&lt;/strong&gt; field and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;ftp-source---topic---stream---topic---hdfs-sink&#34;&gt;FTP source -&amp;gt; Topic -&amp;gt; Stream -&amp;gt; Topic -&amp;gt; HDFS sink&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Set up ftpsource connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;firstpipeline&lt;/strong&gt; page, click the &lt;strong&gt;ftpsource&lt;/strong&gt; graph in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab and fill out the following config:
+&lt;ol&gt;
+&lt;li&gt;Enter “/demo/input” in the &lt;strong&gt;Input Folder&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “/demo/completed” in the &lt;strong&gt;Completed Folder&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “/demo/error” in the &lt;strong&gt;Error Folder&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ftp_server_ip&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Hostname of Ftp Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ftp_server_port&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Port of Ftp Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;ftp_username&lt;/code&gt; in the &lt;strong&gt;User of Ftp Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;ftp_password&lt;/code&gt; in the &lt;strong&gt;Password of Ftp Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab and choose &lt;strong&gt;t1&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Set up &lt;strong&gt;dumb&lt;/strong&gt; stream app:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the &lt;strong&gt;dumb&lt;/strong&gt; graph in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Enter “ohara1” to &lt;strong&gt;filter value&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;CORE&lt;/strong&gt; tab.&lt;/li&gt;
+&lt;li&gt;Select &lt;strong&gt;t1&lt;/strong&gt; from the &lt;strong&gt;From topic of data consuming from&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;li&gt;Select &lt;strong&gt;t2&lt;/strong&gt; from the &lt;strong&gt;To topic of data produce to&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Set up hdfssink connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the &lt;strong&gt;hdfssink&lt;/strong&gt; graph in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab and fill out the following config:
+&lt;ol&gt;
+&lt;li&gt;Enter “/data“ in the Output Folder field&lt;/li&gt;
+&lt;li&gt;Change &lt;strong&gt;Flush Size&lt;/strong&gt; value from “1000” to “5”&lt;/li&gt;
+&lt;li&gt;Check the &lt;strong&gt;File Need Header&lt;/strong&gt; checkbox&lt;/li&gt;
+&lt;li&gt;Enter “hdfs://&lt;code&gt;&amp;lt;hdfs_host&amp;gt;&lt;/code&gt;:&lt;code&gt;&amp;lt;hdfs_port&amp;gt;&lt;/code&gt;” in the &lt;strong&gt;HDSF URL&lt;/strong&gt; field&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab and choose &lt;strong&gt;t2&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;prepare-the-required-folders-and-test-data-on-the-ftp-server&#34;&gt;Prepare the required folders and test data on the FTP server&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal, login to FTP server (or use a FTP client of your choice)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Create the following folders on your FTP server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ftp&amp;gt; mkdir demo
+ftp&amp;gt; cd demo
+ftp&amp;gt; mkdir input
+ftp&amp;gt; mkdir completed
+ftp&amp;gt; mkdir error
+ftp&amp;gt; bye
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Copy the test file &lt;code&gt;demo.csv&lt;/code&gt; to &lt;strong&gt;demo/input&lt;/strong&gt; folder. See this 
+&lt;a href=&#34;#how-to-create-democsv&#34;&gt;link&lt;/a&gt; to create demo CSV files&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;start-all-connectors-and-stream-app&#34;&gt;Start all connectors and stream app&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;firstpipeline&lt;/strong&gt; page.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Start pipeline&lt;/strong&gt; icon.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;verify-which-test-data-was-successfully-dumped-to-hdfs&#34;&gt;Verify which test data was successfully dumped to HDFS&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal and ssh to HDFS server.&lt;/li&gt;
+&lt;li&gt;List all CSV files in &lt;strong&gt;/data/wk00-t2/partition0&lt;/strong&gt; folder:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hdfs dfs -ls /data/wk00-t2/partition0
+
+# You should see something similar like this in your terminal:
+/data/wk00-t2/partition0/part-000000000-000000005.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;View the content of &lt;strong&gt;part-000000000-000000005.csv&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hdfs dfs -cat /data/wk00-t2/partition0/part-000000000-000000005.csv
+
+# The result should be like the following:
+ID,NAME,CREATE_AT
+1,ohara1,2019-03-01 00:00:01
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;how-to-create-democsv&#34;&gt;How to create demo.csv?&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create the txt copy the date save to demo.csv&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ID,NAME,CREATE_AT
+1,ohara1,2019-03-01 00:00:01
+2,ohara2,2019-03-01 00:00:02
+3,ohara3,2019-03-01 00:00:03
+4,ohara4,2019-03-01 00:00:04
+5,ohara5,2019-03-01 00:00:05
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;how-to-get-ohara-it-streamjar&#34;&gt;How to get ohara-it-stream.jar?&lt;/h2&gt;
+&lt;p&gt;Open a new terminal from your machine and go to Ohara&amp;rsquo;s source folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then &lt;code&gt;cd&lt;/code&gt; to Stream DumbStream source folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara-it/src/main/scala/oharastream/ohara/it/stream/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use Vi to edit &lt;strong&gt;DumbStream.scala&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vi DumbStream.scala
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Enter &amp;ldquo;I&amp;rdquo; key from your keyboard to activate the &amp;ldquo;INSERT&amp;rdquo; mode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-- INSERT --
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Overwrite DumbStream class from&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class DumbStream extends Stream {
+
+  override def start(ostream: OStream[Row], configs: StreamDefinitions): Unit = {
+
+    // do nothing but only start stream and write exactly data to output topic
+    ostream.start()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/*
+ * Copyright 2019 is-land
+ *
+ * Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package oharastream.ohara.it.stream
+import oharastream.ohara.common.data.Row
+import oharastream.ohara.common.setting.SettingDef
+import oharastream.ohara.stream.config.StreamSetting
+import oharastream.ohara.stream.{OStream, Stream}
+
+class DumbStream extends Stream {
+
+  override def config(): StreamDefinitions = StreamDefinitions
+    .`with`(
+      SettingDef
+        .builder()
+        .key(&amp;quot;filterValue&amp;quot;)
+        .displayName(&amp;quot;filter value&amp;quot;)
+        .documentation(&amp;quot;filter the row that contains this value&amp;quot;)
+        .build())
+
+  override def start(ostream: OStream[Row], configs: StreamDefinitions): Unit = {
+
+    ostream
+      // we filter row which the cell values contain the pre-defined &amp;quot;filterValue&amp;quot;. Note:
+      // 1) configs.string(&amp;quot;filterValue&amp;quot;) will try to get the value from env and it should NOT be null
+      // 2) we ignore case for the value (i.e., &amp;quot;aa&amp;quot; = &amp;quot;AA&amp;quot;)
+      .filter(
+      r =&amp;gt;
+        r.cells()
+          .stream()
+          .anyMatch(c =&amp;gt; {
+            c.value().toString.equalsIgnoreCase(configs.string(&amp;quot;filterValue&amp;quot;))
+          }))
+      .start()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press &amp;ldquo;Esc&amp;rdquo; key to leave the insert mode and enter &lt;code&gt;:wq&lt;/code&gt; to save and exit from this file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:wq
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Build stream jar&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Make sure you&#39;re at the project root `/ohara`, then build the jar with:
+./gradlew clean :ohara-it:jar -PskipManager
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Go to stream jar folder and list the jars that you have&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara-it/build/libs/ &amp;amp;&amp;amp; ls
+
+# You should see something like this in your terminal:
+ohara-it-sink.jar ohara-it-source.jar ohara-it-stream.jar
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JDBC to Topic to FTP</title>
+      <link>https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-ftp/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0100</pubDate>
+      <guid>https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-ftp/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-a-new-workspace-with-three-nodes&#34;&gt;Create a new workspace with three nodes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-a-new-topic-in-the-workspace&#34;&gt;Create new topic into the workspace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-a-new-pipeline-add-a-jdbc-source-connector-topics-and-a-ftp-sink-connector&#34;&gt;Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#%e9%80%a3%e6%8e%a5-jdbc-source---topic---ftp-sink&#34;&gt;連接 JDBC source -&amp;gt; Topic -&amp;gt; FTP sink&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#prepare-the-required-table-and-data-on-the-postgresql-server&#34;&gt;Prepare the required table and data on the PostgreSQL server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#prepare-the-required-output-folder-on-the-ftp-server&#34;&gt;Prepare the required output folder on the FTP server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#start-all-connectors-on-the-secondpipeline-page&#34;&gt;Start all connectors on the secondpipeline page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#verify-which-test-data-was-successfully-dumped-to-ftp-server&#34;&gt;Verify which test data was successfully dumped to FTP server&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;create-a-new-workspace-with-three-nodes&#34;&gt;Create a new workspace with three nodes&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Add three nodes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Nodes page, click the &lt;kbd&gt;NEW NODE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ohara_node_host&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Node&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ohara_node_port&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Port&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;node_user&amp;gt;&lt;/code&gt; in the &lt;strong&gt;User&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;node_password&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Password&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Click &lt;kbd&gt;TEST CONNECTION&lt;/kbd&gt; to test your connection.&lt;/li&gt;
+&lt;li&gt;If the test passes, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Repeat the above steps to add &lt;strong&gt;three nodes&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Create a new workspace:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the Workspaces page, click the &lt;kbd&gt;NEW WORKSPACE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “wk01” in the &lt;strong&gt;Name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Select all available nodes from the Node List.&lt;/li&gt;
+&lt;li&gt;Add plugins:
+&lt;ol&gt;
+&lt;li&gt;Click the &lt;kbd&gt;NEW PLUGIN&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;postgresql-9.1-901-1.jdbc4.jar&lt;/code&gt; form your disk (download the jar 
+&lt;a href=&#34;https://repo1.maven.org/maven2/postgresql/postgresql/9.1-901-1.jdbc4/postgresql-9.1-901-1.jdbc4.jar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;), the jar should be displayed in the &lt;strong&gt;Plugin List&lt;/strong&gt;, make sure you check the jar you just uploaded.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-a-new-topic-in-the-workspace&#34;&gt;Create a new topic in the workspace&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Add a new topic:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;Workspaces&lt;/strong&gt; &amp;gt; &lt;strong&gt;wk01&lt;/strong&gt; &amp;gt; &lt;strong&gt;TOPICS&lt;/strong&gt; tab, click the &lt;kbd&gt;NEW TOPIC&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “t3” in the &lt;strong&gt;Topic name&lt;/strong&gt; field and enter default value in other fields, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-a-new-pipeline-add-a-jdbc-source-connector-topics-and-a-ftp-sink-connector&#34;&gt;Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;Pipelines&lt;/strong&gt; list page, click the &lt;kbd&gt;NEW PIPLINE&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;li&gt;Enter “secondpipeline” in the &lt;strong&gt;Pipeline name&lt;/strong&gt; field and select “wk01” from the Workspace name dropdown. Then, click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a source connector&lt;/strong&gt; icon and select &lt;strong&gt;oharastream.ohara.connector.jdbc.source.JDBCSourceConnector&lt;/strong&gt; from the list, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “jdbcsource” in the &lt;strong&gt;myconnector&lt;/strong&gt; field and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a topic&lt;/strong&gt; icon and select &lt;strong&gt;t3&lt;/strong&gt; from the dropdown and click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Add a sink connector&lt;/strong&gt; icon and select &lt;strong&gt;oharastream.ohara.connector.ftp.FtpSink&lt;/strong&gt; from the list, then click &lt;kbd&gt;ADD&lt;/kbd&gt;.&lt;/li&gt;
+&lt;li&gt;Enter “ftpsink” in the &lt;strong&gt;myconnector&lt;/strong&gt; field and click &lt;kbd&gt;ADD&lt;/kbd&gt; button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;連接-jdbc-source---topic---ftp-sink&#34;&gt;連接 JDBC source -&amp;gt; Topic -&amp;gt; FTP sink&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Set up jdbcsource connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;secondpipeline&lt;/strong&gt; page, click the &lt;strong&gt;jdbcsource&lt;/strong&gt; graph in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab, fill out the form with the following config:
+&lt;ol&gt;
+&lt;li&gt;Enter “&amp;lt;jdbc_url&amp;gt;” (jdbc url for PostgreSQL server) in the &lt;strong&gt;jdbc url&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “&amp;lt;database_username&amp;gt;“ in the &lt;strong&gt;user name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “&amp;lt;database_password&amp;gt;“ in the &lt;strong&gt;password&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “&amp;lt;database_table&amp;gt;” in the &lt;strong&gt;table name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter “&amp;lt;table_timestamp&amp;gt;” in the &lt;strong&gt;timestamp column name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Change flush size from 1000 to 10 in the &lt;strong&gt;JDBC flush Size&lt;/strong&gt; field.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab, select the &lt;strong&gt;t3&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Set up ftpsink connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the &lt;strong&gt;ftpsink&lt;/strong&gt; object in pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab, enter the following in the fields.
+&lt;ol&gt;
+&lt;li&gt;Enter “/demo/output” in the &lt;strong&gt;Output Folder&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;write header&lt;/strong&gt; checkbox, make it checked.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ftp_server_ip&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Hostname of FTP Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;&amp;lt;ftp_server_port&amp;gt;&lt;/code&gt; in the &lt;strong&gt;Port of FTP Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;ftp_username&lt;/code&gt; in the &lt;strong&gt;User of FTP Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;ftp_password&lt;/code&gt; in the &lt;strong&gt;Password of FTP Server&lt;/strong&gt; field.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab and select &lt;strong&gt;t3&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;prepare-the-required-output-folder-on-the-ftp-server&#34;&gt;Prepare the required output folder on the FTP server&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal, login to FTP server (or use a FTP client of your choice)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Create the following folders.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ftp&amp;gt; mkdir demo
+ftp&amp;gt; cd demo
+ftp&amp;gt; mkdir output
+ftp&amp;gt; bye
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;prepare-the-required-table-and-data-on-the-postgresql-server&#34;&gt;Prepare the required table and data on the PostgreSQL server&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Check database has table and data:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal and log into the PostgreSQL server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ psql -h &amp;lt;PostgreSQL_server_ip&amp;gt; -W &amp;lt;database_name&amp;gt; -U &amp;lt;user_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;check table is exist&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# \dt
+          List of relations
+ Schema |    Name     | Type  | Owner
+--------+-------------+-------+-------
+ public | person_data | table | ohara
+ public | test_data   | table | ohara
+(2 rows)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;check table info&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# \d person_data
+                        Table &amp;quot;public.person_data&amp;quot;
+  Column   |            Type             | Collation | Nullable | Default
+-----------+-----------------------------+-----------+----------+---------
+ index     | integer                     |           | not null |
+ name      | character varying           |           |          |
+ age       | integer                     |           |          |
+ id        | character varying           |           |          |
+ timestamp | timestamp without time zone |           |          | now()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;check table has data&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# select * from person_data;
+ index |  name   | age |     id     |      timestamp
+-------+---------+-----+------------+---------------------
+     1 | Sam     |  33 | H123378803 | 2019-03-08 18:52:00
+     2 | Jay     |  25 | A159330943 | 2019-03-08 18:53:00
+     3 | Leon    |  31 | J156498160 | 2019-03-08 19:52:00
+     4 | Stanley |  40 | D113134484 | 2019-03-08 20:00:00
+     5 | Jordan  |  21 | U141236791 | 2019-03-08 20:10:20
+     6 | Kayden  |  20 | E290773637 | 2019-03-09 18:52:59
+     7 | Dillon  |  28 | M225842758 | 2019-03-09 20:52:59
+     8 | Ross    |  33 | F229128254 | 2019-03-09 20:15:59
+     9 | Gunnar  |  50 | Q107872026 | 2019-03-09 21:00:59
+    10 | Tyson   |  26 | N197744193 | 2019-03-09 21:05:59
+..........
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+&lt;a href=&#34;#how-to-create-table-and-insert-data&#34;&gt;How to create table and insert data?&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;start-all-connectors-on-the-secondpipeline-page&#34;&gt;Start all connectors on the secondpipeline page&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;secondpipeline&lt;/strong&gt; page.&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;Start pipeline&lt;/strong&gt; icon.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;verify-which-test-data-was-successfully-dumped-to-ftp-server&#34;&gt;Verify which test data was successfully dumped to FTP server&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal, login to FTP server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;list all result CSV files in &lt;strong&gt;/demo/output/wk01-t3/partition0&lt;/strong&gt; folder.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp ls /demo/output/wk01-t3/partition0
+/demo/output/wk01-t3/partition0/wk01-t3-0-000000000.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;get the CSV file from ftp server to local.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp cd /demo/output/wk01-t3/wk01
+$ ftp get wk01-t3-0-000000000.csv ./wk01-t3-0-000000000.csv
+$ ftp bye
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;View the content of &lt;strong&gt;wk01-t3-0-000000000.csv&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ cat wk01-t3-0-000000000.csv
+index,name,age,id,timestamp
+1,Sam,33,H123378803,2019-03-08 18:52:00.0
+2,Jay,25,A159330943,2019-03-08 18:53:00.0
+3,Leon,31,J156498160,2019-03-08 19:52:00.0
+4,Stanley,40,D113134484,2019-03-08 20:00:00.0
+5,Jordan,21,U141236791,2019-03-08 20:10:20.0
+6,Kayden,20,E290773637,2019-03-09 18:52:59.0
+8,Ross,33,F229128254,2019-03-09 20:15:59.0
+7,Dillon,28,M225842758,2019-03-09 20:52:59.0
+9,Gunnar,50,Q107872026,2019-03-09 21:00:59.0
+10,Tyson,26,N197744193,2019-03-09 21:05:59.0
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;how-to-create-table-and-insert-data&#34;&gt;How to create table and insert data?&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create table &lt;strong&gt;person_data&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# create table person_data (
+postgres=#   index INTEGER NOT NULL,
+postgres=#   name character varying,
+postgres=#   age INTEGER,
+postgres=#   id character varying,
+postgres=#   timestamp timestamp without time zone DEFAULT NOW()
+postgres=# );
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;insert data into table &lt;strong&gt;person_data&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# insert into person_data (index,name,age,id)values(1,&#39;Sam&#39;,33,&#39;H123378803&#39;),
+	(2,&#39;Jay&#39;,25,&#39;A159330943&#39;),
+	(3,&#39;Leon&#39;,31,&#39;J156498160&#39;),
+	(4,&#39;Stanley&#39;,40,&#39;D113134484&#39;),
+	(5,&#39;Jordan&#39;,21,&#39;U141236791&#39;),
+	(6,&#39;Kayden&#39;,20,&#39;E290773637&#39;),
+	(7,&#39;Dillon&#39;,28,&#39;M225842758&#39;),
+	(8,&#39;Ross&#39;,33,&#39;F229128254&#39;),
+	(9,&#39;Gunnar&#39;,50,&#39;Q107872026&#39;),
+	(10,&#39;Tyson&#39;,26,&#39;N197744193&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JDBC to Topic to Stream to HDFS</title>
+      <link>https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-stream-topic-hdfs/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0100</pubDate>
+      <guid>https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-stream-topic-hdfs/</guid>
+      <description>&lt;h2 id=&#34;k8s-mode&#34;&gt;K8S Mode&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-new-workspace-with-three-nodes&#34;&gt;Create new workspace with three nodes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-two-topics-in-the-workspace&#34;&gt;Create two topics into the workspace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#create-new-pipeline&#34;&gt;Create new pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#add-jdbc-source-connector-topics-and-hdfs-sink-connector&#34;&gt;Add jdbc source connector, topics and a hdfs sink connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#link-jdbc-source---stream---hdfs-sink&#34;&gt;Link JDBC source -&amp;gt; Stream -&amp;gt; HDFS sink&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#prepare-the-required-table-and-data-on-the-postgresql-server&#34;&gt;Prepare the required table and data on the PostgreSQL server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#start-all-components-on-the-pipeline-page&#34;&gt;Start all components on the pipeline page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#verify-which-test-data-was-successfully-dumped-to-hdfs&#34;&gt;Verify which test data was successfully dumped to HDFS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;docker-mode&#34;&gt;Docker Mode&lt;/h2&gt;
+&lt;p&gt;Will accomplish this section in 
+&lt;a href=&#34;https://github.com/oharastream/ohara/issues/3696&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;another issue&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;create-new-workspace-with-three-nodes&#34;&gt;Create new workspace with three nodes&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &lt;em&gt;QUICK START&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;In the &lt;strong&gt;About this workspace&lt;/strong&gt; step, enter &amp;ldquo;wk01&amp;rdquo; in the text field.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;NEXT&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;In the &lt;strong&gt;Select nodes&lt;/strong&gt; step, click &lt;em&gt;Select nodes&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;Select three of available nodes from the Nodes list.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;SAVE&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;In the &lt;strong&gt;Upload or select worker plugins(Optional)&lt;/strong&gt; step, Click &lt;em&gt;NEXT&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;In the &lt;strong&gt;Create this workspace&lt;/strong&gt; step, make sure
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Workspace Name&lt;/strong&gt; is &amp;ldquo;wk01&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Node Names&lt;/strong&gt; has three nodes which are decided by us.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugins&lt;/strong&gt; is empty.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;FINISH&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;Wait the creation finished, the url will be redirected to &lt;code&gt;http://{url}/wk01&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;create-two-topics-in-the-workspace&#34;&gt;Create two topics in the workspace&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click th down arrow of workspace &amp;ldquo;wk01&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Select &lt;em&gt;Topics&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;ADD TOPIC&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;topic1&amp;rdquo;, &amp;ldquo;1&amp;rdquo;, &amp;ldquo;1&amp;rdquo; in order of form fields.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;ADD TOPIC&lt;/em&gt; again.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;topic2&amp;rdquo;, &amp;ldquo;1&amp;rdquo;, &amp;ldquo;1&amp;rdquo; in order of form fields.&lt;/li&gt;
+&lt;li&gt;Click the left arrow to go back the homepage.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;create-new-pipeline&#34;&gt;Create new pipeline&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the plus symbol besides the &lt;em&gt;Pipelines&lt;/em&gt; to add a pipeline.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;pipeline1&amp;rdquo; in the text field.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;ADD&lt;/em&gt; button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-jdbc-source-connector-topics-and-hdfs-sink-connector&#34;&gt;Add jdbc source connector, topics and hdfs sink connector&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &lt;em&gt;Source&lt;/em&gt; in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Drag and drop the &lt;strong&gt;JDBCSourceCOnnector&lt;/strong&gt; in the paper.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;jdbc&amp;rdquo; in the text field.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;ADD&lt;/em&gt; button.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;Topic&lt;/em&gt; in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Drag and drop the &lt;strong&gt;topic1&lt;/strong&gt; and &lt;strong&gt;topic2&lt;/strong&gt; in the paper.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;Sink&lt;/em&gt; in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Drag and drop the &lt;strong&gt;HDFSSink&lt;/strong&gt; in the paper.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;hdfs&amp;rdquo; in the text field.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;ADD&lt;/em&gt; button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-stream-jar&#34;&gt;Add stream jar&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &lt;em&gt;Stream&lt;/em&gt; in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &lt;strong&gt;Add streams&lt;/strong&gt; plus symbol in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Browse to the location of your jar file &lt;code&gt;ohara-it-stream.jar&lt;/code&gt;, click the file, and click Open.
+&lt;blockquote&gt;
+&lt;p&gt;if You don&amp;rsquo;t know how to build a stream app jar, see this 
+&lt;a href=&#34;#how-to-get-ohara-it-streamjar&#34;&gt;link&lt;/a&gt; for how&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;Press F5 to fetch stream class in the &lt;em&gt;Toolbox&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;link-jdbc-source---stream---hdfs-sink&#34;&gt;Link JDBC source -&amp;gt; Stream -&amp;gt; HDFS sink&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Set up jdbc source connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;pipeline1&lt;/strong&gt; page, click the &lt;strong&gt;jdbc&lt;/strong&gt; component in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab, fill out the form with the following config:
+&lt;ol&gt;
+&lt;li&gt;Enter &amp;ldquo;&amp;lt;jdbc_url&amp;gt;&amp;rdquo; (jdbc url for PostgreSQL server) in the &lt;strong&gt;jdbc url&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;&amp;lt;database_username&amp;gt;&amp;rdquo; in the &lt;strong&gt;user name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;&amp;lt;database_password&amp;gt;&amp;rdquo; in the &lt;strong&gt;password&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;&amp;lt;database_table&amp;gt;&amp;rdquo; in the &lt;strong&gt;table name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;&amp;lt;table_timestamp&amp;gt;&amp;rdquo; in the &lt;strong&gt;timestamp column name&lt;/strong&gt; field.&lt;/li&gt;
+&lt;li&gt;Change flush size from 1000 to 10 in the &lt;strong&gt;JDBC flush Size&lt;/strong&gt; field.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab, select the &lt;strong&gt;t3&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Set up hdfs sink connector:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;pipeline1&lt;/strong&gt; page, click the &lt;strong&gt;hdfs&lt;/strong&gt; component in the pipeline graph.&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;COMMON&lt;/strong&gt; tab and fill out the following config:
+&lt;ol&gt;
+&lt;li&gt;Enter &amp;ldquo;/data&amp;rdquo; in the Output Folder field&lt;/li&gt;
+&lt;li&gt;Change &lt;strong&gt;Flush Size&lt;/strong&gt; value from &amp;ldquo;1000&amp;rdquo; to &amp;ldquo;5&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Check the &lt;strong&gt;File Need Header&lt;/strong&gt; checkbox&lt;/li&gt;
+&lt;li&gt;Enter &amp;ldquo;hdfs://&lt;code&gt;&amp;lt;hdfs_host&amp;gt;&lt;/code&gt;:&lt;code&gt;&amp;lt;hdfs_port&amp;gt;&lt;/code&gt;&amp;rdquo; in the &lt;strong&gt;HDSF URL&lt;/strong&gt; field&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Select the &lt;strong&gt;CORE&lt;/strong&gt; tab and choose &lt;strong&gt;t2&lt;/strong&gt; from the &lt;strong&gt;Topics&lt;/strong&gt; dropdown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;prepare-the-required-table-and-data-on-the-postgresql-server&#34;&gt;Prepare the required table and data on the PostgreSQL server&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Check database has table and data:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal and log into the PostgreSQL server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;$ psql -h &amp;lt;PostgreSQL_server_ip&amp;gt; -W &amp;lt;database_name&amp;gt; -U &amp;lt;user_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;check table is exist&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# \dt
+          List of relations
+ Schema |    Name     | Type  | Owner
+--------+-------------+-------+-------
+ public | person_data | table | ohara
+ public | test_data   | table | ohara
+(2 rows)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;check table info&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# \d person_data
+                        Table &amp;quot;public.person_data&amp;quot;
+  Column   |            Type             | Collation | Nullable | Default
+-----------+-----------------------------+-----------+----------+---------
+ index     | integer                     |           | not null |
+ name      | character varying           |           |          |
+ age       | integer                     |           |          |
+ id        | character varying           |           |          |
+ timestamp | timestamp without time zone |           |          | now()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;check table has data&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# select * from person_data;
+ index |  name   | age |     id     |      timestamp
+-------+---------+-----+------------+---------------------
+     1 | Sam     |  33 | H123378803 | 2019-03-08 18:52:00
+     2 | Jay     |  25 | A159330943 | 2019-03-08 18:53:00
+     3 | Leon    |  31 | J156498160 | 2019-03-08 19:52:00
+     4 | Stanley |  40 | D113134484 | 2019-03-08 20:00:00
+     5 | Jordan  |  21 | U141236791 | 2019-03-08 20:10:20
+     6 | Kayden  |  20 | E290773637 | 2019-03-09 18:52:59
+     7 | Dillon  |  28 | M225842758 | 2019-03-09 20:52:59
+     8 | Ross    |  33 | F229128254 | 2019-03-09 20:15:59
+     9 | Gunnar  |  50 | Q107872026 | 2019-03-09 21:00:59
+    10 | Tyson   |  26 | N197744193 | 2019-03-09 21:05:59
+..........
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+&lt;a href=&#34;#how-to-create-table-and-insert-data&#34;&gt;How to create table and insert data?&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;start-all-components-on-the-pipeline-page&#34;&gt;Start all components on the pipeline page&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;On the &lt;strong&gt;pipeline1&lt;/strong&gt; page.&lt;/li&gt;
+&lt;li&gt;Click the &lt;em&gt;PIPELINE&lt;/em&gt; Actions on the top tab.&lt;/li&gt;
+&lt;li&gt;Click &lt;em&gt;Start all components&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;verify-which-test-data-was-successfully-dumped-to-hdfs&#34;&gt;Verify which test data was successfully dumped to HDFS&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal and ssh to HDFS server.&lt;/li&gt;
+&lt;li&gt;List all CSV files in &lt;strong&gt;/data/wk00-t2/partition0&lt;/strong&gt; folder:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hdfs dfs -ls /data/wk00-t2/partition0
+
+# You should see something similar like this in your terminal:
+/data/wk00-t2/partition0/part-000000000-000000005.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;View the content of &lt;strong&gt;part-000000000-000000005.csv&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hdfs dfs -cat /data/wk00-t2/partition0/part-000000000-000000005.csv
+
+# The result should be like the following:
+ID,NAME,CREATE_AT
+1,ohara1,2019-03-01 00:00:01
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;how-to-create-table-and-insert-data&#34;&gt;How to create table and insert data?&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Create table &lt;strong&gt;person_data&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# create table person_data (
+postgres=#   index INTEGER NOT NULL,
+postgres=#   name character varying,
+postgres=#   age INTEGER,
+postgres=#   id character varying,
+postgres=#   timestamp timestamp without time zone DEFAULT NOW()
+postgres=# );
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;insert data into table &lt;strong&gt;person_data&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;postgres=# insert into person_data (index,name,age,id)values(1,&#39;Sam&#39;,33,&#39;H123378803&#39;),
+	(2,&#39;Jay&#39;,25,&#39;A159330943&#39;),
+	(3,&#39;Leon&#39;,31,&#39;J156498160&#39;),
+	(4,&#39;Stanley&#39;,40,&#39;D113134484&#39;),
+	(5,&#39;Jordan&#39;,21,&#39;U141236791&#39;),
+	(6,&#39;Kayden&#39;,20,&#39;E290773637&#39;),
+	(7,&#39;Dillon&#39;,28,&#39;M225842758&#39;),
+	(8,&#39;Ross&#39;,33,&#39;F229128254&#39;),
+	(9,&#39;Gunnar&#39;,50,&#39;Q107872026&#39;),
+	(10,&#39;Tyson&#39;,26,&#39;N197744193&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;how-to-get-ohara-it-streamjar&#34;&gt;How to get ohara-it-stream.jar?&lt;/h4&gt;
+&lt;p&gt;Open a new terminal from your machine and go to Ohara&amp;rsquo;s source folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then &lt;code&gt;cd&lt;/code&gt; to Stream DumbStream source folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara-it/src/main/scala/oharastream/ohara/it/stream/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use Vi to edit &lt;strong&gt;DumbStream.scala&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;vi DumbStream.scala
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Enter &amp;ldquo;I&amp;rdquo; key from your keyboard to activate the &amp;ldquo;INSERT&amp;rdquo; mode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-- INSERT --
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Overwrite DumbStream class from&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class DumbStream extends Stream {
+  override def start(ostream: OStream[Row], configs: StreamSetting): Unit = {
+    // do nothing but only start stream and write exactly data to output topic
+    ostream.start()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import oharastream.ohara.common.data.Row
+import oharastream.ohara.common.setting.SettingDef
+import oharastream.ohara.stream.config.StreamSetting
+import oharastream.ohara.stream.{OStream, Stream}
+
+class DumbStream extends Stream {
+
+  override def config(): StreamDefinitions = StreamDefinitions
+    .`with`(
+      SettingDef
+        .builder()
+        .key(&amp;quot;filterValue&amp;quot;)
+        .displayName(&amp;quot;filter value&amp;quot;)
+        .documentation(&amp;quot;filter the row that contains this value&amp;quot;)
+        .build())
+
+  override def start(ostream: OStream[Row], configs: StreamDefinitions): Unit = {
+
+    ostream
+      // we filter row which the cell values contain the pre-defined &amp;quot;filterValue&amp;quot;. Note:
+      // 1) configs.string(&amp;quot;filterValue&amp;quot;) will try to get the value from env and it should NOT be null
+      // 2) we ignore case for the value (i.e., &amp;quot;aa&amp;quot; = &amp;quot;AA&amp;quot;)
+      .filter(
+      r =&amp;gt;
+        r.cells()
+          .stream()
+          .anyMatch(c =&amp;gt; {
+            c.value().toString.equalsIgnoreCase(configs.string(&amp;quot;filterValue&amp;quot;))
+          }))
+      .start()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press &amp;ldquo;Esc&amp;rdquo; key to leave the insert mode and enter &lt;code&gt;:wq&lt;/code&gt; to save and exit from this file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:wq
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Build stream jar&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Make sure you&#39;re at the project root `/ohara`, then build the jar with:
+./gradlew clean :ohara-it:jar -PskipManager
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Go to stream jar folder and list the jars that you have&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd ohara-it/build/libs/ &amp;amp;&amp;amp; ls
+
+# You should see something like this in your terminal:
+ohara-it-sink.jar ohara-it-source.jar ohara-it-stream.jar
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ohara installation</title>
+      <link>https://oharastream.github.io/en/testcases/ohara-installation/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0100</pubDate>
+      <guid>https://oharastream.github.io/en/testcases/ohara-installation/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#use-the-hardware-specification&#34;&gt;Use the hardware specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#use-version-information&#34;&gt;Use version information&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#install-the-kubernetes&#34;&gt;Install the Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#running-the-ohara-configuration-service&#34;&gt;Running the Ohara Configuration service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#running-the-ohara-manager-service&#34;&gt;Running the Ohara Manager service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;use-the-hardware-specification&#34;&gt;Use the hardware specification&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Preparation 5 nodes&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;K8S Master: &lt;strong&gt;1 個 Node&lt;/strong&gt;, &lt;strong&gt;CPU 4 Core&lt;/strong&gt;, &lt;strong&gt;Memory 4 GB&lt;/strong&gt;, &lt;strong&gt;Disk 100 GB&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;K8S Slave: &lt;strong&gt;3 個 Node&lt;/strong&gt;, &lt;strong&gt;CPU 4 Core&lt;/strong&gt;, &lt;strong&gt;Memory 4 GB&lt;/strong&gt;, &lt;strong&gt;Disk 100 GB&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ohara Configurator 和 Ohara Manager 在同一台 Node, &lt;strong&gt;CPU 4 Core&lt;/strong&gt;, &lt;strong&gt;Memory 4 GB&lt;/strong&gt;, &lt;strong&gt;Disk 100 GB&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;HostName and IP Information&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;k8s-m-test 10.100.0.140&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s-s-test-0 10.100.0.169&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s-s-test-1 10.100.0.167&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s-s-test-2 10.100.0.114&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ohara-configurator 10.2.0.32&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ohara-manager 10.2.0.32&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;environment&#34;&gt;Environment&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Operating System: &lt;strong&gt;CentOS 7.6.1810&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker: &lt;strong&gt;19.03.8&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kubernetes: &lt;strong&gt;1.18.1&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ohara: &lt;strong&gt;${ohara version name}&lt;/strong&gt; 這裡以 0.7.0-SNAPSHOT 當做 example&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;install-kubernetes&#34;&gt;Install Kubernetes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Please refer to the 
+&lt;a href=&#34;https://oharastream.github.io/en/docs/master/user_guide/#k8s&#34;&gt;document&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要在每台 Kubernetes 的 Slave Node Pull zookeeper, broker, connector-worker 和 stream 的 docker image，指令如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/zookeeper:${ohara version name}
+$ docker pull oharastream/broker:${ohara version name}
+$ docker pull oharastream/connect-worker:${ohara version name}
+$ docker pull oharastream/stream:${ohara version name}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/zookeeper:0.7.0-SNAPSHOT
+$ docker pull oharastream/broker:0.7.0-SNAPSHOT
+$ docker pull oharastream/connect-worker:0.7.0-SNAPSHOT
+$ docker pull oharastream/stream:0.7.0-SNAPSHOT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;running-ohara-configuration-service&#34;&gt;Running Ohara Configuration service&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 ssh 登入到要啟動 Ohara Configuration Service 的 node 裡&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pull Ohara Configurator docker image&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/configurator:${ohara version name}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/configurator:0.7.0-SNAPSHOT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;執行 Ohara Configurator service Docker container&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker run --rm \
+           -p 5000:5000 \
+           --add-host ${K8S_WORKER01_HOSTNAME}:${K8S_WORKER01_IP} \
+           --add-host ${K8S_WORKER02_HOSTNAME}:${K8S_WORKER02_IP} \
+           oharastream/configurator:0.7.0-SNAPSHOT \
+           --port 5000 \
+           --hostname ${Start Configurator Host Name} \
+           --k8s http://${Your_K8S_Master_Host_IP}:8080/api/v1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker run -d --rm \
+           -p 5000:5000 \
+           --add-host k8s-m-test:10.100.0.140 \
+           --add-host k8s-s-test-0:10.100.0.169 \
+           --add-host k8s-s-test-1:10.100.0.167 \
+           --add-host k8s-s-test-2:10.100.0.114 \
+           oharastream/configurator:0.7.0-SNAPSHOT \
+           --port 5000 \
+           --hostname 10.2.0.32 \
+           --k8s http://10.100.0.140:8080/api/v1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;使用 docker 指令確認 Ohara Configurator 的 container 是否有啟動&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker ps -a
+
+CONTAINER ID        IMAGE                                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d6127177b18f        oharastream/configurator:0.7.0-SNAPSHOT   &amp;quot;/tini -- configurat…&amp;quot;   About an hour ago   Up About an hour    0.0.0.0:5000-&amp;gt;5000/tcp   adoring_bartik
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;使用以下指令確認 Ohara Configurator 的 Restful API 是否能顯示版本資訊&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ curl -X GET http://${Your Configurator Node name}:5000/v0/info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ curl -X GET http://10.2.0.32:5000/v0/info
+
+{&amp;quot;versionInfo&amp;quot;:{&amp;quot;branch&amp;quot;:&amp;quot;master&amp;quot;,&amp;quot;revision&amp;quot;:&amp;quot;1b38aaff103c7fa84440c2bbdfc7699eafb0716f&amp;quot;,&amp;quot;version&amp;quot;:&amp;quot;0.7.0-SNAPSHOT&amp;quot;,&amp;quot;date&amp;quot;:&amp;quot;2019-08-17 17:09:26&amp;quot;,&amp;quot;user&amp;quot;:&amp;quot;root&amp;quot;},&amp;quot;mode&amp;quot;:&amp;quot;K8S&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;以上步驟不能正常執行，請使用 docker logs 指令查看 log，並且回報到 ohara GitHub 的 
+&lt;a href=&#34;https://github.com/oharastream/ohara/issues&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ohara issues page&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker logs ${CONFIGURATOR CONTAINER ID}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;running-the-ohara-manager-service&#34;&gt;Running the Ohara Manager service&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 ssh 登入到要啟動 Ohara Manager Service 的 node 裡&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pull Ohara Manager docker image&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/manager:${ohara version name}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker pull oharastream/manager:0.7.0-SNAPSHOT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;執行 Ohara Manager service Docker container&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker run -d --rm \
+                       -p ${ohara-manager-port}:5050 \
+                       oharastream/manager:${ohara version name} \
+                      --port ${ohara-manager-port} \
+                      --configurator http://${ohara-configurator-host}:${ohara-configurator-port}/v0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker run -d --rm \
+                           -p 5050:5050 \
+                          oharastream/manager:0.7.0-SNAPSHOT \
+                          --port 5050 \
+                         --configurator http://10.2.0.32:5000/v0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;使用 docker ps 指令查看 ohara manager service 的 container 是否有正常執行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker ps -a
+
+# Output
+CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+1f1b2cfac5d8        oharastream/manager:0.7.0-SNAPSHOT   &amp;quot;/tini -- manager.sh…&amp;quot;   4 seconds ago       Up 3 seconds        0.0.0.0:5050-&amp;gt;5050/tcp   sleepy_nightingale
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;使用 docker logs 指令查看 ohara manager service container 的 log&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker logs ${CONTAINER ID}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker logs -f 1f1b2cfac5d8
+
+# Manager&#39;s log
+[HPM] Proxy created: /  -&amp;gt;  http://10.2.0.32:5000/v0
+[HPM] Proxy rewrite rule created: &amp;quot;/api&amp;quot; ~&amp;gt; &amp;quot;&amp;quot;
+Ohara manager is running at port: 5050
+Successfully connected to the configurator: http://10.2.0.32:5000/v0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;開啟 ohara manager 的 web 畫面，在 browser 的 URL 輸入以下網址：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;http://10.2.0.32:5050
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就可以看到 Ohara manager 的畫面&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

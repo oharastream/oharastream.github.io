@@ -1,0 +1,1332 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This module contains Ohara manager (an HTTP server powered by Node.js) and Ohara manager client (A web-based user interface built with React.js ). In the following docs, we will refer Server as Ohara manager and Client as Ohara manager client.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/0.11.x/manager_dev_guide/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/0.11.x/manager_dev_guide/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/0.11.x/manager_dev_guide/">
+  <meta property="og:title" content="Ohara Manager Development Guideline | OharaStream">
+  <meta property="og:description" content="This module contains Ohara manager (an HTTP server powered by Node.js) and Ohara manager client (A web-based user interface built with React.js ). In the following docs, we will refer Server as Ohara manager and Client as Ohara manager client."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-16T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-20T11:26:51&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Ohara Manager Development Guideline | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/0.11.x/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/0.11.x/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#initial-machine-setup">Initial machine setup</a>
+      <ul>
+        <li><a href="#mac">Mac</a></li>
+        <li><a href="#linux">Linux</a></li>
+      </ul>
+    </li>
+    <li><a href="#development">Development</a>
+      <ul>
+        <li><a href="#quick-start-guide">Quick start guide</a></li>
+        <li><a href="#full-development-guide">Full development guide</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#code-coverage">Code Coverage</a></li>
+        <li><a href="#linting">Linting</a></li>
+        <li><a href="#format">Format</a></li>
+        <li><a href="#build">Build</a></li>
+        <li><a href="#ohara-manager-image">Ohara manager image</a></li>
+        <li><a href="#ci-server-integration">CI server integration</a></li>
+        <li><a href="#clean">Clean</a></li>
+        <li><a href="#prepush">Prepush</a></li>
+      </ul>
+    </li>
+    <li><a href="#editors">Editors</a></li>
+    <li><a href="#switch-different-version-of-nodejs">Switch different version of Node.js</a></li>
+    <li><a href="#having-issues">Having issues?</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Ohara Manager Development Guideline</h1>
+
+          <div class="article-style">
+            <p>This module contains Ohara manager (an HTTP server powered by
+
+<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>) and Ohara manager client (A web-based
+user interface built with 
+<a href="https://reactjs.org/" target="_blank" rel="noopener">React.js</a> ). In the
+following docs, we will refer <strong>Server</strong> as Ohara manager and <strong>Client</strong>
+as Ohara manager client.</p>
+<h2 id="initial-machine-setup">Initial machine setup</h2>
+<ol>
+<li>Install 
+<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a> 10.16.3 or
+node.js &gt;=10.16.3 and &lt; 13.0.0</li>
+<li>Install 
+<a href="https://yarnpkg.com/en/docs/install#mac-stable" target="_blank" rel="noopener">Yarn</a>
+1.13.0 or greater</li>
+<li>Make sure you&rsquo;re in the ohara-manager root and use this command to
+setup the app: <code>yarn setup</code>. This will install all the dependencies
+for both the <strong>Server</strong> and <strong>Client</strong> as well as creating a
+production build for the client.</li>
+<li><strong>Optional</strong>: If you&rsquo;re using Visual Studio Code as your editor,
+have a look at our 
+<a href="#editors">Editors</a> section.</li>
+</ol>
+<h3 id="mac">Mac</h3>
+<p>Make sure you have <code>watchman</code> installed on your machine. You can do this
+with homebrew:</p>
+<pre><code class="language-shell">$ brew install watchman
+</code></pre>
+<h3 id="linux">Linux</h3>
+<p>Install these dependencies for cypress:</p>
+<pre><code class="language-shell">$ yum install -y xorg-x11-server-Xvfb gtk2-2.24* libXtst* libXScrnSaver* GConf2* alsa-lib*
+</code></pre>
+<h2 id="development">Development</h2>
+<div class="alert alert-hint">
+  <div>
+    If this is your first time running this project, you need to complete
+the <a href="#initial-machine-setup">Initial machine setup</a> section above 👆
+  </div>
+</div>
+<h3 id="quick-start-guide">Quick start guide</h3>
+<p>Make sure you&rsquo;re at the Ohara manager root, then start it with:</p>
+<pre><code class="language-shell">$ yarn start --configurator ${http://host:port/v0}
+</code></pre>
+<p>Note that the configurator option is <strong>required</strong>, and you should have
+configurator running before starting Ohara manager. You can see the
+
+<a href="/en/docs/0.11.x/user_guide/">user guide</a> on how to spin
+up a Configurator</p>
+<p>Open another terminal tab, and start the <strong>Client</strong>:</p>
+<pre><code class="language-shell">$ yarn start:client
+</code></pre>
+<p>Now, go to http://localhost:3000 and start your development, happy
+hacking 😎</p>
+<h3 id="full-development-guide">Full development guide</h3>
+<p>In development, you need to start both the <strong>Ohara manager</strong> and <strong>Ohara
+manager client</strong> servers before you can start your development. Follow
+the instructions below:</p>
+<h4 id="server">Server</h4>
+<p>Make sure you&rsquo;re at the ohara-manager root:</p>
+<pre><code class="language-shell">$ yarn start --configurator ${http://host:port/v0}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    Note that the <code>--configurator</code> argument is required, you should pass
+in Ohara configurator API URL.
+  </div>
+</div>
+<p>You can also override the default port <code>5050</code> by passing in <code>--port</code>
+like the following:</p>
+<pre><code class="language-shell">$ yarn start --configurator ${http://host:port/v0} --port ${1234}
+</code></pre>
+<p>After starting the server, visit <code>http://localhost:${PORT}</code> in your browser.</p>
+<div class="alert alert-hint">
+  <div>
+    Passing the CLI option <code>-c</code> has the same effect as <code>--configurator</code>
+and <code>-p</code> for <code>--port</code> as well
+  </div>
+</div>
+<p>Double check the <code>--configurator</code> spelling and API URL, the URL should
+contain the API version number: <code>/v0</code></p>
+<h4 id="client">Client</h4>
+<p>Start the <strong>Client</strong> development server with:</p>
+<pre><code class="language-shell">$ yarn start:client
+</code></pre>
+<p>After starting the dev server, visit <code>http://localhost:3000</code> in your
+browser and start you development.</p>
+<p>You can override the default port <code>3000</code> by passing in an environment
+variable:</p>
+<pre><code class="language-shell">$ PORT=7777 yarn start:client
+</code></pre>
+<p>The dev server will then start at <code>http://localhost:7777</code></p>
+<h3 id="testing">Testing</h3>
+<h4 id="unit-test">Unit test</h4>
+<p>You can run <strong>Client</strong> unit test with a single npm script:</p>
+<pre><code class="language-shell">$ yarn test:unit:ci
+</code></pre>
+<p>Please note that this is a one-off run command, often when you&rsquo;re in
+the development, you would run test and stay in Jest&rsquo;s watch mode
+which reloads the test once you save your changes:</p>
+<pre><code class="language-shell">$ yarn test:unit:watch
+</code></pre>
+<pre><code class="language-shell">$ yarn test:unit:ci
+</code></pre>
+<p>This command will generate test coverage reports, which can be found in
+<code>ohara-manager/client/coverage/ut/</code></p>
+<div class="alert alert-note">
+  <div>
+    We will automate check the threshold of code coverage by
+<strong>Statements &gt; 40%</strong> if you issued the <code>test:unit:ci</code> command.
+  </div>
+</div>
+<h4 id="api-test">API test</h4>
+<p>We&rsquo;re using Cypress to test our RESTful API, this ensures our backend
+API is always compatible with Ohara manager and won&rsquo;t break our UI
+(ideally). You can run the test in different modes:</p>
+<p><strong>GUI mode</strong>: this will open Cypress test runner, you can then run
+your test manually through the UI.</p>
+<pre><code class="language-shell">$ yarn test:api:open
+</code></pre>
+<p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our API test on CI
+under this mode. You might often want to run your tests in this mode
+locally as well.</p>
+<pre><code class="language-shell">$ yarn test:api:ci --configurator ${http://host:port/v0 --port 0}
+</code></pre>
+<blockquote>
+<ol>
+<li>Generated test coverage reports could be found in <code>ohara-manager/client/coverage/api</code>
+if you executed test with <strong>Electron mode</strong>.</li>
+<li>The <code>--port 0</code> means randomly choose a port for this test run.</li>
+</ol>
+</blockquote>
+<div class="alert alert-note">
+  <div>
+    We will automate check the threshold of code coverage by
+<strong>Statements &gt; 80%</strong> if you issued the <code>test:api:ci</code> command.
+  </div>
+</div>
+<h4 id="it-test">IT test</h4>
+<p>To test our UI flows, we use Cypress to test our UI flow with <strong>fake</strong> configurator. These
+tests focus on the behaviors of UI flow (by different operations from UI), so they should
+cover most of our UI logic.  You can run the test in different modes:</p>
+<p><strong>GUI mode</strong>: this will open Cypress test runner, you can then run
+your test manually through the UI.</p>
+<pre><code class="language-shell">$ yarn test🇮🇹open
+</code></pre>
+<p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our API test on CI
+under this mode. You might often want to run your tests in this mode
+locally as well.</p>
+<pre><code class="language-shell">$ yarn test🇮🇹ci --configurator ${http://host:port/v0 --port 0}
+</code></pre>
+<p>This command will generate test coverage reports, which can be found in
+<code>ohara-manager/client/coverage/it/</code></p>
+<div class="alert alert-note">
+  <div>
+    We will automate check the threshold of code coverage by
+<strong>Statements &gt; 75%</strong> if you issued the <code>test🇮🇹ci</code> command.
+  </div>
+</div>
+<h4 id="end-to-end-test">End-to-End test</h4>
+<p>Just like API test, our End-to-End test also runs in two different
+modes:</p>
+<p><strong>GUI mode</strong>: this will open Cypress test runner, you can then run
+your test manually through the UI.</p>
+<pre><code class="language-shell">$ yarn test:e2e:open
+</code></pre>
+<p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our E2E test on CI
+under this mode. You might often want to run your tests in this mode
+locally as well.</p>
+<pre><code class="language-shell">$ yarn test:e2e:ci --configurator ${http://host:port/v0}
+</code></pre>
+<ol>
+<li>
+<p>Before running in this mode we advise that you run <code>yarn setup</code> prior
+to the tests as the dev server is not running, so you might have stale
+build asserts in your build directory</p>
+</li>
+<li>
+<p>You also need to create a <strong>cypress.env.json</strong> under the
+<code>/ohara-manager/client/</code>, these are the config that Cypress will
+be using when running tests:</p>
+</li>
+</ol>
+<pre><code class="language-json">{
+  &quot;nodeHost&quot;: &quot;ohara-dev-01&quot;,
+  &quot;nodePort&quot;: 22,
+  &quot;nodeUser&quot;: &quot;nodeUserName&quot;,
+  &quot;nodePass&quot;: &quot;nodePassword&quot;,
+  &quot;servicePrefix&quot;: &quot;prPrefix&quot;
+}
+</code></pre>
+<ol start="3">
+<li>Unlike API test, the test should run in production environment</li>
+</ol>
+<h3 id="code-coverage">Code Coverage</h3>
+<p>As the above test phases are tend to cover different range of our source code, after you executed
+the following commands:</p>
+<ul>
+<li><code>yarn test:unit:ci</code></li>
+<li><code>yarn test:api:ci</code></li>
+<li><code>yarn test🇮🇹ci</code></li>
+</ul>
+<p>we will generate the corresponded coverage reports in relative path as each test section described, and
+you could combine them to see the overall picture:</p>
+<pre><code class="language-shell">$ yarn report:combined
+</code></pre>
+<p>The combined coverage report could be found at <code>/ohara-manager/client/coverage/index.html</code></p>
+<div class="alert alert-info">
+  <div>
+    <p>You could also check the combined report by yourself:</p>
+<pre><code class="language-shell">$ yarn test:coverage:check
+</code></pre>
+  </div>
+</div>
+<h3 id="linting">Linting</h3>
+<p>We use 
+<a href="https://github.com/eslint/eslint" target="_blank" rel="noopener">ESLint</a> to lint all the
+JavaScript:</p>
+<p>Server:</p>
+<pre><code class="language-shell">$ yarn lint:server
+</code></pre>
+<p>It&rsquo;s usually helpful to run linting while developing and that&rsquo;s
+included in <code>yarn start</code> command:</p>
+<pre><code class="language-shell">$ yarn start --configurator ${http://host:port/v0}
+</code></pre>
+<p>This will start the server with <code>nodemon</code> and run the linting script
+whenever nodemon reloads.</p>
+<p>Client:</p>
+<p>Since our client is bootstrapped with create-react-app, so the
+linting part is already taken care. When starting the <strong>Client</strong> dev
+server with <code>yarn start:client</code>, the linting will be starting
+automatically.</p>
+<p>Note that due to create-react-app doesn&rsquo;t support custom eslint
+rules. You need to use your text editor plugin to display the custom
+linting rule warnings or errors. For more info about this, please
+take a look at the create-react-app
+
+<a href="https://facebook.github.io/create-react-app/docs/setting-up-your-editor#displaying-lint-output-in-the-editor" target="_blank" rel="noopener">docs</a></p>
+<h3 id="format">Format</h3>
+<p>We use 
+<a href="https://github.com/prettier/prettier" target="_blank" rel="noopener">Prettier</a> to format our
+code. You can format all <code>.js</code> files with:</p>
+<pre><code class="language-shell">$ yarn format
+</code></pre>
+<ul>
+<li>You can ignore files or folders when running <code>yarn format</code> by
+editing the <code>.prettierignore</code> in the Ohara-manager root.</li>
+</ul>
+<h3 id="build">Build</h3>
+<p><strong>Note that this step is only required for the Client NOT THE SERVER</strong></p>
+<p>You can get production-ready static files by using the following
+command:</p>
+<pre><code class="language-shell">$ yarn build
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    These static files will be built and put into the
+<strong>/ohara-manager/client/build</strong> directory.
+  </div>
+</div>
+<h3 id="ohara-manager-image">Ohara manager image</h3>
+<p>Run the following command to get the production ready build of both
+the <strong>Server</strong> and <strong>Client</strong>.</p>
+<pre><code class="language-shell">$ yarn setup
+</code></pre>
+<p>After the build, copy/use these files and directories to the
+destination directory (Note this step is automatically done by
+Ohara-${module} module):</p>
+<ul>
+<li>start.js</li>
+<li>config.js</li>
+<li>client &ndash; only build directory is needed
+<ul>
+<li>build</li>
+</ul>
+</li>
+<li>constants</li>
+<li>node_modules</li>
+<li>routes</li>
+<li>utils</li>
+</ul>
+<div class="alert alert-note">
+  <div>
+    Note that if you add new files or dirs to the <strong>Server</strong> or <strong>Client</strong>
+and these files and dirs are required for production build, please
+list that file in the above list as well as editing the gradle file
+under <code>ohara/ohara-manager/build.gradle</code>. <strong>Skipping this step will
+cause production build failed!</strong>
+  </div>
+</div>
+<p><strong>From the Ohara manager project root</strong>, use the following command to
+start the manager:</p>
+<pre><code class="language-shell">$ yarn start:prod --configurator ${http://host:port/v0}
+</code></pre>
+<h3 id="ci-server-integration">CI server integration</h3>
+<p>In order to run tests on Jenkins, Ohara manager provides a few npm scripts that are used in Gradle, these scripts generate test reports in <em>/ohara-manager/test-reports</em> which can be consumed by Jenkins to determine if a test passes or not, you will sometimes need to run these commands locally if you edit related npm scripts in Ohara manager or want to reproduce fail build on CI:</p>
+<p>Unit test:</p>
+<pre><code class="language-shell">$ ./gradlew test
+</code></pre>
+<ul>
+<li>Run <strong>Client</strong>&rsquo;s unit tests. The test reports can be found in <code>ohara-manager/test-reports/</code></li>
+</ul>
+<p>API test:</p>
+<pre><code class="language-shell">$ ./gradlew api -Pohara.manager.api.configurator=${http://host:port/v0}
+</code></pre>
+<p>End-to-End test:</p>
+<pre><code class="language-shell">$ ./gradlew e2e -Pohara.manager.e2e.port=5050 -Pohara.manager.e2e.configurator=${http://host:port/v0}-Pohara.manager.e2e.nodeHost=${slaveNodeName} -Pohara.manager.e2e.nodePort=${slaveNodePort} -Pohara.manager.e2e.nodeUser=${slaveNodeUsername} -Pohara.manager.e2e.nodePass=${slaveNodePassword} -Pohara.it.container.prefix=${pullRequestNumber}
+</code></pre>
+<p>Let&rsquo;s take a close look at these options:</p>
+<ul>
+<li><code>-Pohara.manager.e2e.port=5050</code>: start Ohara manager at this port in the test run</li>
+<li><code>-Pohara.manager.e2e.configurator=${http://host:port/v0}</code>: Configurator URL, Ohara manager will hit this API endpoint when running test</li>
+<li><code>-Pohara.manager.e2e.nodeHost=${slaveNodeName}</code>: K8s&rsquo; slave node, the services started in the test will be deploy on this node</li>
+<li><code>-Pohara.manager.e2e.nodePort=${slaveNodePort}</code>: port of the given node</li>
+<li><code>-Pohara.manager.e2e.nodeUser=${slaveNodeUsername}</code>: username of the given node</li>
+<li><code>-Pohara.manager.e2e.nodePass=${slaveNodePassword}</code>: password of the given node</li>
+<li><code>-Pohara.it.container.prefix=${pullRequestNumber}</code>: pull request number of this test run, this prefix is used by Jenkins to do the cleanup after the test is done</li>
+</ul>
+<p>There are more gradle tasks that are not listed in the above, you can
+view them in <code>/ohara-manager/build.gradle</code></p>
+<h3 id="clean">Clean</h3>
+<p>Clean up all running processes, removing <code>test-reports/</code> in the
+<strong>Server</strong> and <code>/build</code> directory in the <strong>Client</strong>:</p>
+<pre><code class="language-shell">$ yarn clean
+</code></pre>
+<p>Clean all running processes started with node.js</p>
+<pre><code class="language-shell">$ yarn clean:process
+</code></pre>
+<p>This is useful when you want to kill all node.js processes locally</p>
+<h3 id="prepush">Prepush</h3>
+<p>We also provide a npm script to run Client&rsquo;s unit test, linting, and
+format all the JavaScript files with. <strong>Ideally, you&rsquo;d run this
+before pushing your code to the remote repo:</strong></p>
+<pre><code class="language-shell">$ yarn prepush
+</code></pre>
+<h2 id="editors">Editors</h2>
+<p>We highly recommended that you use 
+<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio
+Code</a> (vscode for short) to edit and
+author Ohara manager code.</p>
+<p>Recommended vscode settings</p>
+<pre><code class="language-json">{
+  &quot;editor.tabSize&quot;: 2,
+  &quot;editor.formatOnSave&quot;: true,
+  &quot;editor.formatOnSaveTimeout&quot;: 2000,
+  &quot;editor.tabCompletion&quot;: true,
+  &quot;emmet.triggerExpansionOnTab&quot;: true,
+  &quot;emmet.includeLanguages&quot;: {
+    &quot;javascript&quot;: &quot;javascriptreact&quot;,
+    &quot;markdown&quot;: &quot;html&quot;
+  },
+  &quot;search.exclude&quot;: {
+    &quot;**/node_modules&quot;: true,
+    &quot;**/bower_components&quot;: true,
+    &quot;**/coverage&quot;: true
+  },
+  &quot;javascript.updateImportsOnFileMove.enabled&quot;: &quot;always&quot;,
+  &quot;eslint.workingDirectories&quot;: [
+     &quot;./client&quot;
+   ]
+}
+</code></pre>
+<p><strong>Recommend extensions</strong></p>
+<ul>
+<li>
+<p>
+<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">ESLint</a> &mdash;
+install this so vscode can display linting errors right in the editor</p>
+</li>
+<li>
+<p>
+<a href="https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components" target="_blank" rel="noopener">vscode-styled-components</a> &mdash;
+syntax highlighting support for 
+<a href="https://github.com/styled-components/styled-components" target="_blank" rel="noopener">styled component</a></p>
+</li>
+<li>
+<p>
+<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier - Code formatter</a> &mdash;
+code formatter, it consumes the config in <code>.prettierrc</code></p>
+</li>
+<li>
+<p>
+<a href="https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv" target="_blank" rel="noopener">DotENV</a> &mdash;
+<code>.env</code> file syntax highlighting support</p>
+</li>
+<li>
+<p>
+<a href="https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight" target="_blank" rel="noopener">Color Highlight</a> &mdash;
+Highlight web colors in VSCode</p>
+</li>
+</ul>
+<h2 id="switch-different-version-of-nodejs">Switch different version of Node.js</h2>
+<p>Oftentimes you would need to switch between different Node.js versions
+for debugging. There&rsquo;s a handy npm package that can reduce the pain of
+managing different version of Node.js on your machine:</p>
+<p>First, let&rsquo;s install this package <code>n</code>, note that we&rsquo;re installing it globally so it&rsquo;s can be used throughout your projects:</p>
+<pre><code class="language-shell">$ npm install -g n # or yarn global add n
+</code></pre>
+<p>Second, let&rsquo;s use <code>n</code> to install a specific version of Node.js:</p>
+<pre><code class="language-shell">$ n 8.16.0
+</code></pre>
+<p>Switch between installed NodeJS versions:</p>
+<pre><code class="language-shell">$ n # Yep, just type n in your terminal...,
+</code></pre>
+<p>For more info, you can read the 
+<a href="https://github.com/tj/n" target="_blank" rel="noopener">docs</a> here.</p>
+<h2 id="having-issues">Having issues?</h2>
+<ul>
+<li>
+<p><strong>Got an error while starting up the server: Error: Cannot find
+module ${module-name}</strong></p>
+<p>If you&rsquo;re running into this, it&rsquo;s probably that this module is not
+correctly installed on your machine. You can fix this by simply
+run:</p>
+<pre><code class="language-shell">$ yarn # If this doesn't work, try `yarn add ${module-name}`
+</code></pre>
+<p>After the installation is completed, start the server again.</p>
+</li>
+<li>
+<p><strong>Got an error while starting up the server or client on a Linux
+machine: ENOSPC</strong></p>
+<p>You can run this command to increase the limit on the number of
+files Linux will watch. Read more
+
+<a href="https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers#the-technical-details" target="_blank" rel="noopener">here</a>.</p>
+<pre><code class="language-shell">$ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p.
+</code></pre>
+</li>
+<li>
+<p><strong>Node.js processes cannot be stopped even after using kill -9</strong></p>
+<p>We&rsquo;re using <code>forever</code> to start our node.js servers on CI, and
+<code>nodemon</code> while in development, so you need to use the following
+commands to kill them. <code>kill -9</code> or <code>fuser</code> might not work as you
+expected.</p>
+<p>use <code>yarn clean:processes</code> command or <code>pkill node</code> to kill all the
+node.js processes</p>
+</li>
+<li>
+<p><strong>While running test in jest&rsquo;s watch modal, an error is thrown</strong></p>
+<pre><code>Error watching file for changes: EMFILE
+</code></pre>
+</li>
+</ul>
+<p>Try installing <code>watchman</code> for your mac with the 
+<a href="#mac">instruction</a></p>
+<p>For more info: <a href="https://github.com/facebook/jest/issues/1767">https://github.com/facebook/jest/issues/1767</a></p>
+<ul>
+<li>
+<p><strong>Ohara manager is not able to connect to Configurator</strong> And I&rsquo;m seeing something like:</p>
+<pre><code>--configurator: we're not able to connect to `{http://host:port/v0}`
+Please make sure your Configurator is running at `${http://host:port/v0}`
+[nodemon] app crashed - waiting for file changes before starting...
+</code></pre>
+</li>
+</ul>
+<p>This could happen due to several reasons:</p>
+<ul>
+<li>
+<p><strong>Configurator hasn&rsquo;t fully started yet</strong>: after you start the
+configurator container. The container needs some time to fully
+initialize the service. This usually takes about a minute or
+so. And as we&rsquo;re doing the API check by hitting the real API
+in Ohara manager. This results to the error in the above.</p>
+</li>
+<li>
+<p><strong>You&rsquo;re not using the correct IP in Manager container</strong>: if
+you start a configurator container in your local as well as a
+manager. You should specify an IP instead of something like
+localhost in: <code>--configurator http://localhost:12345/v0</code> This
+won&rsquo;t work as the manager is started in the container so it
+won&rsquo;t be able to connect to the configurator without a real IP</p>
+</li>
+<li>
+<p>As we mentioned in the previous sections. Please double
+check your configurator URL spelling. This is usually the
+cause of the above-mentioned error.</p>
+</li>
+</ul>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 20, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/0.11.x/manager_dev_guide.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2912 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Prerequisites   OS: Windows / Linux / MacOS
+   VirtualBox 6.0&#43;: Oracle VM VirtualBox, is a free and open-source virtual machine.
+   Ohara Quickstart VM image: An OVA (Open Virtual Appliance) file, a pre-prepared virtual machine image for Ohara quickstart.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/0.11.x/quickstart/quickstartvm/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/0.11.x/quickstart/quickstartvm/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/0.11.x/quickstart/quickstartvm/">
+  <meta property="og:title" content="Using Quickstart VM | OharaStream">
+  <meta property="og:description" content="Prerequisites   OS: Windows / Linux / MacOS
+   VirtualBox 6.0&#43;: Oracle VM VirtualBox, is a free and open-source virtual machine.
+   Ohara Quickstart VM image: An OVA (Open Virtual Appliance) file, a pre-prepared virtual machine image for Ohara quickstart."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-15T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-20T11:26:51&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Using Quickstart VM | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/">Overview</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/0.11.x/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/0.11.x/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#import-vm-and-setup-network-adapter">Import VM and setup network adapter</a></li>
+        <li><a href="#install-ohara">Install Ohara</a></li>
+      </ul>
+    </li>
+    <li><a href="#terminology">Terminology</a></li>
+    <li><a href="#ui-overview">UI overview</a></li>
+    <li><a href="#create-a-workspace">Create a workspace</a></li>
+    <li><a href="#create-a-pipeline">Create a pipeline</a>
+      <ul>
+        <li><a href="#add-pipeline-components">Add pipeline components</a></li>
+        <li><a href="#start-pipeline-components">Start pipeline components</a></li>
+        <li><a href="#test-our-new-pipeline">Test our new pipeline</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#event-log-panel">Event log panel</a></li>
+        <li><a href="#developer-tools-panel">Developer Tools panel</a></li>
+        <li><a href="#delete-workspace">Delete workspace</a></li>
+        <li><a href="#restart-workspace">Restart workspace</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Using Quickstart VM</h1>
+
+          <div class="article-style">
+            <h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>
+<p>OS: Windows / Linux / MacOS</p>
+</li>
+<li>
+<p>
+<a href="https://www.virtualbox.org/" target="_blank" rel="noopener">VirtualBox 6.0+</a>: Oracle VM VirtualBox, is a free and open-source virtual machine.</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/oharastream/ohara-quickstart/releases" target="_blank" rel="noopener">Ohara Quickstart VM image</a>:
+An OVA (Open Virtual Appliance) file, a pre-prepared virtual machine image for Ohara quickstart.
+You can download the image file (.ova) from the 
+<a href="https://github.com/oharastream/ohara-quickstart/releases/" target="_blank" rel="noopener">release</a> page.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/download_assets.png" >
+
+
+  <img src="../img/download_assets.png" alt="Release asserts"  >
+</a>
+
+
+
+</figure>
+
+</li>
+</ul>
+<div class="alert alert-note">
+  <div>
+    Please download the VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">here</a>,
+and reference <a href="https://www.virtualbox.org/manual/ch02.html">this article</a> on how to install it on your machine.
+  </div>
+</div>
+<div class="alert alert-note">
+  <div>
+    You might have noticed there&rsquo;s another jar file listed in the screenshot: &ldquo;ohara-it-stream.jar&rdquo;.
+It&rsquo;s a stream jar that could be used later in our tutorial where we walks you through how to use our UI.
+And download it if you would like to follow along with our tutorial later on.
+  </div>
+</div>
+<h2 id="installation">Installation</h2>
+<h3 id="import-vm-and-setup-network-adapter">Import VM and setup network adapter</h3>
+<p>You can use VirtualBox user interface to import the Ohara Quickstart VM (ova file):
+<span class="markup-quote"><strong><em>Main menu</em></strong> -&gt; <strong><em>File</em></strong> -&gt; <strong><em>Import Appliance</em></strong></span></p>
+<p>Quickstart VM requires a <strong>Host-only network adapter</strong> to be configured so that you can
+connect from the host machine to guest machine (Quickstart VM).</p>
+<div class="alert alert-note">
+  <div>
+    Quickstart VM uses network adapter <code>vboxnet0</code> with DHCP Server enabled as <strong>default Host-only adapter</strong>,
+if there is already a <code>vboxnet0</code> adapter in your VirtualBox, you can just skip this step.
+  </div>
+</div>
+<h4 id="for-maclinux">for Mac/Linux</h4>
+<ol>
+<li>
+<p>Create new network adapter &mdash; Click <strong>Tools</strong> and then click <strong>Create</strong>,
+ensure that the DHCP Enable option is checked.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/mac_add_network.jpg" >
+
+
+  <img data-src="../img/mac_add_network.jpg" class="lazyload" alt="macos/linux - Create network adapter" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Setting network adapter &mdash; Select the imported <strong>ohara-quickstart-x.x.x</strong> VM,
+click <strong>Setting</strong>, then click <strong>Network</strong>, and click <strong>Adapter2</strong>,
+select <strong>Host-only Adapter</strong>, and select the newly added network card.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/mac_setting_network.png" >
+
+
+  <img data-src="../img/mac_setting_network.png" class="lazyload" alt="macos/linux - Setting VM&#39;s network adapter" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+</ol>
+<h4 id="for-windows">for Windows</h4>
+<ol>
+<li>
+<p>Create new network adapter &mdash; Click <strong>Global Tools</strong> and then click <strong>Create</strong>,
+ensure that the DHCP Enable option is checked.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/win_add_network.png" >
+
+
+  <img data-src="../img/win_add_network.png" class="lazyload" alt="Windows - Create network adapter" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Setting network adapter &mdash; Select the imported <strong>ohara-quickstart-x.x.x</strong> VM,
+click <strong>Setting</strong>, click <strong>Network</strong>, click <strong>Adapter2</strong>,
+select <strong>Host-only Adapter</strong>, and select the newly added network card.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/win_setting_network.png" >
+
+
+  <img data-src="../img/win_setting_network.png" class="lazyload" alt="Windows - Setting VM&#39;s network adapter" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+</ol>
+<h3 id="install-ohara">Install Ohara</h3>
+<p>Once the Quickstart VM is imported and the network adapter is configured, you can press
+the <strong>Start</strong> button to start Quickstart VM and then use the following username and password to log into the system:</p>
+<ul>
+<li>Username: <em>ohara</em></li>
+<li>Password: <em>oharastream</em></li>
+</ul>
+<p>The installation will be starting automatically if this is your first time log in to the system.
+This step will take some time to complete as it needs to download all Ohara docker images.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/vm_ohara_install_1.png" >
+
+
+  <img data-src="../img/vm_ohara_install_1.png" class="lazyload" alt="VM is pulling down images from Docker Hub" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/vm_ohara_install_2.png" >
+
+
+  <img data-src="../img/vm_ohara_install_2.png" class="lazyload" alt="Finishing the setup" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>After the installation is completed, you should see something like the following:</p>
+<pre><code class="language-console">&gt; Start ohara-configurator...
+74e0a19a063ce665a0bafba215827d6edd47b9433efdf26af9880d0b4f5e3737
+
+&gt; Start ohara-manager...
+
+ecc6e2845f55b52c6a2ec4b2a203d249f117394cbc16c5387aa067ee5d02a096
+&gt; Ohara ready on http://192.168.56.102:5050
+
+ohara@ohara-vm:~$
+</code></pre>
+<p>As we can see here, the VM&rsquo;s IP address is <code>192.168.56.102</code>
+(this address will be varied depending on your VirtualBox network settings).
+We can then open the browser and enter this URL in browser&rsquo;s address bar
+<code>http://192.168.56.102:5050</code> to open Ohara Manager (Ohara&rsquo;s UI, we will
+introduce it in the following section).</p>
+<div class="alert alert-note">
+  <div>
+    After shutting down your VM, the docker containers will be deleted and restarted on your next login
+  </div>
+</div>
+<h2 id="terminology">Terminology</h2>
+<p>Before jumping into the UI and create our very first workspace and pipeline.
+Let&rsquo;s get to know some of the terms that we will be using throughout this guide.</p>
+<ul>
+<li>
+<p>Manager</p>
+<p>Manager is the user interface of Ohara (UI). It provides a friendly user interface allowing user to design their data
+pipeline without even touching a single line of code.</p>
+</li>
+<li>
+<p>Node</p>
+<p>Node is the basic unit of running service. It can be either a physical server or virtual machine.</p>
+</li>
+<li>
+<p>Workspace</p>
+<p>Workspace contains multiple OharaStream services including: Zookeepers, Brokers and Workers.
+And pipelines are services that run in a workspace.</p>
+</li>
+<li>
+<p>Pipeline</p>
+<p>Pipeline allows you to define your data stream by utilizing <strong>Connector</strong> to connect to
+external storage systems, as well as a <strong>Stream</strong> to customize data transformation and stream processing.</p>
+</li>
+<li>
+<p>Connector</p>
+<p>Connector connects to external storage systems like Databases, HDFS or FTP.
+It has two types &mdash; source connector and sink connector.
+Source connector is able to pull data from another system and then push the data to topic.
+By contrast, Sink connector pulls data from topic and then push the data to another system.</p>
+</li>
+<li>
+<p>Stream</p>
+<p>Stream is powered by 
+<a href="https://kafka.apache.org/documentation/streams/" target="_blank" rel="noopener">Kafka Streams</a> which
+provides users a simple way to write their own stream processing application.</p>
+</li>
+<li>
+<p>Topic</p>
+<p>A topic is a place where all the data are written just like a database table where data is stored. It acts like a buffer, the data being pull in from the source connector is stored in the topic and so later can be pulled out again by another component (e.g., sink connectors)</p>
+</li>
+</ul>
+<h2 id="ui-overview">UI overview</h2>
+<p>Before we proceed, here is a screenshot of <strong>Ohara Manager</strong> where we show you each component&rsquo;s name, so you are better prepared for the upcoming tutorial. You can always come back to this overview if you are lost or not sure what we&rsquo;re talking about in the tutorial.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ui-overview.png" >
+
+
+  <img data-src="../img/ui-overview.png" class="lazyload" alt="UI overview" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<div class="alert alert-note">
+  <div>
+    We do our best to make our docs as clear as we could, if you think there&rsquo;s still room for improvement.
+We would love to hear from you: <a href="https://github.com/oharastream/ohara/issues">https://github.com/oharastream/ohara/issues</a>
+  </div>
+</div>
+<p>Now, Ohara Manager is up and running, we can use the UI to create our very first pipeline.
+Here are the steps that we will be going through together:</p>
+<ul>
+<li>Create a workspace</li>
+<li>Create a pipeline</li>
+<li>Add pipeline components, this includes:
+<ul>
+<li>A FTP source and a sink connector</li>
+<li>Two topics</li>
+<li>A stream</li>
+<li>Create connections between them</li>
+</ul>
+</li>
+<li>Start the pipeline</li>
+</ul>
+<div class="alert alert-note">
+  <div>
+    During the tutorial, we will be using FTP source/sink connectors. And so you will need to prepare your own FTP in order to follow along.
+  </div>
+</div>
+<h2 id="create-a-workspace">Create a workspace</h2>
+<p>Open Ohara Manager with your browser (http://192.168.56.102:5050) and you should see a dialog
+showing up right in the middle of your screen:</p>
+<ul>
+<li>
+<p>Click on the <strong>QUICK CREATE</strong> button to open a new dialog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/intro-dialog.png" >
+
+
+  <img data-src="../img/intro-dialog.png" class="lazyload" alt="Intro dialog" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Using the default name: <em>workspace1</em> and hit the <strong>NEXT</strong> button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-name.png" >
+
+
+  <img data-src="../img/quick-create-workspace-name.png" class="lazyload" alt="Quick create workspace new name" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Click on the Select nodes and click on the pencil icon to create a new node.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-node.png" >
+
+
+  <img data-src="../img/quick-create-workspace-node.png" class="lazyload" alt="Quick create workspace new node" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-add-node.png" >
+
+
+  <img data-src="../img/quick-create-workspace-add-node.png" class="lazyload" alt="Quick create workspace add node icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>
+<p>The node info that you need to enter are listed below:</p>
+<ul>
+<li>Hostname: <em>192.168.56.102</em> (fill your own hostname here)</li>
+<li>Port: <em>22</em></li>
+<li>User: <em>ohara</em></li>
+<li>Password: <em>oharastream</em></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-add-node.png" >
+
+
+  <img data-src="../img/quick-create-workspace-add-node.png" class="lazyload" alt="Quick create workspace add a new node" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>The node should be added into the list. Select the node and click on the SAVE button to close the dialog</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-select-node.png" >
+
+
+  <img data-src="../img/quick-create-workspace-select-node.png" class="lazyload" alt="Quick create workspace select node" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Now, click the <strong>NEXT</strong> button to finish selecting nodes</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-node-summary.png" >
+
+
+  <img data-src="../img/quick-create-workspace-node-summary.png" class="lazyload" alt="Quick create workspace node summary" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Click on the <strong>SUBMIT</strong> button to create this workspace.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-summary.png" >
+
+
+  <img data-src="../img/quick-create-workspace-summary.png" class="lazyload" alt="Quick create workspace summary" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>A new dialog will open where it shows you the creating progress. This usually takes a while to finish. Once it&rsquo;s done, You can close the dialog by clicking on the CLOSE button. And the UI will automatically redirect you to the newly created workspace: <em>Workspace1</em></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-progress.png" >
+
+
+  <img data-src="../img/quick-create-workspace-progress.png" class="lazyload" alt="Quick create workspace creating progress" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-done.png" >
+
+
+  <img data-src="../img/quick-create-workspace-done.png" class="lazyload" alt="Quick create workspace done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<div class="alert alert-note">
+  <div>
+    You can create more workspace with the plus icon(➕) in the App bar.
+  </div>
+</div>
+<div class="alert alert-warning">
+  <div>
+    Please keep in mind that this is a quick start VM where we run everything on a single node
+with only 8GB of RAM and 2 CPU cores. We highly recommend you to add more RAM and CPU
+core to your VM if you plan to create more than one workspace or lots of pipelines, connectors,
+streams, etc. This is due to when Ohara is running without enough resources, it could be very
+unstable and causing unexpected errors.
+  </div>
+</div>
+<h2 id="create-a-pipeline">Create a pipeline</h2>
+<p>Create a pipeline is fairly simple:</p>
+<ul>
+<li>On the Navigator, click on the plus icon.</li>
+<li>In the popup window, enter the name: pipeline1 and click the <strong>ADD</strong> button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-a-pipeline.png" >
+
+
+  <img data-src="../img/add-a-pipeline.png" class="lazyload" alt="Add a pipeline" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</li>
+<li>The new pipeline will be added into the workspace and listed in the Navigator.
+And just like creating workspace, you will be redirected to the pipeline you just created.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-a-pipeline-done.png" >
+
+
+  <img data-src="../img/add-a-pipeline-done.png" class="lazyload" alt="Add a pipeline done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</li>
+</ul>
+<h3 id="add-pipeline-components">Add pipeline components</h3>
+<p>Since workspace and pipeline are both ready. We can now add new components into the pipeline.
+The pipeline connection we&rsquo;re about to create will look like:
+<code>FTP source -&gt; topic -&gt; stream -&gt; topic -&gt; FTP sink</code></p>
+<p>Before we start, please make sure your FTP service is ready and let&rsquo;s get started!</p>
+<h4 id="drag-and-drop-new-pipeline-components">Drag and drop new pipeline components</h4>
+<p><strong>FTP source:</strong></p>
+<ul>
+<li>
+<p>From the Toolbox (Please refer to the overview image for what is Toolbox if needed)</p>
+</li>
+<li>
+<p>Click on the title &ldquo;Source&rdquo;, the panel will be expanded and display all available source connectors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsource-add-toolbox.png" >
+
+
+  <img data-src="../img/ftpsource-add-toolbox.png" class="lazyload" alt="Add a FTP source from Toolbox" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Drag the &ldquo;FtpSource&rdquo; from the list and drop into the Paper (Don&rsquo;t worry about the position just yet. This can be changed later after it&rsquo;s added into the Paper). A prompt will be asking you about the connector name, let&rsquo;s name it &ldquo;ftpsource&rdquo; and click the ADD button.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsource-add-name.png" >
+
+
+  <img data-src="../img/ftpsource-add-name.png" class="lazyload" alt="Add a FTP source name" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>The FTP source connector should display in the Paper:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsource-add-done.png" >
+
+
+  <img data-src="../img/ftpsource-add-done.png" class="lazyload" alt="Add a FTP source name done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Now, hover over the Ftp source connector, a couple of buttons will show up. These are action buttons, let&rsquo;s take a quick look and see what can we do with them (starting from left to right):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsource-add-action-buttons.png" >
+
+
+  <img data-src="../img/ftpsource-add-action-buttons.png" class="lazyload" alt="Action buttons" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+<ul>
+<li><strong>Link</strong>: create a new link, once a link is created you can move your mouse and the link will follow along your mouse position. To link to another component, you can hover over it and do a mouse left-click. To cancel the link creation, just click on the blank area within the Paper.</li>
+<li><strong>Start</strong>: start a component. Once the component is properly configured, you can then use this button to start the component.</li>
+<li><strong>Stop</strong>: stop a running or failed component</li>
+<li><strong>Configure</strong>: open the Property dialog and fill out necessary configuration for the component.</li>
+<li><strong>Delete</strong>: delete the selected component.</li>
+</ul>
+</li>
+</ul>
+<div class="alert alert-note">
+  <div>
+    A <strong>Link</strong> can also be interacted with. You can remove it by clicking on the &ldquo;x&rdquo; button.
+And click on any point of the link creates a vertex. The vertex can be moved and tweaked to change its position.
+You can also delete a vertex by double clicking on it.
+  </div>
+</div>
+<ul>
+<li>
+<p>Okay, that&rsquo;s enough of these button things. Let&rsquo;s click on the &ldquo;configure&rdquo; icon (a wrench) and fill in the following fields (Note that you need to use your own settings, and create completed, error, input and output directories on your own FTP service). For fields that we did not mention below, the default is used:</p>
+<ul>
+<li>Completed Folder: <em>demo/completed</em></li>
+<li>Error Folder: <em>demo/error</em></li>
+<li>Hostname of FTP Server: <em>10.2.0.28</em></li>
+<li>Port of FTP Server: <em>21</em></li>
+<li>User of FTP Server: <em>ohara</em></li>
+<li>Password of FTP Server: <em>oharastream</em></li>
+<li>Input Folder: <em>demo/input</em></li>
+</ul>
+</li>
+<li>
+<p>Once these settings had been filled out, click on the <strong>SAVE CHANGES</strong> button.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsource-add-config.png" >
+
+
+  <img data-src="../img/ftpsource-add-config.png" class="lazyload" alt="Add a FTP source configuration" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+</ul>
+<div class="alert alert-note">
+  <div>
+    There are validation rules which will prevent you from submitting the form without filling require fields.
+  </div>
+</div>
+<p><strong>FTP sink:</strong></p>
+<p>Just like FTP source connector, let&rsquo;s drag and drop a FTP sink connector from the Toolbox and name it &ldquo;ftpsink&rdquo;.
+After it&rsquo;s added in the Paper, click on its &ldquo;configure&rdquo; button. The settings are mostly like FTP source with the only exception: &ldquo;output&rdquo;:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsink-add-toolbox.png" >
+
+
+  <img data-src="../img/ftpsink-add-toolbox.png" class="lazyload" alt="Add a FTP sink" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsink-config.png" >
+
+
+  <img data-src="../img/ftpsink-config.png" class="lazyload" alt="Add a FTP sink configuration" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+<ul>
+<li>Hostname of FTP Server: <em>10.2.0.28</em></li>
+<li>Port of FTP Server: <em>21</em></li>
+<li>User of FTP Server: <em>ohara</em></li>
+<li>Password of FTP Server: <em>oharastream</em></li>
+<li>Output Folder: <em>demo/output</em></li>
+</ul>
+<p>Great! Now we have both source and sink connectors ready. Let&rsquo;s move on to create some topics.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/ftpsink-add-done.png" >
+
+
+  <img data-src="../img/ftpsink-add-done.png" class="lazyload" alt="Add a FTP sink done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p><strong>Topic:</strong></p>
+<p>In this tutorial, we need two topics for the pipeline, let&rsquo;s add them from the Toolbox like what we did in the previous steps for FTP connectors:</p>
+<ul>
+<li>
+<p>From the Toolbox, click on the title &ldquo;Topic&rdquo; to expand the topic panel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/topic-add-toolbox.png" >
+
+
+  <img data-src="../img/topic-add-toolbox.png" class="lazyload" alt="Add a topic from Toolbox" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+</li>
+<li>
+<p>Click and drag &ldquo;Pipeline Only&rdquo; item from the list and drop it into the Paper to add a new Topic. Unlike source or sink connector, adding a topic doesn&rsquo;t require entering a name, the name will be auto-generated like (T1, T2, T3, etc.)</p>
+</li>
+<li>
+<p>Repeat the above step to create another Topic. You should now have two topics (T1, T2) in your Paper in addition to those FTP connectors:</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/topic-add-done.png" >
+
+
+  <img data-src="../img/topic-add-done.png" class="lazyload" alt="Add a topic done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>And luckily, there&rsquo;s no need to configure these topics as they&rsquo;re preconfigured and already running after you added.</p>
+<div class="alert alert-note">
+  <div>
+    In Ohara, topics can either be a &ldquo;Pipeline-only topic&rdquo; or a &ldquo;Shared topic&rdquo;.
+The pipeline-only topics are topics that only live within a pipeline.
+And on the other hand, shared topics can be shared and used across different pipelines.
+For simplicity sake, we only use pipeline-only topics throughout this tutorial.
+  </div>
+</div>
+<div class="alert alert-note">
+  <div>
+    For quickly creating a new pipeline-only topic, you can also just add a source and a sink (or stream) connector and
+then link them together with the &ldquo;Link&rdquo; button from the source connector component.
+The pipeline-only topic will be created automatically.
+  </div>
+</div>
+<p><strong>Stream:</strong></p>
+<p>Stream is our last missing piece of the pipeline. Let&rsquo;s add one very quick!</p>
+<p>Remember the 
+<a href="https://github.com/oharastream/ohara-quickstart/releases" target="_blank" rel="noopener">stream jar</a> you downloaded
+along with the quickstart image? It&rsquo;s time to use it:</p>
+<ul>
+<li>Click on the &ldquo;Stream&rdquo; panel on the Toolbox and then click on the &ldquo;Add streams&rdquo; button</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-toolbox-upload.png" >
+
+
+  <img data-src="../img/add-stream-toolbox-upload.png" class="lazyload" alt="Upload a stream" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>It will open workspace settings and redirect you to the stream jars page:</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-page.png" >
+
+
+  <img data-src="../img/add-stream-page.png" class="lazyload" alt="Add stream settings page" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Click on the plus icon to open select file dialog:</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-select-icon.png" >
+
+
+  <img data-src="../img/add-stream-select-icon.png" class="lazyload" alt="Add stream select file icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>The workspace file list are currently empty, let&rsquo;s add a new file by clicking on the upload icon. This will open your OS file system, you can then select the stream jar file you downloaded. The stream class will be loaded and displayed in the list:</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-upload-icon.png" >
+
+
+  <img data-src="../img/add-stream-upload-icon.png" class="lazyload" alt="Add stream upload icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-upload-done.png" >
+
+
+  <img data-src="../img/add-stream-upload-done.png" class="lazyload" alt="Add stream select file upload done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+<ul>
+<li>Select the stream and click on the SAVE button to close select file dialog</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-list.png" >
+
+
+  <img data-src="../img/add-stream-list.png" class="lazyload" alt="Add stream list" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>The stream file should now listed in your Stream Jars page. Close this page by clicking on the close button on the upper-right corner</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-list-done.png" >
+
+
+  <img data-src="../img/add-stream-list-done.png" class="lazyload" alt="Add stream list done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Adding a stream is just like connector and topic, drag the &ldquo;DumbStream&rdquo; item from the Toolbox and drop it into the Paper and give a name &ldquo;stream&rdquo;</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-name.png" >
+
+
+  <img data-src="../img/add-stream-name.png" class="lazyload" alt="Add stream name" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Now let&rsquo;s work through the configuration together. Hover over the stream component and click on the &ldquo;Configure&rdquo; button to open the configure dialog</li>
+<li>Fill out the form with the following settings and click the &ldquo;<strong>SAVE CHANGES</strong>&rdquo; button:
+<ul>
+<li>header name to be filtered: <em>&ldquo;Sex&rdquo;</em></li>
+<li>column value to be filtered: <em>&ldquo;M&rdquo;</em></li>
+<li>Node name list: <em>192.168.56.111</em> (you should use you own IP)</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-dialog.png" >
+
+
+  <img data-src="../img/add-stream-dialog.png" class="lazyload" alt="Add stream dialog" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<div class="alert alert-note">
+  <div>
+    This stream is capable of filtering out columns and values that we specified and then push
+the new result to a topic. Here we&rsquo;re specifically setting the &ldquo;Sex&rdquo; as the filtered header
+and &ldquo;M&rdquo; as the filtered value (stands for Man) and so our output data will only &ldquo;include&rdquo;
+data that contains &ldquo;M&rdquo; value in the &ldquo;Sex&rdquo; column. We will verify the result later in the tutorial.
+  </div>
+</div>
+<p>Everything is ready. We can now create the connection like we mentioned earlier:
+<code>FTP source -&gt; topic -&gt; stream -&gt; topic -&gt; FTP sink</code>.
+But before doing so, let&rsquo;s move these components a bit and so we can have more room
+to work with (You can close the Toolbox by clicking on the close icon on the top right corner):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-change-layout.png" >
+
+
+  <img data-src="../img/add-stream-change-layout.png" class="lazyload" alt="Add stream change layout" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>Okay, it&rsquo;s time to create the connection:</p>
+<ul>
+<li>Hover over FTP source connector and click the &ldquo;Link&rdquo; button, and move your mouse to the first topic named &ldquo;T1&rdquo; and click on it. A connection should be created:</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-create-first-link.png" >
+
+
+  <img data-src="../img/add-stream-create-first-link.png" class="lazyload" alt="Add stream create first link" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Repeat the same step but this time with &ldquo;T1&rdquo; to create a connection from T1 to stream</li>
+<li>And stream -&gt; T2 then T2 -&gt; FTP sink connector. After you are done, you should have a graph like this (Components position have been tweaked so it&rsquo;s better to see the relation between these components):</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/add-stream-done.png" >
+
+
+  <img data-src="../img/add-stream-done.png" class="lazyload" alt="Add stream done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<div class="alert alert-note">
+  <div>
+    You can also create the connection during configuring the connector or stream. For connector, just choose the topic from its topic list. For stream, you will need to choose both <em>&ldquo;from&rdquo;</em> and <em>&ldquo;to&rdquo;</em> topics from the topic list.
+  </div>
+</div>
+<h3 id="start-pipeline-components">Start pipeline components</h3>
+<p>So far so good, let&rsquo;s start all the components simply by clicking on the &ldquo;Start all components&rdquo;
+button located on the Toolbar menu. If everything goes well you should see that all components&rsquo;
+icons are now in green just like the following image:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/start-components-done.png" >
+
+
+  <img data-src="../img/start-components-done.png" class="lazyload" alt="Start components done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<h3 id="test-our-new-pipeline">Test our new pipeline</h3>
+<p>Let&rsquo;s test this &ldquo;pipeline&rdquo; to see if it&rsquo;s capable of transferring some data. We have
+prepared a CSV file which looks like this (you can download this file from
+
+<a href="https://people.sc.fsu.edu/~jburkardt/data/csv/freshman_kgs.csv" target="_blank" rel="noopener">here</a>):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/csv.png" >
+
+
+  <img data-src="../img/csv.png" class="lazyload" alt="CSV file" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>Upload the file to the FTP service&rsquo;s input folder. Wait for a while, the file should be
+consumed and moved to the output folder. You can verify if the data is properly transferred
+by using a FTP client to check the file (we&rsquo;re using 
+<a href="https://filezilla-project.org/" target="_blank" rel="noopener">FileZilla</a>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/csv-output.png" >
+
+
+  <img data-src="../img/csv-output.png" class="lazyload" alt="CSV output" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>The output data should be filtered with the result only &ldquo;M&rdquo; (man) data are listed as shown below:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/csv-output-done.png" >
+
+
+  <img data-src="../img/csv-output-done.png" class="lazyload" alt="CSV output done" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>We now provide a few debugging tools that can help you pin down unexpected errors:</p>
+<h3 id="event-log-panel">Event log panel</h3>
+<p>All UI events are recorded, things like API request and response are also stored.
+You can view all you event log by simply opening up the Event log panel. As you can
+see in the screenshot, errors are highlighted and have more details that can be viewed
+when click on each of them.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/event-log-icon.png" >
+
+
+  <img data-src="../img/event-log-icon.png" class="lazyload" alt="Event log icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/event-log-list.png" >
+
+
+  <img data-src="../img/event-log-list.png" class="lazyload" alt="Event log list" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/event-log-dialog.png" >
+
+
+  <img data-src="../img/event-log-dialog.png" class="lazyload" alt="Event log dialog" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+</p>
+<p>Another thing that is worth mentioning here is the Event log icon will display the error log&rsquo;s count on the icon</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/event-log-notification.png" >
+
+
+  <img data-src="../img/event-log-notification.png" class="lazyload" alt="Event log notification" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<h3 id="developer-tools-panel">Developer Tools panel</h3>
+<p>Open the dev tool from the App bar:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/devtool-icon.png" >
+
+
+  <img data-src="../img/devtool-icon.png" class="lazyload" alt="DevTool icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<p>There are two main functionalities that could be utilized here:</p>
+<ul>
+<li>Topic panel: you can quickly preview the topic data here</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/devtool-topic-data.png" >
+
+
+  <img data-src="../img/devtool-topic-data.png" class="lazyload" alt="DevTool topic data" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Log panel: view all running service&rsquo;s full log</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/devtool-topic-log.png" >
+
+
+  <img data-src="../img/devtool-topic-log.png" class="lazyload" alt="DevTool topic log" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<h3 id="delete-workspace">Delete workspace</h3>
+<p>Deleting a workspace is a new feature implemented in 0.10.0, with this feature, you can now delete a workspace with our UI</p>
+<div class="alert alert-note">
+  <div>
+    All pipelines under the workspace that you&rsquo;re about to delete should be stopped
+(in other word, everything except topics in the pipeline should have the status &ldquo;stopped&rdquo;,
+you can do so by going to each pipeline&rsquo;s Toolbar and click on the &ldquo;Stop all components&rdquo;
+item from the Pipeline actions
+  </div>
+</div>
+<ul>
+<li>From Navigator, click on the workspace name, and click on the &ldquo;Settings&rdquo; item from that dropdown:</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/delete-workspace-menu.png" >
+
+
+  <img data-src="../img/delete-workspace-menu.png" class="lazyload" alt="Delete workspace menu" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>In the Settings dialog, scroll to the very bottom of the page, and click &ldquo;Delete this workspace&rdquo;</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/delete-workspace-settings-button.png" >
+
+
+  <img data-src="../img/delete-workspace-settings-button.png" class="lazyload" alt="Delete workspace settings button" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>A confirm dialog will pop up. Enter the workspace name and click on the DELETE button to start deleting. (Note that if you still have some services running in the workspace, you won&rsquo;t able to proceed. You should following the instruction mention in the above to stop all pipelines first)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/delete-workspace-confirm.png" >
+
+
+  <img data-src="../img/delete-workspace-confirm.png" class="lazyload" alt="Delete workspace confirm dialog" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>The deletion is in progress, after the deletion is completed, you will be redirected to home or a default workspace if you have one.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/delete-workspace-progress.png" >
+
+
+  <img data-src="../img/delete-workspace-progress.png" class="lazyload" alt="Delete workspace progress dialog" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<h3 id="restart-workspace">Restart workspace</h3>
+<p>When new changes were made in workspace, the restart is required. Also, if you ever run into issues that cannot be recovered from, you can try to restart the workspace to fix the issue.</p>
+<p>Since delete workspace and restart workspace are almost identical, the following instruction won&rsquo;t include any screenshots as they are already included in the 
+<a href="#delete-workspace">Delete workspace</a> section</p>
+<div class="alert alert-warning">
+  <div>
+    Same with delete a workspace, you will need to make sure all pipelines are stopped before starting:
+  </div>
+</div>
+<ul>
+<li>From Navigator, click on the workspace name, and click on the &ldquo;Settings&rdquo; item from that dropdown.</li>
+<li>In the Settings dialog, scroll to the very bottom of the page, and click &ldquo;Restart this workspace&rdquo;.</li>
+<li>A confirm dialog will pop up. Click on the RESTART button to start restarting this workspace.</li>
+<li>The restarting is in progress, after the restart is completed, you can close the progress
+dialog and changes you made should applied to the workspace by now.</li>
+</ul>
+<p>And if you think you ever encountered a bug, let us know: 
+<a href="https://github.com/oharastream/ohara/issues/" target="_blank" rel="noopener">GitHub Repo</a>.</p>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 20, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/0.11.x/quickstart/quickstartvm.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

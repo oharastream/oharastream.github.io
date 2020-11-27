@@ -1,0 +1,1428 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Ohara Stream is a unparalleled wrap of kafka streaming. It leverages and enhances Kafka Streams to make developer easily design and implement the streaming application. More details of developing streaming application is in custom stream guideline.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/0.11.x/rest-api/streams/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/0.11.x/rest-api/streams/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/0.11.x/rest-api/streams/">
+  <meta property="og:title" content="Stream | OharaStream">
+  <meta property="og:description" content="Ohara Stream is a unparalleled wrap of kafka streaming. It leverages and enhances Kafka Streams to make developer easily design and implement the streaming application. More details of developing streaming application is in custom stream guideline."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-18T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-20T11:26:51&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Stream | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/0.11.x/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/0.11.x/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stored-data">stream stored data</a></li>
+    <li><a href="#create">create properties of specific stream</a></li>
+    <li><a href="#get">get information from a specific stream cluster</a></li>
+    <li><a href="#list-information-of-stream-cluster">list information of stream cluster</a></li>
+    <li><a href="#update">update properties of specific stream</a></li>
+    <li><a href="#delete-properties-of-specific-stream">delete properties of specific stream</a></li>
+    <li><a href="#start-a-stream">start a Stream</a></li>
+    <li><a href="#stop">stop a Stream</a></li>
+    <li><a href="#get-topology-tree-graph-from-specific-stream">get topology tree graph from specific stream</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Stream</h1>
+
+          <div class="article-style">
+            <p>Ohara Stream is a unparalleled wrap of kafka streaming. It leverages and
+enhances 
+<a href="https://kafka.apache.org/documentation/streams" target="_blank" rel="noopener">Kafka Streams</a>
+to make developer easily design and implement the streaming application.
+More details of developing streaming application is in
+
+<a href="/en/docs/0.11.x/custom_stream/">custom stream guideline</a>.</p>
+<p>Assume that you have completed a streaming application via Ohara Java
+APIs, and you have generated a jar including your streaming code. By
+Ohara Restful APIs, you are enable to control, deploy, and monitor your
+streaming application. As with cluster APIs, Ohara leverages docker
+container to host streaming application. Of course, you can apply your
+favor container management tool including simple (based on ssh) and k8s
+when you are starting Ohara.</p>
+<p>Before stating to use restful APIs, please ensure that all nodes have
+downloaded the 
+<a href="https://cloud.docker.com/u/oharastream/repository/docker/oharastream/stream" target="_blank" rel="noopener">Stream image</a>.
+The jar you uploaded to run streaming application will be included in
+the image and then executes as a docker container.
+The 
+<a href="https://cloud.docker.com/u/oharastream/repository/docker/oharastream/stream" target="_blank" rel="noopener">Stream image</a>
+is kept in each node so don&rsquo;t worry about the network. We all hate
+re-download everything when running services.</p>
+<div class="alert alert-hint">
+  <div>
+    If you implement the Ohara stream application, you must pack to jar
+file and use the File API upload jar file then setting the jarKey to
+create the Stream API.
+  </div>
+</div>
+<p>The following information of Stream are updated by Ohara.</p>
+<h2 id="stored-data">stream stored data</h2>
+<p>The following are common settings to a stream app.</p>
+<ol>
+<li>name (<strong>string</strong>) &mdash; cluster name. The legal character is number,
+lowercase alphanumeric characters, or &lsquo;.&rsquo;</li>
+<li>group (<strong>string</strong>) &mdash; cluster group. The legal character is number,
+lowercase alphanumeric characters, or &lsquo;.&rsquo;</li>
+<li>jarKey (<strong>object</strong>) &mdash; the used jar key</li>
+<li>jmxPort (<strong>int</strong>) &mdash; expose port for jmx</li>
+<li>className (<strong>string</strong>) &mdash; the class to be executed. This field is optional
+and Configurator will pick up a class from the input jar. However, it throw
+exception if there are many available classes in the jar file.</li>
+<li>from (<strong>array(TopicKey)</strong>) &mdash; source topic</li>
+<li>to (<strong>array(TopicKey)</strong>) &mdash; target topic</li>
+<li>nodeNames (<strong>array(string)</strong>) &mdash; the nodes running the stream
+process</li>
+<li>brokerClusterKey (<strong>object</strong>) &mdash; the broker cluster key used for
+stream running
+<ul>
+<li>brokerClusterKey.group (<strong>option(string)</strong>) &mdash; the group of
+broker cluster</li>
+<li>brokerClusterKey.name (<strong>string</strong>) &mdash; the name of broker
+cluster</li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-note">
+  <div>
+    the following forms are legal as well: (1) <code>{&quot;name&quot;: &quot;n&quot;}</code>, (2) <code>&quot;n&quot;</code>.
+Both forms are converted to <code>{&quot;group&quot;: &quot;default&quot;, &quot;name&quot;: &quot;n&quot;}</code>
+  </div>
+</div>
+<ol start="10">
+<li>tags (<strong>object</strong>) &mdash; the user defined parameters</li>
+<li>aliveNodes (<strong>array(string)</strong>) &mdash; the nodes that host the running
+containers of stream cluster</li>
+<li>state (<strong>option(string)</strong>) &mdash; only started/failed stream has state
+(DEAD if all containers are not running, else RUNNING)</li>
+<li>error (<strong>option(string)</strong>) &mdash; the error message from a failed
+stream. If the stream is fine or un-started, you won&rsquo;t get this
+field.</li>
+<li>
+<a href="/en/docs/0.11.x/custom_connector/#metrics">nodeMetrics</a> (<strong>object</strong>) &mdash;
+the metrics from this stream.
+<ul>
+<li>meters (<strong>array(object)</strong>) &mdash; the metrics in meter type
+<ul>
+<li>meters[i].value (<strong>double</strong>) &mdash; the number stored in meter</li>
+<li>meters[i].unit (<strong>string</strong>) &mdash; unit for value</li>
+<li>meters[i].document (<strong>string</strong>) &mdash; document of this meter</li>
+<li>meters[i].queryTime (<strong>long</strong>) &mdash; the time of query
+metrics from remote machine</li>
+<li>meters[i].startTime (<strong>option(long)</strong>) &mdash; the time of
+record generated in remote machine</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>lastModified (<strong>long</strong>) &mdash; last modified this jar time</li>
+</ol>
+<h2 id="create">create properties of specific stream</h2>
+<p>Create the properties of a stream.</p>
+<p><em>POST /v0/streams</em></p>
+<ol>
+<li>name (<strong>string</strong>) &mdash; new stream name. This is the object unique
+name ; default is random string.</li>
+<li>group (<strong>string</strong>) &mdash; group name for current stream ; default value
+is &ldquo;default&rdquo;</li>
+<li>imageName (<strong>string</strong>) &mdash; image name of stream used to ; default is
+oharastream/stream:0.11.0-SNAPSHOT</li>
+<li>nodeNames (<strong>array(string)</strong>) &mdash; node name list of stream used to ;
+default is empty</li>
+<li>tags (<strong>object</strong>) &mdash; a key-value map of user defined data ; default
+is empty</li>
+<li>jarKey (<strong>object</strong>) &mdash; the used jar key
+<ul>
+<li>group (<strong>string</strong>) &mdash; the group name of this jar</li>
+<li>name (<strong>string</strong>) &mdash; the name of this jar</li>
+</ul>
+</li>
+<li>brokerClusterKey (<strong>option(object)</strong>) &mdash; the broker cluster used
+for stream running ; default we will auto fill this parameter for
+you if you don&rsquo;t specify it and there only exists one broker
+cluster.</li>
+<li>jmxPort (<strong>int</strong>) &mdash; expose port for jmx ; default is random port</li>
+<li>from (<strong>array(TopicKey)</strong>) &mdash; source topic ; default is empty array</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    <p>Currently, stream uses a &ldquo;single flow&rdquo; for users to define their
+own data flow, we need a better structure to support multiple
+topics.</p>
+<p>We only support one topic for current version. We will throw
+exception in start api if you assign more than 1 topic. We will
+support multiple topics on issue [#688](<a href="https://github.com/oharastream/ohara/issues/688">https://github.com/oharastream/ohara/issues/688</a></p>
+<p>)</p>
+  </div>
+</div>
+<ol start="10">
+<li>to (<strong>array(TopicKey)</strong>) &mdash; target topic ; default is empty array</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    <p>Currently, stream uses a &ldquo;single flow&rdquo; for users to define their
+own data flow, we need a better structure to support multiple
+topics.</p>
+<p>We only support one topic for current version. We will throw
+exception in start api if you assign more than 1 topic. We will
+support multiple topics on issue [#688](<a href="https://github.com/oharastream/ohara/issues/688">https://github.com/oharastream/ohara/issues/688</a></p>
+<p>)</p>
+  </div>
+</div>
+<ul>
+<li>
+<p>Example Request</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;streamtest1&quot;,
+  &quot;brokerClusterKey&quot;: &quot;bk&quot;,
+  &quot;jarKey&quot;: &quot;ohara-it-stream.jar&quot;,
+  &quot;nodeNames&quot;: [&quot;node00&quot;],
+  &quot;from&quot;: [&quot;topic0&quot;],
+  &quot;to&quot;: [&quot;topic1&quot;]
+}
+</code></pre>
+</li>
+<li>
+<p>Example Response</p>
+<p>Response format is as 
+<a href="#stored-data">stream stored format</a>.</p>
+<pre><code class="language-json">{
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;brokerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;bk&quot;
+  },
+  &quot;name&quot;: &quot;streamtest1&quot;,
+  &quot;xms&quot;: 1024,
+  &quot;routes&quot;: {},
+  &quot;lastModified&quot;: 1579145546218,
+  &quot;tags&quot;: {},
+  &quot;xmx&quot;: 1024,
+  &quot;imageName&quot;: &quot;oharastream/stream:0.11.0-SNAPSHOT&quot;,
+  &quot;jarKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;ohara-it-stream.jar&quot;
+  },
+  &quot;to&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic1&quot;
+    }
+  ],
+  &quot;revision&quot;: &quot;b303f3c2e52647ee5e79e55f9d74a5e51238a92c&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;aliveNodes&quot;: [],
+  &quot;stream.class&quot;: &quot;oharastream.ohara.it.stream.DumbStream&quot;,
+  &quot;from&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic0&quot;
+    }
+  ],
+  &quot;nodeMetrics&quot;: [],
+  &quot;jmxPort&quot;: 44914,
+  &quot;kind&quot;: &quot;stream&quot;,
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;node00&quot;
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    The stream, which is just created, does not have any metrics.
+  </div>
+</div>
+<h2 id="get">get information from a specific stream cluster</h2>
+<p><em>GET /v0/streams/${name}?group=$group</em></p>
+<div class="alert alert-hint">
+  <div>
+    We will use the default value as the query parameter &ldquo;?group=&rdquo; if you
+don&rsquo;t specify it.
+  </div>
+</div>
+<ul>
+<li>
+<p>Example Response</p>
+<p>Response format is as 
+<a href="#stored-data">stream stored format</a>.</p>
+<pre><code class="language-json">{
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;brokerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;bk&quot;
+  },
+  &quot;name&quot;: &quot;streamtest1&quot;,
+  &quot;xms&quot;: 1024,
+  &quot;routes&quot;: {},
+  &quot;lastModified&quot;: 1579145546218,
+  &quot;tags&quot;: {},
+  &quot;xmx&quot;: 1024,
+  &quot;imageName&quot;: &quot;oharastream/stream:0.11.0-SNAPSHOT&quot;,
+  &quot;jarKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;ohara-it-stream.jar&quot;
+  },
+  &quot;to&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic1&quot;
+    }
+  ],
+  &quot;revision&quot;: &quot;b303f3c2e52647ee5e79e55f9d74a5e51238a92c&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;aliveNodes&quot;: [],
+  &quot;stream.class&quot;: &quot;oharastream.ohara.it.stream.DumbStream&quot;,
+  &quot;from&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic0&quot;
+    }
+  ],
+  &quot;nodeMetrics&quot;: [],
+  &quot;jmxPort&quot;: 44914,
+  &quot;kind&quot;: &quot;stream&quot;,
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;node00&quot;
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="list-information-of-stream-cluster">list information of stream cluster</h2>
+<p><em>GET /v0/streams</em></p>
+<p>the accepted query keys are listed below</p>
+<ol>
+<li>author</li>
+<li>group</li>
+<li>name</li>
+<li>lastModified</li>
+<li>tags</li>
+<li>state</li>
+<li>aliveNodes</li>
+<li>key</li>
+<li>version</li>
+</ol>
+<ul>
+<li>
+<p>Example Response</p>
+<p>Response format is as 
+<a href="#stored-data">stream stored format</a>.</p>
+<pre><code class="language-json">[
+  {
+    &quot;author&quot;: &quot;root&quot;,
+    &quot;brokerClusterKey&quot;: {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;bk&quot;
+    },
+    &quot;name&quot;: &quot;streamtest1&quot;,
+    &quot;xms&quot;: 1024,
+    &quot;routes&quot;: {},
+    &quot;lastModified&quot;: 1579145546218,
+    &quot;tags&quot;: {},
+    &quot;xmx&quot;: 1024,
+    &quot;imageName&quot;: &quot;oharastream/stream:0.11.0-SNAPSHOT&quot;,
+    &quot;jarKey&quot;: {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;ohara-it-stream.jar&quot;
+    },
+    &quot;to&quot;: [
+      {
+        &quot;group&quot;: &quot;default&quot;,
+        &quot;name&quot;: &quot;topic1&quot;
+      }
+    ],
+    &quot;revision&quot;: &quot;b303f3c2e52647ee5e79e55f9d74a5e51238a92c&quot;,
+    &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+    &quot;aliveNodes&quot;: [],
+    &quot;stream.class&quot;: &quot;oharastream.ohara.it.stream.DumbStream&quot;,
+    &quot;from&quot;: [
+      {
+        &quot;group&quot;: &quot;default&quot;,
+        &quot;name&quot;: &quot;topic0&quot;
+      }
+    ],
+    &quot;nodeMetrics&quot;: [],
+    &quot;jmxPort&quot;: 44914,
+    &quot;kind&quot;: &quot;stream&quot;,
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;nodeNames&quot;: [
+      &quot;node00&quot;
+    ]
+  }
+]
+</code></pre>
+</li>
+</ul>
+<h2 id="update">update properties of specific stream</h2>
+<p>Update the properties of a non-started stream.</p>
+<p><em>PUT /v0/streams/${name}?group=$group</em></p>
+<div class="alert alert-hint">
+  <div>
+    If the required stream (group, name) was not exists, we will try to use
+this request as <a href="#create">create stream</a>
+  </div>
+</div>
+<ol>
+<li>imageName (<strong>option(string)</strong>) &mdash; image name of stream used to.</li>
+<li>nodeNames (<strong>option(array(string))</strong>) &mdash; node name list of stream
+used to.</li>
+<li>tags (<strong>option(object)</strong>) &mdash; a key-value map of user defined data.</li>
+<li>jarKey (<strong>option(option(object))</strong>) &mdash; the used jar key
+<ul>
+<li>group (<strong>option(string)</strong>) &mdash; the group name of this jar</li>
+<li>name (<strong>option(string)</strong>) &mdash; the name without extension of this
+jar</li>
+</ul>
+</li>
+<li>jmxPort (<strong>option(int)</strong>) &mdash; expose port for jmx.</li>
+<li>from (<strong>option(array(string))</strong>) &mdash; source topic.</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    <p>Currently, stream uses a &ldquo;single flow&rdquo; for users to define their
+own data flow, we need a better structure to support multiple
+topics.</p>
+<p>we only support one topic for current version. We will throw
+exception in start api if you assign more than 1 topic. We will
+support multiple topics on issue [#688](<a href="https://github.com/oharastream/ohara/issues/688">https://github.com/oharastream/ohara/issues/688</a></p>
+<p>)</p>
+  </div>
+</div>
+<ol start="7">
+<li>to (<strong>option(array(string))</strong>) &mdash; target topic.</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    <p>Currently, stream uses a &ldquo;single flow&rdquo; for users to define their
+own data flow, we need a better structure to support multiple
+topics.</p>
+<p>we only support one topic for current version. We will throw
+exception in start api if you assign more than 1 topic. We will
+support multiple topics on issue [#688](<a href="https://github.com/oharastream/ohara/issues/688">https://github.com/oharastream/ohara/issues/688</a></p>
+<p>)</p>
+  </div>
+</div>
+<ul>
+<li>
+<p>Example Request</p>
+<pre><code class="language-json">{
+  &quot;from&quot;: [&quot;topic2&quot;],
+  &quot;to&quot;: [&quot;topic3&quot;],
+  &quot;jarKey&quot;: &quot;ohara-it-stream.jar&quot;,
+  &quot;nodeNames&quot;: [&quot;node01&quot;]
+}
+</code></pre>
+</li>
+<li>
+<p>Example Response</p>
+<p>Response format is as 
+<a href="#stored-data">stream stored format</a>.</p>
+<pre><code class="language-json">{
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;brokerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;bk&quot;
+  },
+  &quot;name&quot;: &quot;streamtest1&quot;,
+  &quot;xms&quot;: 1024,
+  &quot;routes&quot;: {},
+  &quot;lastModified&quot;: 1579153777586,
+  &quot;tags&quot;: {},
+  &quot;xmx&quot;: 1024,
+  &quot;imageName&quot;: &quot;oharastream/stream:0.11.0-SNAPSHOT&quot;,
+  &quot;jarKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;ohara-it-stream.jar&quot;
+  },
+  &quot;to&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic3&quot;
+    }
+  ],
+  &quot;revision&quot;: &quot;b303f3c2e52647ee5e79e55f9d74a5e51238a92c&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;aliveNodes&quot;: [],
+  &quot;stream.class&quot;: &quot;oharastream.ohara.it.stream.DumbStream&quot;,
+  &quot;from&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;topic2&quot;
+    }
+  ],
+  &quot;nodeMetrics&quot;: [],
+  &quot;jmxPort&quot;: 44914,
+  &quot;kind&quot;: &quot;stream&quot;,
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;node01&quot;
+  ]
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="delete-properties-of-specific-stream">delete properties of specific stream</h2>
+<p>Delete the properties of a non-started stream. This api only remove the
+stream component which is stored in pipeline.</p>
+<p><em>DELETE /v0/streams/${name}?group=$group</em></p>
+<div class="alert alert-hint">
+  <div>
+    We will use the default value as the query parameter &ldquo;?group=&rdquo; if you
+don&rsquo;t specify it.
+  </div>
+</div>
+<ul>
+<li>Example Response
+<pre><code>204 NoContent
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    It is ok to delete an nonexistent properties, and the response is
+204 NoContent.
+  </div>
+</div>
+<h2 id="start-a-stream">start a Stream</h2>
+<p><em>PUT /v0/streams/${name}/start?group=$group</em></p>
+<div class="alert alert-hint">
+  <div>
+    We will use the default value as the query parameter &ldquo;?group=&rdquo; if you
+don&rsquo;t specify it.
+  </div>
+</div>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use <a href="#get">get stream</a> to fetch up-to-date status
+  </div>
+</div>
+<h2 id="stop">stop a Stream</h2>
+<p>This action will graceful stop and remove all docker containers belong
+to this stream. Note: successful stop stream will have no status.</p>
+<p><em>PUT /v0/streams/${name}/stop?group=$group[&amp;force=true]</em></p>
+<ul>
+<li>Query Parameters
+<ol>
+<li>force (<strong>boolean</strong>) &mdash; true if you don&rsquo;t want to wait the
+graceful shutdown (it can save your time but may damage your
+data).</li>
+</ol>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    We will use the default value as the query parameter &ldquo;?group=&rdquo; if you
+don&rsquo;t specify it.
+  </div>
+</div>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use <a href="#get">get stream</a> to fetch up-to-date status
+  </div>
+</div>
+<h2 id="get-topology-tree-graph-from-specific-stream">get topology tree graph from specific stream</h2>
+<p>[TODO] This is not implemented yet !</p>
+<p><em>GET /v0/streams/view/${name}</em></p>
+<ul>
+<li>
+<p>Example Response</p>
+<ol>
+<li>jarInfo (<strong>string</strong>) &mdash; the upload jar information</li>
+<li>name (<strong>string</strong>) &mdash; the stream name</li>
+<li>poneglyph (<strong>object</strong>) &mdash; the stream topology tree graph
+<ul>
+<li>steles (<strong>array(object)</strong>) &mdash; the topology collection
+<ul>
+<li>steles[i].kind (<strong>string</strong>) &mdash; this component
+kind (SOURCE, PROCESSOR, or SINK)</li>
+<li>steles[i].key (<strong>string</strong>) &mdash; this component kind with order</li>
+<li>steles[i].name (<strong>string</strong>) &mdash; depend on kind, the name is
+<ul>
+<li>SOURCE &mdash; source topic name</li>
+<li>PROCESSOR &mdash; the function name</li>
+<li>SINK &mdash; target topic name</li>
+</ul>
+</li>
+<li>steles[i].from (<strong>string</strong>) &mdash; the prior
+component key (could be empty if this is the first
+component)</li>
+<li>steles[i].to (<strong>string</strong>) &mdash; the posterior
+component key (could be empty if this is the final
+component)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-json">{
+  &quot;jarInfo&quot;: {
+    &quot;name&quot;: &quot;stream-app&quot;,
+    &quot;group&quot;: &quot;wk01&quot;,
+    &quot;size&quot;: 1234,
+    &quot;lastModified&quot;: 1542102595892
+  },
+  &quot;name&quot;: &quot;my-app&quot;,
+  &quot;poneglyph&quot;: {
+    &quot;steles&quot;: [
+      {
+        &quot;kind&quot;: &quot;SOURCE&quot;,
+        &quot;key&quot; : &quot;SOURCE-0&quot;,
+        &quot;name&quot;: &quot;stream-in&quot;,
+        &quot;from&quot;: &quot;&quot;,
+        &quot;to&quot;: &quot;PROCESSOR-1&quot;
+      },
+      {
+        &quot;kind&quot;: &quot;PROCESSOR&quot;,
+        &quot;key&quot; : &quot;PROCESSOR-1&quot;,
+        &quot;name&quot;: &quot;filter&quot;,
+        &quot;from&quot;: &quot;SOURCE-0&quot;,
+        &quot;to&quot;: &quot;PROCESSOR-2&quot;
+      },
+      {
+        &quot;kind&quot;: &quot;PROCESSOR&quot;,
+        &quot;key&quot; : &quot;PROCESSOR-2&quot;,
+        &quot;name&quot;: &quot;mapvalues&quot;,
+        &quot;from&quot;: &quot;PROCESSOR-1&quot;,
+        &quot;to&quot;: &quot;SINK-3&quot;
+      },
+      {
+        &quot;kind&quot;: &quot;SINK&quot;,
+        &quot;key&quot; : &quot;SINK-3&quot;,
+        &quot;name&quot;: &quot;stream-out&quot;,
+        &quot;from&quot;: &quot;PROCESSOR-2&quot;,
+        &quot;to&quot;: &quot;&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+</li>
+</ul>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 20, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/0.11.x/rest-api/streams.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/docs/master/example1/</loc>
+    <lastmod>2020-06-16T16:07:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/docs/master/</loc>
+    <lastmod>2020-06-10T10:47:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/docs/master/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/docs/master/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/docs/master/example2/</loc>
+    <lastmod>2020-06-12T10:53:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/</loc>
+    <lastmod>2020-06-16T16:07:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/authors/</loc>
+    <lastmod>2020-06-10T10:47:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/authors/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/authors/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/docs/</loc>
+    <lastmod>2020-06-15T15:46:44+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/docs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/docs/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/author/nelson-bighetti/</loc>
+    <lastmod>2020-06-10T10:47:50+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/author/vito-jeng/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/author/nelson-bighetti/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/publication_types/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/publication_types/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/publication_types/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/zh/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://oharastream.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://oharastream.github.io/zh/tags/"
+                />
+  </url>
+  
+</urlset>

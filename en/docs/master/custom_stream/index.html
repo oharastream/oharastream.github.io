@@ -1,0 +1,1199 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Ohara stream is an unparalleled wrap of kafka streams which gives you a straightforward thought to design your streaming flow. It offers a simple way to implement and define actions to process data between topics.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/master/custom_stream/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/master/custom_stream/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/master/custom_stream/">
+  <meta property="og:title" content="Custom Stream Guideline | OharaStream">
+  <meta property="og:description" content="Ohara stream is an unparalleled wrap of kafka streams which gives you a straightforward thought to design your streaming flow. It offers a simple way to implement and define actions to process data between topics."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-18T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-19T17:28:11&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Custom Stream Guideline | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/master/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/master/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ohara-stream-overview">Ohara Stream Overview</a></li>
+    <li><a href="#stream-entry">Stream Entry </a>
+      <ul>
+        <li><a href="#init-method">init() method</a></li>
+        <li><a href="#config-method">config() method</a></li>
+        <li><a href="#start-method">start(OStream<Row>, StreamDefinitions) method</a></li>
+      </ul>
+    </li>
+    <li><a href="#java-api">Stream Java API </a>
+      <ul>
+        <li><a href="#ostream">OStream</a></li>
+        <li><a href="#ogroupedstream">OGroupedStream</a></li>
+        <li><a href="#otable">OTable</a></li>
+      </ul>
+    </li>
+    <li><a href="#stream-examples">Stream Examples</a></li>
+    <li><a href="#setting-definitions">Stream Definitions</a></li>
+    <li><a href="#metrics">Metrics</a>
+      <ul>
+        <li><a href="#official-metrics">Official Metrics</a></li>
+      </ul>
+    </li>
+    <li><a href="#logs">Logs</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Custom Stream Guideline</h1>
+
+          <div class="article-style">
+            <p>Ohara stream is an unparalleled wrap of 
+<a href="https://kafka.apache.org/documentation/streams" target="_blank" rel="noopener">kafka streams</a> which gives you
+a straightforward thought to design your streaming flow. It offers a
+simple way to implement and define actions to process data between
+topics. You only have to write your logic in
+
+<a href="#start-method">start()</a> method and
+compile your code to a jar file. After jar file is compiled
+successfully, you can <strong>deploy</strong> your jar file to Ohara, run it, and
+monitor your stream by 
+<a href="#logs">logs</a> and 
+<a href="#metrics">metrics</a>.</p>
+<p>The following sections will describe how to write a stream application
+in Ohara.</p>
+<hr>
+<h2 id="ohara-stream-overview">Ohara Stream Overview</h2>
+<p>Ohara stream is a wrap of 
+<a href="https://kafka.apache.org/documentation/streams" target="_blank" rel="noopener">kafka
+streams</a> and provided an
+entry of interface class 
+<a href="#stream-entry">Stream</a> to define user custom streaming code.
+A normal stream application will use 
+<a href="/en/docs/master/custom_connector/#datamodel">Row</a>
+as data type to interactive topics in Ohara.</p>
+<p>Before writing your stream, you should download the ohara dependencies
+first. Ohara includes many powerful tools for developer but not all
+tools are requisite in designing stream. The required dependencies are
+shown below.</p>
+<pre><code class="language-groovy">repositories {
+     maven {
+         url &quot;https://dl.bintray.com/oharastream/ohara&quot;
+     }
+ }
+implementation &quot;oharastream.ohara:ohara-stream:0.11.0-SNAPSHOT&quot;
+implementation &quot;oharastream.ohara:ohara-common:0.11.0-SNAPSHOT&quot;
+implementation &quot;oharastream.ohara:ohara-kafka:0.11.0-SNAPSHOT&quot;
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    The <a href="https://github.com/oharastream/ohara/releases">releases</a> page shows the available version of ohara
+  </div>
+</div>
+<hr>
+<h2 id="stream-entry">Stream Entry </h2>
+<p>We will automatically find your custom class which should be extended by
+<strong>oharastream.ohara.stream.Stream</strong>.</p>
+<p>In Ohara environment, the required parameters are defined in Ohara UI.
+You only need to initial the <code>OStream</code> as following:</p>
+<pre><code class="language-java">OStream&lt;Row&gt; ostream = OStream.builder().toOharaEnvStream();
+</code></pre>
+<p>A base implementation for a custom stream only need to include
+
+<a href="#start-method">start()</a> method,
+but you could include other methods which are described below for your
+convenience.</p>
+<p>The following example is a simple stream application which can run in
+Ohara. Note that this example simply starts the stream application
+without doing any transformation but writing data, i.e., the target
+topic will have same data as the source topic.</p>
+<pre><code class="language-java">public class SimpleApplicationForOharaEnv extends Stream {
+
+  @Override
+  public void start(OStream&lt;Row&gt; ostream, StreamDefinitions streamSetting) {
+    ostream.start();
+  }
+}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    The following methods we provided belongs to Ohara Stream, which has
+many powerful and friendly features. Native Kafka Streams API does not
+have these methods.
+  </div>
+</div>
+<h3 id="init-method">init() method</h3>
+<p>After we find the user custom class, the first method will be called by
+Stream is <strong>init()</strong>. This is an optional method that can be used for
+user to initialize some external data source connections or input
+parameters.</p>
+<h3 id="config-method">config() method</h3>
+<p>In a stream application, you may want to configure your own parameters.
+We support a method here to help you define a custom streamSetting list
+in stream. The details of streamSetting are list
+
+<a href="#setting-definitions">here</a>.</p>
+<p>In the following example, we want to add a custom definition which is
+used to define &ldquo;join topic&rdquo;:</p>
+<pre><code class="language-java">@Override
+public StreamDefinitions config() {
+ return StreamDefinitions
+   // add a definition of &quot;filter name&quot; in &quot;default&quot; group
+   .with(SettingDef.builder().key(&quot;filterName&quot;).group(&quot;default&quot;).build());
+}
+</code></pre>
+<p>After define the definition, you can use it in 
+<a href="#start-method">start()</a> method</p>
+<div class="alert alert-hint">
+  <div>
+    This method is optional. We will append all the definitions you provide
+in this method to the stream default definitions. That is, the absent
+config() method means you only need the default definitions.
+  </div>
+</div>
+<h3 id="start-method">start(OStream<Row>, StreamDefinitions) method</h3>
+<p>This method will be called after 
+<a href="#init-method">init()</a>.
+Normally, you could only define start() method for most cases in Ohara. We
+encourage user to use <strong>source connector</strong>
+(see 
+<a href="/en/docs/master/custom_connector/#source-connector">Source Connector</a> section)
+for importing external data source to Ohara and use topic data as custom
+stream data source in start() method.</p>
+<p>We provide two arguments in this method:</p>
+<ol>
+<li>
+<p>OStream &mdash; the entry class of ohara stream<br>
+OStream (a.k.a. ohara stream) helps you to construct your
+application and use all the powerful APIs in Stream.</p>
+</li>
+<li>
+<p>StreamDefinitions &mdash; the definitions of ohara stream<br>
+from the definition you can use <em>StreamDefinitions.string()</em> to get the value from the
+
+<a href="#config-method">config method</a>.</p>
+</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    The return value is wrap in a Java object <strong>Optional</strong>, you need to
+decide whether the value is present or not.
+  </div>
+</div>
+<p>For example:</p>
+<pre><code class="language-java">@Override
+public void start(OStream&lt;Row&gt; ostream, StreamDefinitions streamSetting) {
+ ostream
+   .map(row -&gt; Row.of(row.cell(&quot;name&quot;), row.cell(&quot;age&quot;)))
+   // use the previous defined definition in config()
+   .filter(row -&gt; row.cell(streamSetting.string(&quot;filterName&quot;).get()).value() != null)
+   .map(row -&gt; Row.of(Cell.of(&quot;name&quot;, row.cell(&quot;name&quot;).value().toString().toUpperCase())))
+   .start();
+}
+</code></pre>
+<p>The above code does the following transformations:</p>
+<ol>
+<li>
+<p>pick cell of the header: <code>name</code>, <code>age</code> from each row</p>
+</li>
+<li>
+<p>filter out that if <code>filterName</code> is null &mdash;
+here we get the value from <strong>filterName</strong> of definitions. the value you should update by
+
+<a href="/en/docs/master/rest-api/streams/#update">Stream update api</a></p>
+<p>PUT /v0/streams/XXX</p>
+<pre><code class="language-json">{
+ &quot;filterName&quot;: &quot;name&quot;
+}
+</code></pre>
+</li>
+<li>
+<p>convert the cell of <code>name</code> to upperCase</p>
+</li>
+</ol>
+<p>From now on, you can use the 
+<a href="#java-api">Stream Java API</a> to
+design your own application, happy coding!</p>
+<h2 id="java-api">Stream Java API </h2>
+<p>In Stream, we provide three different classes for developers:</p>
+<ul>
+<li>OStream: define the functions for operating streaming data (each row record one-by-one)</li>
+<li>OGroupedStream: define the functions for operating grouped streaming data</li>
+<li>OTable: define the functions for operating table data (changelog for same key of row record)</li>
+</ul>
+<p>The above classes will be auto converted when you use the correspond
+functions; You should not worry about the usage of which class is
+right to use. All the starting point of development is just <strong>OStream</strong>.</p>
+<p>Below we list the available functions in each class (See more information in javadoc):</p>
+<h3 id="ostream">OStream</h3>
+<ul>
+<li>
+<p>constructTable(String topicName)</p>
+<p>Create a OTable with specified topicName from current OStream.</p>
+</li>
+<li>
+<p>filter(Predicate predicate)</p>
+<p>Create a new OStream that filter by the given predicate.</p>
+</li>
+<li>
+<p>through(String topicName, int partitions)</p>
+<p>Transfer this OStream to specify topic and use the required
+partition number.</p>
+</li>
+<li>
+<p>leftJoin(String joinTopicName, Conditions conditions, ValueJoiner joiner)</p>
+<p>Join this OStream with required joinTopicName and conditions.</p>
+</li>
+<li>
+<p>map(ValueMapper mapper)</p>
+<p>Transform the value of each record to a new value of the output record.</p>
+</li>
+<li>
+<p>groupByKey(List keys)</p>
+<p>Group the records by key to a OGroupedStream.</p>
+</li>
+<li>
+<p>foreach(ForeachAction action)</p>
+<p>Perform an action on each record of OStream.</p>
+</li>
+<li>
+<p>start()</p>
+<p>Run this stream application.</p>
+</li>
+<li>
+<p>stop()</p>
+<p>Stop this stream application.</p>
+</li>
+<li>
+<p>describe()</p>
+<p>Describe the topology of this stream.</p>
+</li>
+<li>
+<p>getPoneglyph()</p>
+<p>Get the Ohara format Poneglyph from topology.</p>
+</li>
+</ul>
+<h3 id="ogroupedstream">OGroupedStream</h3>
+<ul>
+<li>
+<p>count()</p>
+<p>Count the number of records in this OGroupedStream and return the
+count value.</p>
+</li>
+<li>
+<p>reduce(final Reducer reducer)</p>
+<p>Combine the values of each record in this OGroupedStream by the
+grouped key.</p>
+</li>
+</ul>
+<h3 id="otable">OTable</h3>
+<ul>
+<li>
+<p>toOStream()</p>
+<p>Convert this OTable to OStream</p>
+</li>
+</ul>
+<hr>
+<h2 id="stream-examples">Stream Examples</h2>
+<p>Below we provide some examples that demonstrate how to develop your own
+stream applications. More description of each example could be found in
+javadoc.</p>
+<ul>
+<li>
+<a href="https://github.com/oharastream/ohara/blob/master/ohara-stream/src/test/java/oharastream/ohara/stream/examples/WordCountExample.java">WordCount</a>:
+count the words in &ldquo;word&rdquo; column</li>
+<li>
+<a href="https://github.com/oharastream/ohara/blob/master/ohara-stream/src/test/java/oharastream/ohara/stream/examples/PageViewRegionExample.java">PageViewRegion</a>:
+count the views by each region</li>
+<li>
+<a href="https://github.com/oharastream/ohara/blob/master/ohara-stream/src/test/java/oharastream/ohara/stream/examples/SumExample.java">Sum</a>:
+sum odd numbers in &ldquo;number&rdquo; column</li>
+</ul>
+<hr>
+<h2 id="setting-definitions">Stream Definitions</h2>
+<p>Stream stores a list of
+
+<a href="/en/docs/master/setting_definition/">SettingDef</a>, which
+is StreamDefinitions, in the data store. By default, we will keep the
+following definitions in the &ldquo;core&rdquo; group and generate the definition
+in stream API :</p>
+<ol>
+<li>DefaultConfigs.BROKER_DEFINITION : The broker list</li>
+<li>DefaultConfigs.IMAGE_NAME_DEFINITION : The image name</li>
+<li>DefaultConfigs.NAME_DEFINITION : The stream application name</li>
+<li>DefaultConfigs.GROUP_DEFINITION : The stream group name</li>
+<li>DefaultConfigs.FROM_TOPICS_DEFINITION : The from topic</li>
+<li>DefaultConfigs.TO_TOPICS_DEFINITION : The to topic</li>
+<li>DefaultConfigs.JMX_PORT_DEFINITION : The exposed jmx port</li>
+<li>DefaultConfigs.NODE_NAMES_DEFINITION : The node name list</li>
+<li>DefaultConfigs.VERSION_DEFINITION : The version of stream</li>
+<li>DefaultConfigs.REVISION_DEFINITION : The revision of stream</li>
+<li>DefaultConfigs.AUTHOR_DEFINITION : The author of stream</li>
+<li>DefaultConfigs.TAGS_DEFINITION : The tags of stream</li>
+</ol>
+<p>Any other definition except above list will be treated as a custom
+definition. You can define:</p>
+<pre><code class="language-java">SettingDef.builder().key(joinTopic).group(&quot;default&quot;).build()
+</code></pre>
+<p>as a definition that is listed in &ldquo;default&rdquo; group, or</p>
+<pre><code class="language-java">SettingDef.builder().key(otherKey).group(&quot;common&quot;).build()
+</code></pre>
+<p>as a definition that is listed in the &ldquo;common&rdquo; group.</p>
+<div class="alert alert-hint">
+  <div>
+    Any group category will generate a new &ldquo;tab&rdquo; in Ohara-Manager.
+  </div>
+</div>
+<p>The value of each definition will be kept in environment of stream
+running container, and you should set the value by
+
+<a href="/en/docs/master/rest-api/streams/#update">stream api</a>.</p>
+<hr>
+<h2 id="metrics">Metrics</h2>
+<p>When a stream application is running, Ohara automatically collects some
+metrics data from the stream in the background. The metrics data here
+means 
+<a href="#official-metrics">official metrics</a> which contains
+
+<a href="/en/docs/master/custom_connector/#counter">Counters</a> for now
+(other type of metrics will be introduced in the future). The metrics
+data could be fetched by 
+<a href="/en/docs/master/rest-api/streams/">Stream APIs</a>.
+Developers will be able to implement their own custom
+metrics in the foreseeable future.</p>
+<p>Ohara leverages JMX to offer the metrics data to stream. It means that
+all metrics you have created are stored as Java beans and accessible
+through JMX service. The stream will expose a port via
+
+<a href="/en/docs/master/rest-api/streams/">Stream APIs</a> for other JMX
+client tool used, such as JMC, but we still encourage you to use
+
+<a href="/en/docs/master/rest-api/streams/">Stream APIs</a> as it offers a
+more readable format of metrics.</p>
+<h3 id="official-metrics">Official Metrics</h3>
+<p>There are two type of official metrics for stream:</p>
+<ul>
+<li>consumed topic records (counter)</li>
+<li>produced topic records (counter)</li>
+</ul>
+<p>A normal stream will connect to two topics, one is the source topic that
+stream will consume from, and the other is the target topic that stream
+will produce to. We use prefix words (<strong>TOPIC_IN</strong>, <strong>TOPIC_OUT</strong>) in
+the response data (
+<a href="/en/docs/master/rest-api/streams/">Stream APIs</a>)
+in order to improve readabilities of those types. You don&rsquo;t
+need to worry about the implementation of these official metrics, but
+you can still read the
+
+<a href="https://github.com/oharastream/ohara/blob/master/ohara-stream/src/main/java/oharastream/ohara/stream/metric/MetricFactory.java">source code</a>
+to see how Ohara creates official metrics.</p>
+<hr>
+<h2 id="logs">Logs</h2>
+<p>Will be implemented in the near future. Also see issue: 
+<a href="https://github.com/oharastream/ohara/issues/962
+
+">#962</a></p>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 19, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/master/custom_stream.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

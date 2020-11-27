@@ -1,0 +1,1358 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="A powerful application always has a complicated configuration. In order to be a best friend of Ohara users, Ohara provides a method which can return the details of setting definitions, and ohara suggests that all developers ought to implement the method so as to guide users through the complicated settings of your applications.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/0.11.x/setting_definition/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/0.11.x/setting_definition/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/0.11.x/setting_definition/">
+  <meta property="og:title" content="Setting Definition Guide | OharaStream">
+  <meta property="og:description" content="A powerful application always has a complicated configuration. In order to be a best friend of Ohara users, Ohara provides a method which can return the details of setting definitions, and ohara suggests that all developers ought to implement the method so as to guide users through the complicated settings of your applications."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-17T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-20T11:26:51&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Setting Definition Guide | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/0.11.x/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/0.11.x/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/0.11.x/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#reference-internal-and-tablekeys-are-not-public">Reference, Internal and TableKeys Are NOT Public</a></li>
+    <li><a href="#optional-required-and-default-value">Optional, Required And Default Value</a></li>
+    <li><a href="#a-readonly-setting-definition">A Readonly Setting Definition</a></li>
+    <li><a href="#setting-reference">Setting Reference</a></li>
+    <li><a href="#value-type">Value Type</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#necessary">Necessary</a></li>
+    <li><a href="#checker">Checker</a></li>
+    <li><a href="#denylist">DenyList</a></li>
+    <li><a href="#recommended-values">Recommended values</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Setting Definition Guide</h1>
+
+          <div class="article-style">
+            <p>A powerful application always has a complicated configuration. In order
+to be a best friend of Ohara users, Ohara provides a method which can
+return the details of setting definitions, and ohara suggests that all
+developers ought to implement the method so as to guide users through
+the complicated settings of your applications.</p>
+<div class="alert alert-note">
+  <div>
+    If you have no interest in settings or your application is too simple to
+have any settings, you can just skip this section.
+  </div>
+</div>
+<p>SettingDef is a class used to describe the details of <strong>a</strong> setting. It
+consists of following arguments.</p>
+<ol>
+<li>
+<a href="#setting-reference">reference</a>(<strong>string</strong>) &mdash; works for ohara manager.
+It represents the reference of value.</li>
+<li>group (<strong>string</strong>) &mdash; the group of this setting (all core setting are in core group)</li>
+<li>orderInGroup (<strong>int</strong>) &mdash; the order in group</li>
+<li>displayName (<strong>string</strong>) &mdash; the readable name of this setting</li>
+<li>permission (<strong>string</strong>) &mdash; the way to &ldquo;touch&rdquo; value. It consists of
+<ul>
+<li>READ_ONLY &mdash; you can&rsquo;t define an new value for it</li>
+<li>CREATE_ONLY &mdash; you can&rsquo;t update the value to an new one</li>
+<li>EDITABLE &mdash; feel free to modify the value as you wish :)</li>
+</ul>
+</li>
+<li>key (<strong>string</strong>) &mdash; the key of configuration</li>
+<li>
+<a href="#value-type">valueType</a>(<strong>string</strong>) &mdash; the type of value</li>
+<li>necessary (<strong>string</strong>)
+<ul>
+<li>REQUIRED &mdash; this field has no default and user MUST define something for it.</li>
+<li>OPTIONAL &mdash; this field has no default and user does NOT need to define something for it.</li>
+<li>RANDOM_DEFAULT &mdash; this field has a &ldquo;random&rdquo; default value</li>
+</ul>
+</li>
+<li>defaultValue (<strong>object</strong>) &mdash; the default value. the type is equal to what valueType
+defines but we only allow string, number and boolean type to have default value currently.</li>
+<li>documentation (<strong>string</strong>) &mdash; the explanation of this definition</li>
+<li>internal (<strong>boolean</strong>) &mdash; true if this setting is assigned by system automatically.</li>
+<li>tableKeys (<strong>array(object)</strong>) &mdash; the description to Type.TABLE
+<ul>
+<li>tableKeys[i].name &mdash; the column name</li>
+<li>tableKeys[i].type &mdash; acceptable type (string, number and boolean)</li>
+<li>tableKeys[i].recommendedValues &mdash; recommended values
+(it is legal to enter other values you prefer)</li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-hint">
+  <div>
+    You can call <a href="/en/docs/0.11.x/rest-api/workers/">Worker APIs</a>
+to get all connectors&rsquo; setting definitions, and use <a href="/en/docs/0.11.x/rest-api/streams/">Stream APIs</a>
+to get all stream setting definitions.
+  </div>
+</div>
+<p>Although a SettingDef can include many elements, you can simply build a
+SettingDef with only what you need. An extreme example is that you can
+create a SettingDef with only key.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .build();
+</code></pre>
+<p>Notwithstanding it is flexible to build a SettingDef, we encourage
+developers to create a description-rich SettingDef. More description to
+your setting produces more <strong>document</strong> in calling ohara rest APIs. We
+all hate write documentation, so it would be better to make your code
+readable.</p>
+<h2 id="reference-internal-and-tablekeys-are-not-public">Reference, Internal and TableKeys Are NOT Public</h2>
+<p>Ohara offers a great UI, which is located at ohara-manager. The UI
+requires some <strong>private</strong> information to generate forms for custom
+applications. The such private information is specific-purpose and is
+meaningless to non-ohara developers. Hence, all of them are declared as
+package-private and ohara does not encourage developers to stop at
+nothing to use them.</p>
+<h2 id="optional-required-and-default-value">Optional, Required And Default Value</h2>
+<p>We know a great application must have countless settings and only The
+Chosen One can control it. In order to shorten the gap between your
+application and human begin, ohara encourage developers to offer the
+default values to most of settings as much as possible. Assigning a
+default value to a SettingDef is a piece of cake.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .optional(defaultValue)
+    .build();
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    the default value is declared as <strong>string</strong> type as it must be <strong>readable</strong> in Restful APIs.
+  </div>
+</div>
+<p>After calling the <strong>optional(String)</strong> method, the response, created by
+
+<a href="/en/docs/0.11.x/rest-api/workers/">Worker APIs</a> for example,
+will display the following information.</p>
+<pre><code class="language-json">{
+  &quot;necessary&quot;: &quot;OPTIONAL_WITH_DEFAULT&quot;,
+  &quot;defaultValue&quot;: &quot;ur_default_value&quot;
+}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    The default value will be added to
+<a href="/en/docs/0.11.x/custom_connector/#source-start">TaskSetting</a>
+automatically if the specified key is not already associated with a value.
+  </div>
+</div>
+<h2 id="a-readonly-setting-definition">A Readonly Setting Definition</h2>
+<p>You can declare a <strong>readonly</strong> setting that not only exposes something
+of your application to user but also remind user the setting can&rsquo;t be
+changed at runtime. For instance, the information of
+
+<a href="/en/docs/0.11.x/custom_connector/#version">version</a> is fixed
+after you have completed your connector so it is not an <strong>editable</strong>
+setting. Hence, ohara define a setting for <strong>version</strong> with a readonly
+label. By the way, you should assign a default value to a readonly
+setting since a readonly setting without default value is really weird.
+There is an example of creating a readonly setting.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .optional(defaultValue)
+    .permission(SettingDef.Permission.READ_ONLY)
+    .build();
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    The input value will be removed automatically if the associated setting
+is declared readonly.
+  </div>
+</div>
+<h2 id="setting-reference">Setting Reference</h2>
+<p>This element is a specific purpose. It is used by Ohara manager (UI) only.
+If you don&rsquo;t have interest in UI, you can just ignore this element.
+However, we still list the available values here.</p>
+<ul>
+<li>NODE</li>
+<li>TOPIC</li>
+<li>ZOOKEEPER</li>
+<li>BROKER</li>
+<li>WORKER</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    For each reference value, it may have different type and will produce
+different behavior.
+  </div>
+</div>
+<p>Topic String</p>
+<pre><code class="language-java">SettingDef.builder().key(&quot;topic&quot;).reference(Reference.TOPIC).required(Type.STRING).build();
+</code></pre>
+<p>which means the request should &ldquo;accept one topic of string type&rdquo;</p>
+<pre><code class="language-json">{
+  &quot;topic&quot;: &quot;t1&quot;
+}
+</code></pre>
+<hr>
+<p>TopicKey List</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(&quot;topicKeys&quot;)
+    .reference(Reference.TOPIC)
+    .required(Type.OBJECT_KEYS)
+    .build();
+</code></pre>
+<p>which means the request should &ldquo;accept topic list of <strong>TopicKey</strong> type&rdquo;</p>
+<pre><code class="language-json">{
+  &quot;topicKeys&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;t1&quot;
+    },
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;t2&quot;
+    }
+  ]
+}
+</code></pre>
+<hr>
+<p>Topic String List</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(&quot;topics&quot;)
+    .reference(Reference.TOPIC)
+    .required(Type.ARRAY)
+    .build();
+</code></pre>
+<p>which means the request should &ldquo;accept topic list of string type&rdquo;</p>
+<pre><code class="language-json">{
+  &quot;topics&quot;: [&quot;t1&quot;, &quot;t2&quot;, &quot;t3&quot;]
+}
+</code></pre>
+<h2 id="value-type">Value Type</h2>
+<p>In a custom application, the settings could have various data type. In
+order to display correct data type in ohara manager and leverage the
+benefit of 
+<a href="#checker">type checker</a>, we
+strongly suggest you to define the correct data type for each setting.</p>
+<p>The following data types are supported currently.</p>
+<h4 id="typeboolean">Type.BOOLEAN</h4>
+<p>Boolean type represents that the data should have only two possible
+value: <strong>true</strong> or <strong>false</strong>. The value must be able cast to
+<strong>java.lang.Boolean</strong></p>
+<h4 id="typestring">Type.STRING</h4>
+<p>String type represents that the data should be a string. The value must
+be able cast to <strong>java.lang.String</strong></p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.STRING)
+    .build();
+</code></pre>
+<h4 id="typepositive_short">Type.POSITIVE_SHORT</h4>
+<p>Short type represents that the data should be a 2-bytes integer. The
+value must be able cast to <strong>java.lang.Short</strong>. Noted: only positive
+number is acceptable</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.POSITIVE_SHORT)
+    .build();
+</code></pre>
+<h4 id="typeshort">Type.SHORT</h4>
+<p>Short type represents that the data should be a 2-bytes integer. The
+value must be able cast to <strong>java.lang.Short</strong></p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.SHORT)
+    .build();
+</code></pre>
+<h4 id="typepositive_int">Type.POSITIVE_INT</h4>
+<p>Int type represents that the data should be a 4-bytes integer. The value
+must be able cast to <strong>java.lang.Integer</strong>. Noted: only positive number
+is acceptable</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.POSITIVE_INT)
+    .build();
+</code></pre>
+<h4 id="typeint">Type.INT</h4>
+<p>Int type represents that the data should be a 4-bytes integer. The value
+must be able cast to <strong>java.lang.Integer</strong></p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.INT)
+    .build();
+</code></pre>
+<h4 id="typepositive_long">Type.POSITIVE_LONG</h4>
+<p>Long type represents that the data should be a 8-bytes integer. The
+value must be able cast to <strong>java.lang.Long</strong>. Noted: only positive
+number is acceptable</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.POSITIVE_LONG)
+    .build();
+</code></pre>
+<h4 id="typelong">Type.LONG</h4>
+<p>Long type represents that the data should be a 8-bytes integer. The
+value must be able cast to <strong>java.lang.Long</strong></p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.LONG)
+    .build();
+</code></pre>
+<h4 id="typepositive_double">Type.POSITIVE_DOUBLE</h4>
+<p>Double type represents that the data should be a 8-bytes floating-point.
+The value must be able cast to <strong>java.lang.Double</strong>. Noted: only
+positive number is acceptable</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.POSITIVE_DOUBLE)
+    .build();
+</code></pre>
+<h4 id="typedouble">Type.DOUBLE</h4>
+<p>Double type represents that the data should be a 8-bytes floating point.
+The value must be able cast to <strong>java.lang.Double</strong></p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.DOUBLE)
+    .build();
+</code></pre>
+<h4 id="typearray">Type.ARRAY</h4>
+<p>Array type represents that the data should be a collection of data. We
+don&rsquo;t check the element data type in the collection, that is, the
+following request is legal in SettingDef but will produce a weird
+behavior in ohara manager. We suggest you use the same data type of
+element in an array.</p>
+<pre><code class="language-json">{
+  &quot;key&quot;: [&quot;abc&quot;, 123, 2.0]
+}
+</code></pre>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.ARRAY)
+    .build();
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    <p>An empty array is ok and will pass the checker:</p>
+<pre><code class="language-json">{
+  &quot;key&quot;: []
+}
+</code></pre>
+  </div>
+</div>
+<div class="alert alert-hint">
+  <div>
+    the default value to array value is empty
+  </div>
+</div>
+<h4 id="typeclass">Type.CLASS</h4>
+<p>Class type represents that the data is a class. This data type is used
+to display a value that is a class. The value must be able cast to
+<strong>java.lang.String</strong>.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.CLASS)
+    .build();
+</code></pre>
+<h4 id="typepassword">Type.PASSWORD</h4>
+<p>Password type represents that the data is a password. We will replace
+the value by <strong>hidden</strong> symbol in APIs. if the data type is used as
+password. The value must be able cast to <strong>java.lang.String</strong>.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .required(Type.PASSWORD)
+    .build();
+</code></pre>
+<h4 id="typejdbc_table">Type.JDBC_TABLE</h4>
+<p>JDBC_TABLE is a specific string type used to reminder Ohara Manager
+that this field requires a <strong>magic</strong> button to show available tables of
+remote database via Query APIs. Except for the <strong>magic</strong> in UI, there is
+no other stuff for this JDBC_TYPE since kafka can&rsquo;t verify the input
+arguments according to other arguments. It means we can&rsquo;t connect to
+remote database to check the existence of input table.</p>
+<p>It is ok to replace this field by Type.STRING if you don&rsquo;t use Ohara
+Manager. Nevertheless, we still encourage the developer to choose the
+<strong>fitting</strong> type for your setting if you demand your user to input a
+database table.</p>
+<h4 id="typetable">Type.TABLE</h4>
+<p>Table type enable you to define a setting having table structure value.
+Apart from assigning Type.Table to your setting definition, you also
+have to define which keys are in your table. The following example show
+a case that declares a table having two columns called <strong>c0</strong> and
+<strong>c1</strong>.</p>
+<pre><code class="language-java">SettingDef.builder()
+    .key(key)
+    .tableKeys(Arrays.asList(&quot;c0&quot;, &quot;c1&quot;))
+    .required(Type.TABLE)
+    .build();
+</code></pre>
+<p>The legal value for above setting definition is shown below.</p>
+<pre><code class="language-json">{
+  &quot;key&quot;: [
+    {
+      &quot;c0&quot;: &quot;v0&quot;,
+      &quot;c1&quot;: &quot;v1&quot;
+    },
+    {
+      &quot;c0&quot;: &quot;v2&quot;,
+      &quot;c1&quot;: &quot;v3&quot;
+    }
+  ]
+}
+</code></pre>
+<p>The above example implies there is a table having two columns called
+<strong>c0</strong> and <strong>c1</strong>. Also, you assign two values to <strong>c0</strong> that first is
+<strong>v0</strong> and another is <strong>v2</strong>. Ohara offers a check for Type.Table that
+the input value <strong>must</strong> match all keys in.</p>
+<p>How to get the description of above <strong>keys</strong> ? If the setting type is
+<strong>table</strong>, the setting must have <strong>tableKeys</strong>. It is an array of string
+which shows the keys used in the table type. For instance, a setting
+having table type is shown below.</p>
+<pre><code class="language-json">{
+  &quot;reference&quot;: &quot;NONE&quot;,
+  &quot;displayName&quot;: &quot;columns&quot;,
+  &quot;internal&quot;: false,
+  &quot;documentation&quot;: &quot;output schema&quot;,
+  &quot;valueType&quot;: &quot;TABLE&quot;,
+  &quot;tableKeys&quot;: [
+    &quot;order&quot;,
+    &quot;dataType&quot;,
+    &quot;name&quot;,
+    &quot;newName&quot;
+  ],
+  &quot;orderInGroup&quot;: 6,
+  &quot;key&quot;: &quot;columns&quot;,
+  &quot;necessary&quot;: &quot;REQUIRED&quot;,
+  &quot;defaultValue&quot;: null,
+  &quot;group&quot;: &quot;core&quot;,
+  &quot;permission&quot;: &quot;EDITABLE&quot;
+}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    If you ignore the table keys for Type.Table, the check to your input
+value is also ignored. By contrast, the table keys are useless for other
+types.
+  </div>
+</div>
+<div class="alert alert-hint">
+  <div>
+    the default value to table value is empty
+  </div>
+</div>
+<h4 id="typeduration">Type.DURATION</h4>
+<p>The time-based amount of time is a common setting in our world. However,
+it is also hard to reach the consensus about the <strong>string representation</strong>
+for a duration. For instance, the <code>java.time.Duration</code>
+prefers ISO-8601, such as PT10S. The scala.concurrent.duration.Duration
+prefers simple format, such as 10 seconds. Ohara offers a official
+support to Duration type so as to ease the pain of using string in
+connector. When you declare a setting with duration type, ohara provides
+the default check which casts input value to java Duration and scala
+Duration. Also, your connector can get the <strong>Duration</strong> from
+
+<a href="/en/docs/0.11.x/custom_connector/#source-start">TaskSetting</a>
+easily without worrying about the conversion between java and scala.
+Furthermore, connector users can input both java.Duration and
+scala.Duration when starting connector.</p>
+<p>The value must be castable to <strong>java.time.Duration</strong> and it is based on
+the ISO-860 duration format PnDTnHnMn.nS</p>
+<h4 id="typeremote_port">Type.REMOTE_PORT</h4>
+<p>Remote port is a common property to connector. For example, the ftp
+connector needs port used to connect to source/target ftp server in
+remote . Inputting an illegal port can destroy connector easily.
+Declaring your type of value to Port involve a check that only the port
+which is smaller than 65536 and bigger than zero can be accepted. Other
+port value will be rejected in starting connector.</p>
+<h4 id="typebinding_port">Type.BINDING_PORT</h4>
+<p>This type is similar to Type.PORT except that the value mapped to
+BINDING_PORT has an extra check to the availability on the target nodes.
+For example, you define value 5555 as a BINDING_PORT, and you will get
+a exception when you try to deploy your code on the node which is using
+port 5555 as well. The legal value of binding port is between [0, 65535].</p>
+<h4 id="typeobject_key">Type.OBJECT_KEY</h4>
+<p>object key represents a format of
+<strong>oharastream.ohara.common.setting.ObjectKey</strong> for a specific object. It
+consists &ldquo;group&rdquo; and &ldquo;name&rdquo; fields. In a custom application, you
+should check the request contains both fields.</p>
+<pre><code class="language-json">{
+  &quot;key&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;abc&quot;
+  }
+}
+</code></pre>
+<h4 id="typeobject_keys">Type.OBJECT_KEYS</h4>
+<p>OBJECT_KEYS represents a list of
+<strong>oharastream.ohara.common.setting.Obj</strong>. Note the type of the plural
+char &ldquo;s&rdquo;. It means the request value should pass an array.</p>
+<pre><code class="language-json">{
+  &quot;objectKeys&quot;: [{
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;t1&quot;
+  }]
+}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    the default value to table value is empty
+  </div>
+</div>
+<h4 id="typetags">Type.TAGS</h4>
+<p>Tags is a flexible type that accept a json object. It could use in some
+circumstances that user needs to define additional values which type is
+not list above.</p>
+<pre><code class="language-json">{
+  &quot;tags&quot;: {
+    &quot;name&quot;: &quot;hello&quot;,
+    &quot;anArray&quot;: [&quot;bar&quot;, &quot;foo&quot;],
+    &quot;count&quot;: 10,
+    &quot;params&quot;: {
+      &quot;k&quot;: &quot;v&quot;
+    }
+  }
+}
+</code></pre>
+<div class="alert alert-hint">
+  <div>
+    the default value to table value is empty
+  </div>
+</div>
+<h2 id="necessary">Necessary</h2>
+<p>In Ohara world, most components have a lot of configs to offers various
+usage in production. In order to simplify the settings, most configs
+have default value and you can trace Necessary field to know that.</p>
+<p>Necessary field has three values.</p>
+<ol>
+<li><strong>REQUIRED</strong> &mdash; this value has no default value, and it must be defined.
+You may get error if you don&rsquo;t give any value to it.</li>
+<li><strong>OPTIONAL</strong> &mdash; this value has no default value, but it is ok to leave nothing.</li>
+<li><strong>RANDOM_DEFAULT</strong> &mdash; the default value assigned to this value is random.
+For example, all objects&rsquo; name has a random string by default; The binding
+port field has a random free port by default.</li>
+</ol>
+<h2 id="checker">Checker</h2>
+<p>We all love quick failure, right? A quick failure can save our resource
+and time. Ohara offers many checks for your setting according to the
+<strong>expected</strong> type. For example, a setting declared <strong>Duration</strong> type has
+a checker which validate whether the input value is able to be cast to
+either java.time.Duration or scala.duration.Duration. However, you are
+going to design a complicated connector which has specific limit for
+input value.</p>
+<h2 id="denylist">DenyList</h2>
+<p>The denyList is useful information that it offers following checks.</p>
+<ol>
+<li>The restful APIs will reject the values in the denyList</li>
+<li>Ohara UI disable user to input the illegal words</li>
+</ol>
+<p>Currently, denyList is used by Array type only.</p>
+<h2 id="recommended-values">Recommended values</h2>
+<p>Recommended values is used by Ohara UI that it able to pop a list to
+users when they are using UI.</p>
+<p>Currently, recommended values is used by String type only.</p>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 20, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/0.11.x/setting_definition.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

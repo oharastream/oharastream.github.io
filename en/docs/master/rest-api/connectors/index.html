@@ -1,0 +1,1420 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Connector is core of application in Ohara pipeline. Connector has two type - source and sink. Source connector pulls data from another system and then push to topic. By contrast, Sink connector pulls data from topic and then push to another system.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/master/rest-api/connectors/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/master/rest-api/connectors/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/master/rest-api/connectors/">
+  <meta property="og:title" content="Connector | OharaStream">
+  <meta property="og:description" content="Connector is core of application in Ohara pipeline. Connector has two type - source and sink. Source connector pulls data from another system and then push to topic. By contrast, Sink connector pulls data from topic and then push to another system."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-18T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-08-19T17:28:11&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Connector | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Quickstart</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/quickstart/quickstartvm/">Using Quickstart VM</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="#">Contents</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/user_guide/">User Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/custom_connector/">Custom Connector</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/custom_stream/">Custom Stream</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/manager_dev_guide/">Ohara Manager Development Guideline</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/setting_definition/">Setting Definition Guide</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/shabondi/">Shabondi</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/integration_test/">Integration Test</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/build/build-quickstart-vm/">Build Quickstart VM</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/build/build-ohara/">How to build Ohara</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/docker/">Docker and Docker-compose</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/contributing/">Contributing</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/docs/master/rest-api/">REST APIs</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/docs/master/rest-api/">API Overview</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/brokers/">Broker API</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/docs/master/rest-api/connectors/">Connector API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/containers/">Container API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/files/">Files API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/inspect/">Inspect API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/logs/">Logs API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/nodes/">Node API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/objects/">Object API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/pipelines/">Pipeline API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/shabondis/">Shabondi API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/streams/">Stream API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/topics/">Topic API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/validate/">Validation API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/workers/">Worker API</a>
+      </li>
+      
+      <li >
+        <a href="/en/docs/master/rest-api/zookeepers/">Zookeeper API</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-settings">create the settings of connector</a></li>
+    <li><a href="#update-the-settings-of-connector">update the settings of connector</a></li>
+    <li><a href="#list-information-of-all-connectors">list information of all connectors</a></li>
+    <li><a href="#delete">delete a connector</a></li>
+    <li><a href="#get-info">get information of connector</a></li>
+    <li><a href="#start-a-connector">start a connector</a></li>
+    <li><a href="#stop">stop a connector</a></li>
+    <li><a href="#pause-a-connector">pause a connector</a></li>
+    <li><a href="#resume-a-connector">resume a connector</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Connector</h1>
+
+          <div class="article-style">
+            <p>Connector is core of application in Ohara
+
+<a href="/en/docs/master/rest-api/pipelines/">pipeline</a>. Connector has
+two type - source and sink. Source connector pulls data from another
+system and then push to topic. By contrast, Sink connector pulls data
+from topic and then push to another system. In order to use connector in
+
+<a href="/en/docs/master/rest-api/pipelines/">pipeline</a>, you have to
+set up a connector settings in Ohara and then add it to
+
+<a href="/en/docs/master/rest-api/pipelines/">pipeline</a>. Of course,
+the connector settings must belong to a existent connector in target
+worker cluster. By default, worker cluster hosts only the official
+connectors. If you have more custom requirement for connector, please
+follow 
+<a href="/en/docs/master/custom_connector/">custom connector guideline</a>
+to write your connector.</p>
+<p>Apart from custom settings, common settings are required by all
+connectors. The common settings are shown below.</p>
+<ol>
+<li>group (<strong>string</strong>) &mdash; the value of group is always &ldquo;default&rdquo;. The
+legal character is number, lowercase alphanumeric characters, or &lsquo;.&rsquo;</li>
+<li>name (<strong>string</strong>) &mdash; the name of this connector. The legal
+character is number, lowercase alphanumeric characters, or &lsquo;.&rsquo;</li>
+<li>connector.class (<strong>class</strong>) &mdash; class name of connector
+implementation</li>
+<li>topicKeys(<strong>array(object)</strong>) &mdash; the source topics or target topics
+for this connector</li>
+<li>columns (<strong>array(object)</strong>) &mdash; the schema of data for this
+connector
+<ul>
+<li>columns[i].name (<strong>string</strong>) &mdash; origin name of column</li>
+<li>columns[i].newName (<strong>string</strong>) &mdash; new name of column</li>
+<li>columns[i].dataType (<strong>string</strong>) &mdash; the type used to convert
+data</li>
+<li>columns[i].order (<strong>int</strong>) &mdash; the order of this column</li>
+</ul>
+</li>
+<li>numberOfTasks (<strong>int</strong>) &mdash; the number of tasks</li>
+<li>workerClusterKey (<strong>Object</strong>) &mdash; target worker cluster.
+<ul>
+<li>workerClusterKey.group (<strong>option(string)</strong>) &mdash; the group of
+cluster</li>
+<li>workerClusterKey.name (<strong>string</strong>) &mdash; the name of cluster</li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-note">
+  <div>
+    the following forms are legal as well: (1) <code>{&quot;name&quot;: &quot;n&quot;}</code>, (2) <code>&quot;n&quot;</code>.
+Both forms are converted to <code>{&quot;group&quot;: &quot;default&quot;, &quot;name&quot;: &quot;n&quot;}</code>
+  </div>
+</div>
+<ol start="8">
+<li>tags (<strong>object</strong>) - the extra description to this object</li>
+</ol>
+<p>The following information are updated by Ohara:</p>
+<ol>
+<li>group (<strong>string</strong>) &mdash; connector&rsquo;s group</li>
+<li>name (<strong>string</strong>) &mdash; connector&rsquo;s name</li>
+<li>lastModified (<strong>long</strong>) &mdash; the last time to update this connector</li>
+<li>state (<strong>option(string)</strong>) &mdash; the state of a started connector</li>
+<li>aliveNodes (<strong>Set(string)</strong>) &mdash; the nodes hosting this connector</li>
+<li>error (<strong>option(string)</strong>) &mdash; the error message from a failed
+connector. If the connector is fine or un-started, you won&rsquo;t get
+this field.</li>
+<li>tasksStatus (<strong>Array(object)</strong>) &mdash; the tasks status of this connector
+<ul>
+<li>tasksStatus[i].state (<strong>string</strong>) &mdash; the state of a started task.</li>
+<li>tasksStatus[i].nodeName (<strong>string</strong>) &mdash; the node hosting this task</li>
+<li>tasksStatus[i].error (<strong>option(string)</strong>) &mdash; the error
+message from a failed task. If the task is fine or un-started,
+you won&rsquo;t get this field.</li>
+<li>tasksStatus[i].coordinator (<strong>boolean</strong>) &mdash; true if this status
+is coordinator. otherwise, false</li>
+</ul>
+</li>
+<li>
+<a href="/en/docs/master/custom_connector/#metrics">nodeMetrics</a> (<strong>object</strong>) &mdash;
+the metrics from a running connector
+<ul>
+<li>meters (<strong>array(object)</strong>) &mdash; the metrics in meter type
+<ul>
+<li>meters[i].name (<strong>string</strong>) &mdash; the number of this meter
+(normally, it is unique)</li>
+<li>meters[i].value (<strong>double</strong>) &mdash; the value in double</li>
+<li>meters[i].valueInPerSec (<strong>double</strong>) &mdash; the average value
+in per second</li>
+<li>meters[i].unit (<strong>string</strong>) &mdash; the unit of value</li>
+<li>meters[i].document (<strong>string</strong>) &mdash; human-readable
+description to this meter</li>
+<li>meters[i].queryTime (<strong>Long</strong>) &mdash; the time we query this
+meter from remote nodes</li>
+<li>meters[i].startTime (<strong>Long</strong>) &mdash; the time to start this
+meter (not all services offer this record)</li>
+<li>meters[i].lastModified (<strong>Long</strong>) &mdash; the time of modifying
+metrics</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>The following keys are internal and protected so you can&rsquo;t define them
+in creating/updating connector.</p>
+<ol>
+<li>connectorKey &mdash; It points to the really (group, name) for the
+connector running in kafka.</li>
+<li>topics &mdash; It points to the really topic names in kafka for the
+connector running in kafka.</li>
+</ol>
+<h2 id="create-settings">create the settings of connector</h2>
+<p><em>POST /v0/connectors</em></p>
+<p>It is ok to lack some common settings when creating settings for a
+connector. However, it is illegal to start a connector with incomplete
+settings. For example, storing the settings consisting of only
+<strong>connector.name</strong> is ok. But stating a connector with above incomplete
+settings will introduce a error.</p>
+<ul>
+<li>
+<p>Example Request</p>
+<pre><code class="language-json">{
+  &quot;name&quot;:&quot;perf&quot;,
+  &quot;topicKeys&quot;: [&quot;t0&quot;],
+  &quot;workerClusterKey&quot;: &quot;wk&quot;,
+  &quot;connector.class&quot;:&quot;oharastream.ohara.connector.perf.PerfSource&quot;
+}
+</code></pre>
+</li>
+<li>
+<p>Example Response</p>
+<pre><code class="language-json">{
+  &quot;header.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;topicKeys&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;t0&quot;
+    }
+  ],
+  &quot;name&quot;: &quot;perf&quot;,
+  &quot;check.rule&quot;: &quot;NONE&quot;,
+  &quot;key.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;lastModified&quot;: 1577282907085,
+  &quot;tags&quot;: {},
+  &quot;value.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;perf.cell.length&quot;: 10,
+  &quot;tasks.max&quot;: 1,
+  &quot;perf.batch&quot;: 10,
+  &quot;perf.frequency&quot;: &quot;1000 milliseconds&quot;,
+  &quot;connector.class&quot;: &quot;oharastream.ohara.connector.perf.PerfSource&quot;,
+  &quot;revision&quot;: &quot;baafe4a3d875e5e5028b686c4f74f26cfd8b1b66&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;columns&quot;: [],
+  &quot;nodeMetrics&quot;: {
+    &quot;node00&quot;: {
+      &quot;meters&quot;: [
+        {
+          &quot;document&quot;: &quot;number of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;size (in bytes) of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 8.19825E+8,
+          &quot;valueInPerSec&quot;: 19094561.546523817
+        },
+        {
+          &quot;document&quot;: &quot;size of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;number of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827508,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 1275000.0,
+          &quot;valueInPerSec&quot;: 29694.66893355381
+        }
+      ]
+    }
+  },
+  &quot;workerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;wk&quot;
+  },
+  &quot;tasksStatus&quot;: [],
+  &quot;kind&quot;: &quot;source&quot;,
+  &quot;group&quot;: &quot;default&quot;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="update-the-settings-of-connector">update the settings of connector</h2>
+<p><em>PUT /v0/connectors/${name}?group=${group}</em></p>
+<div class="alert alert-hint">
+  <div>
+    you cannot update a non-stopped connector.
+  </div>
+</div>
+<ul>
+<li>
+<p>Example Request</p>
+<pre><code class="language-json">{
+  &quot;topicKeys&quot;: [
+    &quot;t1&quot;
+  ]
+}
+</code></pre>
+</li>
+<li>
+<p>Example Response</p>
+<pre><code class="language-json">{
+  &quot;header.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;topicKeys&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;t1&quot;
+    }
+  ],
+  &quot;name&quot;: &quot;perf&quot;,
+  &quot;check.rule&quot;: &quot;NONE&quot;,
+  &quot;key.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;lastModified&quot;: 1577283010533,
+  &quot;tags&quot;: {},
+  &quot;value.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;perf.cell.length&quot;: 10,
+  &quot;tasks.max&quot;: 1,
+  &quot;perf.batch&quot;: 10,
+  &quot;perf.frequency&quot;: &quot;1000 milliseconds&quot;,
+  &quot;connector.class&quot;: &quot;oharastream.ohara.connector.perf.PerfSource&quot;,
+  &quot;revision&quot;: &quot;baafe4a3d875e5e5028b686c4f74f26cfd8b1b66&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;columns&quot;: [],
+  &quot;nodeMetrics&quot;: {
+    &quot;node00&quot;: {
+      &quot;meters&quot;: [
+        {
+          &quot;document&quot;: &quot;number of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;size (in bytes) of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 8.19825E+8,
+          &quot;valueInPerSec&quot;: 19094561.546523817
+        },
+        {
+          &quot;document&quot;: &quot;size of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;number of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827508,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 1275000.0,
+          &quot;valueInPerSec&quot;: 29694.66893355381
+        }
+      ]
+    }
+  },
+  &quot;workerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;wk&quot;
+  },
+  &quot;tasksStatus&quot;: [],
+  &quot;kind&quot;: &quot;source&quot;,
+  &quot;group&quot;: &quot;default&quot;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="list-information-of-all-connectors">list information of all connectors</h2>
+<p><em>GET /v0/connectors</em></p>
+<p>the accepted query keys are listed below.</p>
+<ul>
+<li>group</li>
+<li>name</li>
+<li>lastModified</li>
+<li>tags</li>
+<li>tag - this field is similar to tags but it addresses the &ldquo;contain&rdquo; behavior.</li>
+<li>key</li>
+</ul>
+<ul>
+<li>Example Response
+<pre><code class="language-json">[
+  {
+    &quot;header.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+    &quot;author&quot;: &quot;root&quot;,
+    &quot;topicKeys&quot;: [
+      {
+        &quot;group&quot;: &quot;default&quot;,
+        &quot;name&quot;: &quot;t1&quot;
+      }
+    ],
+    &quot;name&quot;: &quot;perf&quot;,
+    &quot;check.rule&quot;: &quot;NONE&quot;,
+    &quot;key.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+    &quot;lastModified&quot;: 1577283010533,
+    &quot;tags&quot;: {},
+    &quot;value.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+    &quot;perf.cell.length&quot;: 10,
+    &quot;tasks.max&quot;: 1,
+    &quot;perf.batch&quot;: 10,
+    &quot;perf.frequency&quot;: &quot;1000 milliseconds&quot;,
+    &quot;connector.class&quot;: &quot;oharastream.ohara.connector.perf.PerfSource&quot;,
+    &quot;revision&quot;: &quot;baafe4a3d875e5e5028b686c4f74f26cfd8b1b66&quot;,
+    &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+    &quot;columns&quot;: [],
+  &quot;nodeMetrics&quot;: {
+    &quot;node00&quot;: {
+      &quot;meters&quot;: [
+        {
+          &quot;document&quot;: &quot;number of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;size (in bytes) of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 8.19825E+8,
+          &quot;valueInPerSec&quot;: 19094561.546523817
+        },
+        {
+          &quot;document&quot;: &quot;size of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;number of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827508,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 1275000.0,
+          &quot;valueInPerSec&quot;: 29694.66893355381
+        }
+      ]
+    }
+  },
+    &quot;workerClusterKey&quot;: {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;wk&quot;
+    },
+    &quot;tasksStatus&quot;: [],
+    &quot;kind&quot;: &quot;source&quot;,
+    &quot;group&quot;: &quot;default&quot;
+  }
+]
+</code></pre>
+</li>
+</ul>
+<h2 id="delete">delete a connector</h2>
+<p><em>DELETE /v0/connectors/${name}?group=${group}</em></p>
+<p>Deleting the settings used by a running connector is not allowed. You
+should 
+<a href="#stop">stop</a> connector before deleting it.</p>
+<ul>
+<li>
+<p>Example Response</p>
+<pre><code>204 NoContent
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    It is ok to delete an jar from an nonexistent connector or a running
+connector, and the response is 204 NoContent.
+  </div>
+</div>
+<h2 id="get-info">get information of connector</h2>
+<p><em>GET /v0/connectors/${name}?group=${group}</em></p>
+<ul>
+<li>Example Response
+<pre><code class="language-json">{
+  &quot;header.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;author&quot;: &quot;root&quot;,
+  &quot;topicKeys&quot;: [
+    {
+      &quot;group&quot;: &quot;default&quot;,
+      &quot;name&quot;: &quot;t1&quot;
+    }
+  ],
+  &quot;name&quot;: &quot;perf&quot;,
+  &quot;check.rule&quot;: &quot;NONE&quot;,
+  &quot;key.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;lastModified&quot;: 1577283010533,
+  &quot;tags&quot;: {},
+  &quot;value.converter&quot;: &quot;org.apache.kafka.connect.converters.ByteArrayConverter&quot;,
+  &quot;perf.cell.length&quot;: 10,
+  &quot;tasks.max&quot;: 1,
+  &quot;perf.batch&quot;: 10,
+  &quot;perf.frequency&quot;: &quot;1000 milliseconds&quot;,
+  &quot;connector.class&quot;: &quot;oharastream.ohara.connector.perf.PerfSource&quot;,
+  &quot;revision&quot;: &quot;baafe4a3d875e5e5028b686c4f74f26cfd8b1b66&quot;,
+  &quot;version&quot;: &quot;0.11.0-SNAPSHOT&quot;,
+  &quot;columns&quot;: [],
+  &quot;nodeMetrics&quot;: {
+    &quot;node00&quot;: {
+      &quot;meters&quot;: [
+        {
+          &quot;document&quot;: &quot;number of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;size (in bytes) of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 8.19825E+8,
+          &quot;valueInPerSec&quot;: 19094561.546523817
+        },
+        {
+          &quot;document&quot;: &quot;size of ignored messages&quot;,
+          &quot;lastModified&quot;: 1585068827510,
+          &quot;name&quot;: &quot;ignored.message.size&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827510,
+          &quot;unit&quot;: &quot;bytes&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;valueInPerSec&quot;: 0.0
+        },
+        {
+          &quot;document&quot;: &quot;number of messages&quot;,
+          &quot;lastModified&quot;: 1585068870445,
+          &quot;name&quot;: &quot;message.number&quot;,
+          &quot;queryTime&quot;: 1585068870341,
+          &quot;startTime&quot;: 1585068827508,
+          &quot;unit&quot;: &quot;messages&quot;,
+          &quot;value&quot;: 1275000.0,
+          &quot;valueInPerSec&quot;: 29694.66893355381
+        }
+      ]
+    }
+  },
+  &quot;workerClusterKey&quot;: {
+    &quot;group&quot;: &quot;default&quot;,
+    &quot;name&quot;: &quot;wk&quot;
+  },
+  &quot;tasksStatus&quot;: [],
+  &quot;kind&quot;: &quot;source&quot;,
+  &quot;group&quot;: &quot;default&quot;
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="start-a-connector">start a connector</h2>
+<p><em>PUT /v0/connectors/${name}/start?group=${group}</em></p>
+<p>Ohara will send a start request to specific worker cluster to start the
+connector with stored settings, and then make a response to called. The
+connector is executed async so the connector may be still in starting
+after you retrieve the response. You can send 
+<a href="#get-info">GET request</a>
+to see the state of connector. This request is idempotent so it is safe
+to retry this command repeatedly.</p>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use
+<a href="#get-info">Get Connector info</a> to fetch up-to-date status
+  </div>
+</div>
+<h2 id="stop">stop a connector</h2>
+<p><em>PUT /v0/connectors/${name}/stop?group=${group}</em></p>
+<p>Ohara will send a stop request to specific worker cluster to stop the
+connector. The stopped connector will be removed from worker cluster.
+The settings of connector is still kept by Ohara so you can start the
+connector with same settings again in the future. If you want to delete
+the connector totally, you should stop the connector and then
+
+<a href="#delete">delete</a> it. This
+request is idempotent so it is safe to send this request repeatedly.</p>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use <a href="#get-info">Get Connector info</a> to fetch up-to-date status
+  </div>
+</div>
+<h2 id="pause-a-connector">pause a connector</h2>
+<p><em>PUT /v0/connectors/${name}/pause?group=${group}</em></p>
+<p>Pausing a connector is to disable connector to pull/push data from/to
+source/sink. The connector is still alive in kafka. This request is
+idempotent so it is safe to send this request repeatedly.</p>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use <a href="#get-info">Get Connector info</a> to fetch up-to-date status
+  </div>
+</div>
+<h2 id="resume-a-connector">resume a connector</h2>
+<p><em>PUT /v0/connectors/${name}/resume?group=${group}</em></p>
+<p>Resuming a connector is to enable connector to pull/push data from/to
+source/sink. This request is idempotent so it is safe to retry this
+command repeatedly.</p>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    You should use <a href="#get-info">Get Connector info</a> to fetch up-to-date status
+  </div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 19, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/master/rest-api/connectors.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

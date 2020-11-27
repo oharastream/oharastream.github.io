@@ -1,0 +1,950 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Vito Jeng">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Create a new workspace with three nodes Create new topic into the workspace Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector 連接">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-ftp/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/en/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-ftp/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="OharaStream">
+  <meta property="og:url" content="https://oharastream.github.io/en/testcases/pipeline-jdbc-topic-ftp/">
+  <meta property="og:title" content="JDBC to Topic to FTP | OharaStream">
+  <meta property="og:description" content="Create a new workspace with three nodes Create new topic into the workspace Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector 連接"><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-15T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2020-06-22T17:36:56&#43;08:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>JDBC to Topic to FTP | OharaStream</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/en/">OharaStream</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/en/docs"><span>Docs</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/en/testcases/ohara-installation/">Test cases</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/en/testcases/ohara-installation/">Ohara installation</a>
+      </li>
+      
+      <li >
+        <a href="/en/testcases/pipeline-ftp-topic-stream-hdfs/">FTP to Topic to Stream to HDFS</a>
+      </li>
+      
+      <li class="active">
+        <a href="/en/testcases/pipeline-jdbc-topic-ftp/">JDBC to Topic to FTP</a>
+      </li>
+      
+      <li >
+        <a href="/en/testcases/pipeline-jdbc-topic-stream-topic-hdfs/">JDBC to Topic to Stream to HDFS</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</a></li>
+    <li><a href="#create-a-new-topic-in-the-workspace">Create a new topic in the workspace</a></li>
+    <li><a href="#create-a-new-pipeline-add-a-jdbc-source-connector-topics-and-a-ftp-sink-connector">Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector</a></li>
+    <li><a href="#連接-jdbc-source---topic---ftp-sink">連接 JDBC source -&gt; Topic -&gt; FTP sink</a></li>
+    <li><a href="#prepare-the-required-output-folder-on-the-ftp-server">Prepare the required output folder on the FTP server</a></li>
+    <li><a href="#prepare-the-required-table-and-data-on-the-postgresql-server">Prepare the required table and data on the PostgreSQL server</a></li>
+    <li><a href="#start-all-connectors-on-the-secondpipeline-page">Start all connectors on the secondpipeline page</a></li>
+    <li><a href="#verify-which-test-data-was-successfully-dumped-to-ftp-server">Verify which test data was successfully dumped to FTP server</a></li>
+    <li><a href="#how-to-create-table-and-insert-data">How to create table and insert data?</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>JDBC to Topic to FTP</h1>
+
+          <div class="article-style">
+            <ul>
+<li>
+<a href="#create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</a></li>
+<li>
+<a href="#create-a-new-topic-in-the-workspace">Create new topic into the workspace</a></li>
+<li>
+<a href="#create-a-new-pipeline-add-a-jdbc-source-connector-topics-and-a-ftp-sink-connector">Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector</a></li>
+<li>
+<a href="#%e9%80%a3%e6%8e%a5-jdbc-source---topic---ftp-sink">連接 JDBC source -&gt; Topic -&gt; FTP sink</a></li>
+<li>
+<a href="#prepare-the-required-table-and-data-on-the-postgresql-server">Prepare the required table and data on the PostgreSQL server</a></li>
+<li>
+<a href="#prepare-the-required-output-folder-on-the-ftp-server">Prepare the required output folder on the FTP server</a></li>
+<li>
+<a href="#start-all-connectors-on-the-secondpipeline-page">Start all connectors on the secondpipeline page</a></li>
+<li>
+<a href="#verify-which-test-data-was-successfully-dumped-to-ftp-server">Verify which test data was successfully dumped to FTP server</a></li>
+</ul>
+<h2 id="create-a-new-workspace-with-three-nodes">Create a new workspace with three nodes</h2>
+<p><strong>Add three nodes:</strong></p>
+<ol>
+<li>On the Nodes page, click the <kbd>NEW NODE</kbd> button.</li>
+<li>Enter <code>&lt;ohara_node_host&gt;</code> in the <strong>Node</strong> field.</li>
+<li>Enter <code>&lt;ohara_node_port&gt;</code> in the <strong>Port</strong> field.</li>
+<li>Enter <code>&lt;node_user&gt;</code> in the <strong>User</strong> field.</li>
+<li>Enter <code>&lt;node_password&gt;</code> in the <strong>Password</strong> field.</li>
+<li>Click <kbd>TEST CONNECTION</kbd> to test your connection.</li>
+<li>If the test passes, click <kbd>ADD</kbd>.</li>
+<li>Repeat the above steps to add <strong>three nodes</strong>.</li>
+</ol>
+<p><strong>Create a new workspace:</strong></p>
+<ol>
+<li>On the Workspaces page, click the <kbd>NEW WORKSPACE</kbd> button.</li>
+<li>Enter “wk01” in the <strong>Name</strong> field.</li>
+<li>Select all available nodes from the Node List.</li>
+<li>Add plugins:
+<ol>
+<li>Click the <kbd>NEW PLUGIN</kbd> button.</li>
+<li>Select <code>postgresql-9.1-901-1.jdbc4.jar</code> form your disk (download the jar 
+<a href="https://repo1.maven.org/maven2/postgresql/postgresql/9.1-901-1.jdbc4/postgresql-9.1-901-1.jdbc4.jar" target="_blank" rel="noopener">here</a>), the jar should be displayed in the <strong>Plugin List</strong>, make sure you check the jar you just uploaded.</li>
+</ol>
+</li>
+<li>Click <kbd>ADD</kbd>.</li>
+</ol>
+<h2 id="create-a-new-topic-in-the-workspace">Create a new topic in the workspace</h2>
+<p><strong>Add a new topic:</strong></p>
+<ol>
+<li>On the <strong>Workspaces</strong> &gt; <strong>wk01</strong> &gt; <strong>TOPICS</strong> tab, click the <kbd>NEW TOPIC</kbd> button.</li>
+<li>Enter “t3” in the <strong>Topic name</strong> field and enter default value in other fields, click <kbd>ADD</kbd>.</li>
+</ol>
+<h2 id="create-a-new-pipeline-add-a-jdbc-source-connector-topics-and-a-ftp-sink-connector">Create a new pipeline, add a jdbc source connector, topics and a ftp sink connector</h2>
+<ol>
+<li>On the <strong>Pipelines</strong> list page, click the <kbd>NEW PIPLINE</kbd> button.</li>
+<li>Enter “secondpipeline” in the <strong>Pipeline name</strong> field and select “wk01” from the Workspace name dropdown. Then, click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a source connector</strong> icon and select <strong>oharastream.ohara.connector.jdbc.source.JDBCSourceConnector</strong> from the list, then click <kbd>ADD</kbd>.</li>
+<li>Enter “jdbcsource” in the <strong>myconnector</strong> field and click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a topic</strong> icon and select <strong>t3</strong> from the dropdown and click <kbd>ADD</kbd>.</li>
+<li>Click the <strong>Add a sink connector</strong> icon and select <strong>oharastream.ohara.connector.ftp.FtpSink</strong> from the list, then click <kbd>ADD</kbd>.</li>
+<li>Enter “ftpsink” in the <strong>myconnector</strong> field and click <kbd>ADD</kbd> button.</li>
+</ol>
+<h2 id="連接-jdbc-source---topic---ftp-sink">連接 JDBC source -&gt; Topic -&gt; FTP sink</h2>
+<p><strong>Set up jdbcsource connector:</strong></p>
+<ol>
+<li>On the <strong>secondpipeline</strong> page, click the <strong>jdbcsource</strong> graph in the pipeline graph.</li>
+<li>Select the <strong>COMMON</strong> tab, fill out the form with the following config:
+<ol>
+<li>Enter “&lt;jdbc_url&gt;” (jdbc url for PostgreSQL server) in the <strong>jdbc url</strong> field.</li>
+<li>Enter “&lt;database_username&gt;“ in the <strong>user name</strong> field.</li>
+<li>Enter “&lt;database_password&gt;“ in the <strong>password</strong> field.</li>
+<li>Enter “&lt;database_table&gt;” in the <strong>table name</strong> field.</li>
+<li>Enter “&lt;table_timestamp&gt;” in the <strong>timestamp column name</strong> field.</li>
+<li>Change flush size from 1000 to 10 in the <strong>JDBC flush Size</strong> field.</li>
+</ol>
+</li>
+<li>Select the <strong>CORE</strong> tab, select the <strong>t3</strong> from the <strong>Topics</strong> dropdown.</li>
+</ol>
+<p><strong>Set up ftpsink connector:</strong></p>
+<ol>
+<li>Click the <strong>ftpsink</strong> object in pipeline graph.</li>
+<li>Select the <strong>COMMON</strong> tab, enter the following in the fields.
+<ol>
+<li>Enter “/demo/output” in the <strong>Output Folder</strong> field.</li>
+<li>Click the <strong>write header</strong> checkbox, make it checked.</li>
+<li>Enter <code>&lt;ftp_server_ip&gt;</code> in the <strong>Hostname of FTP Server</strong> field.</li>
+<li>Enter <code>&lt;ftp_server_port&gt;</code> in the <strong>Port of FTP Server</strong> field.</li>
+<li>Enter <code>ftp_username</code> in the <strong>User of FTP Server</strong> field.</li>
+<li>Enter <code>ftp_password</code> in the <strong>Password of FTP Server</strong> field.</li>
+</ol>
+</li>
+<li>Select the <strong>CORE</strong> tab and select <strong>t3</strong> from the <strong>Topics</strong> dropdown.</li>
+</ol>
+<h2 id="prepare-the-required-output-folder-on-the-ftp-server">Prepare the required output folder on the FTP server</h2>
+<ol>
+<li>Open a terminal, login to FTP server (or use a FTP client of your choice)</li>
+</ol>
+<pre><code>$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+</code></pre>
+<ol start="2">
+<li>Create the following folders.</li>
+</ol>
+<pre><code>ftp&gt; mkdir demo
+ftp&gt; cd demo
+ftp&gt; mkdir output
+ftp&gt; bye
+</code></pre>
+<h2 id="prepare-the-required-table-and-data-on-the-postgresql-server">Prepare the required table and data on the PostgreSQL server</h2>
+<p><strong>Check database has table and data:</strong></p>
+<ol>
+<li>Open a terminal and log into the PostgreSQL server.</li>
+</ol>
+<pre><code>$ psql -h &lt;PostgreSQL_server_ip&gt; -W &lt;database_name&gt; -U &lt;user_name&gt;
+</code></pre>
+<ol start="2">
+<li>check table is exist</li>
+</ol>
+<pre><code>postgres=# \dt
+          List of relations
+ Schema |    Name     | Type  | Owner
+--------+-------------+-------+-------
+ public | person_data | table | ohara
+ public | test_data   | table | ohara
+(2 rows)
+</code></pre>
+<ol start="3">
+<li>check table info</li>
+</ol>
+<pre><code>postgres=# \d person_data
+                        Table &quot;public.person_data&quot;
+  Column   |            Type             | Collation | Nullable | Default
+-----------+-----------------------------+-----------+----------+---------
+ index     | integer                     |           | not null |
+ name      | character varying           |           |          |
+ age       | integer                     |           |          |
+ id        | character varying           |           |          |
+ timestamp | timestamp without time zone |           |          | now()
+
+</code></pre>
+<ol start="4">
+<li>check table has data</li>
+</ol>
+<pre><code>postgres=# select * from person_data;
+ index |  name   | age |     id     |      timestamp
+-------+---------+-----+------------+---------------------
+     1 | Sam     |  33 | H123378803 | 2019-03-08 18:52:00
+     2 | Jay     |  25 | A159330943 | 2019-03-08 18:53:00
+     3 | Leon    |  31 | J156498160 | 2019-03-08 19:52:00
+     4 | Stanley |  40 | D113134484 | 2019-03-08 20:00:00
+     5 | Jordan  |  21 | U141236791 | 2019-03-08 20:10:20
+     6 | Kayden  |  20 | E290773637 | 2019-03-09 18:52:59
+     7 | Dillon  |  28 | M225842758 | 2019-03-09 20:52:59
+     8 | Ross    |  33 | F229128254 | 2019-03-09 20:15:59
+     9 | Gunnar  |  50 | Q107872026 | 2019-03-09 21:00:59
+    10 | Tyson   |  26 | N197744193 | 2019-03-09 21:05:59
+..........
+</code></pre>
+<p>
+<a href="#how-to-create-table-and-insert-data">How to create table and insert data?</a></p>
+<h2 id="start-all-connectors-on-the-secondpipeline-page">Start all connectors on the secondpipeline page</h2>
+<ol>
+<li>On the <strong>secondpipeline</strong> page.</li>
+<li>Click the <strong>Start pipeline</strong> icon.</li>
+</ol>
+<h2 id="verify-which-test-data-was-successfully-dumped-to-ftp-server">Verify which test data was successfully dumped to FTP server</h2>
+<ol>
+<li>Open a terminal, login to FTP server.</li>
+</ol>
+<pre><code>$ ftp `ftp_server_ip`
+Name: `ftp_username`
+Password: `ftp_password`
+</code></pre>
+<ol start="2">
+<li>list all result CSV files in <strong>/demo/output/wk01-t3/partition0</strong> folder.</li>
+</ol>
+<pre><code>$ ftp ls /demo/output/wk01-t3/partition0
+/demo/output/wk01-t3/partition0/wk01-t3-0-000000000.csv
+</code></pre>
+<ol start="3">
+<li>get the CSV file from ftp server to local.</li>
+</ol>
+<pre><code>$ ftp cd /demo/output/wk01-t3/wk01
+$ ftp get wk01-t3-0-000000000.csv ./wk01-t3-0-000000000.csv
+$ ftp bye
+</code></pre>
+<ol start="4">
+<li>View the content of <strong>wk01-t3-0-000000000.csv</strong>.</li>
+</ol>
+<pre><code>$ cat wk01-t3-0-000000000.csv
+index,name,age,id,timestamp
+1,Sam,33,H123378803,2019-03-08 18:52:00.0
+2,Jay,25,A159330943,2019-03-08 18:53:00.0
+3,Leon,31,J156498160,2019-03-08 19:52:00.0
+4,Stanley,40,D113134484,2019-03-08 20:00:00.0
+5,Jordan,21,U141236791,2019-03-08 20:10:20.0
+6,Kayden,20,E290773637,2019-03-09 18:52:59.0
+8,Ross,33,F229128254,2019-03-09 20:15:59.0
+7,Dillon,28,M225842758,2019-03-09 20:52:59.0
+9,Gunnar,50,Q107872026,2019-03-09 21:00:59.0
+10,Tyson,26,N197744193,2019-03-09 21:05:59.0
+
+</code></pre>
+<h2 id="how-to-create-table-and-insert-data">How to create table and insert data?</h2>
+<ol>
+<li>Create table <strong>person_data</strong>.</li>
+</ol>
+<pre><code>postgres=# create table person_data (
+postgres=#   index INTEGER NOT NULL,
+postgres=#   name character varying,
+postgres=#   age INTEGER,
+postgres=#   id character varying,
+postgres=#   timestamp timestamp without time zone DEFAULT NOW()
+postgres=# );
+</code></pre>
+<ol start="2">
+<li>insert data into table <strong>person_data</strong>.</li>
+</ol>
+<pre><code>postgres=# insert into person_data (index,name,age,id)values(1,'Sam',33,'H123378803'),
+	(2,'Jay',25,'A159330943'),
+	(3,'Leon',31,'J156498160'),
+	(4,'Stanley',40,'D113134484'),
+	(5,'Jordan',21,'U141236791'),
+	(6,'Kayden',20,'E290773637'),
+	(7,'Dillon',28,'M225842758'),
+	(8,'Ross',33,'F229128254'),
+	(9,'Gunnar',50,'Q107872026'),
+	(10,'Tyson',26,'N197744193');
+</code></pre>
+
+          </div>
+
+          
+
+
+
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jun 22, 2020</p>
+
+          
+
+
+
+
+
+
+  
+  
+
+<p class="edit-page">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/testcases/pipeline-jdbc-topic-ftp.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/en/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

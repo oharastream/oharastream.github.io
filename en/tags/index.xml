@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags | OharaStream</title>
+    <link>https://oharastream.github.io/en/tags/</link>
+      <atom:link href="https://oharastream.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png</url>
+      <title>Tags</title>
+      <link>https://oharastream.github.io/en/tags/</link>
+    </image>
+    
+  </channel>
+</rss>
