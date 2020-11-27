@@ -241,7 +241,7 @@
     
       <meta property="article:published_time" content="2020-06-16T00:00:00&#43;01:00">
     
-    <meta property="article:modified_time" content="2020-08-19T17:28:11&#43;08:00">
+    <meta property="article:modified_time" content="2020-11-27T11:35:00&#43;08:00">
   
 
   
@@ -603,6 +603,8 @@
         <li><a href="#code-coverage">Code Coverage</a></li>
         <li><a href="#linting">Linting</a></li>
         <li><a href="#format">Format</a></li>
+        <li><a href="#type-checking">Type checking</a></li>
+        <li><a href="#license">License</a></li>
         <li><a href="#build">Build</a></li>
         <li><a href="#ohara-manager-image">Ohara manager image</a></li>
         <li><a href="#ci-server-integration">CI server integration</a></li>
@@ -725,7 +727,7 @@ variable:</p>
 <pre><code class="language-shell">$ yarn test:unit:ci
 </code></pre>
 <p>Please note that this is a one-off run command, often when you&rsquo;re in
-the development, you would run test and stay in Jest&rsquo;s watch mode
+the development, you would run the test and stay in Jest&rsquo;s watch mode
 which reloads the test once you save your changes:</p>
 <pre><code class="language-shell">$ yarn test:unit:watch
 </code></pre>
@@ -735,8 +737,8 @@ which reloads the test once you save your changes:</p>
 <code>ohara-manager/client/coverage/ut/</code></p>
 <div class="alert alert-note">
   <div>
-    We will automate check the threshold of code coverage by
-<strong>Statements &gt; 40%</strong> if you issued the <code>test:unit:ci</code> command.
+    We will automatically check the code coverage threshold by
+<strong>Statements &gt; 40%</strong> if you issue the <code>test:unit:ci</code> command.
   </div>
 </div>
 <h4 id="api-test">API test</h4>
@@ -750,13 +752,13 @@ your test manually through the UI.</p>
 <p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.</p>
-<pre><code class="language-shell">$ yarn test:api:ci --configurator ${http://host:port/v0 --port 0}
+<pre><code class="language-shell">$ yarn test:api:ci --configurator ${http://host:port/v0} --port 0
 </code></pre>
 <blockquote>
 <ol>
 <li>Generated test coverage reports could be found in <code>ohara-manager/client/coverage/api</code>
 if you executed test with <strong>Electron mode</strong>.</li>
-<li>The <code>--port 0</code> means randomly choose a port for this test run.</li>
+<li>The <code>--port 0</code> means using a random port.</li>
 </ol>
 </blockquote>
 <div class="alert alert-note">
@@ -766,24 +768,24 @@ if you executed test with <strong>Electron mode</strong>.</li>
   </div>
 </div>
 <h4 id="it-test">IT test</h4>
-<p>To test our UI flows, we use Cypress to test our UI flow with <strong>fake</strong> configurator. These
+<p>To test our UI flows, we run these test via Cypress with a <strong>fake</strong> configurator. These
 tests focus on the behaviors of UI flow (by different operations from UI), so they should
-cover most of our UI logic.  You can run the test in different modes:</p>
+cover most of our UI logic. You can run the test in different modes:</p>
 <p><strong>GUI mode</strong>: this will open Cypress test runner, you can then run
 your test manually through the UI.</p>
-<pre><code class="language-shell">$ yarn test🇮🇹open
+<pre><code class="language-shell">$ yarn test:it:open
 </code></pre>
 <p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.</p>
-<pre><code class="language-shell">$ yarn test🇮🇹ci --configurator ${http://host:port/v0 --port 0}
+<pre><code class="language-shell">$ yarn test:it:ci --configurator ${http://host:port/v0} --port 0
 </code></pre>
 <p>This command will generate test coverage reports, which can be found in
 <code>ohara-manager/client/coverage/it/</code></p>
 <div class="alert alert-note">
   <div>
-    We will automate check the threshold of code coverage by
-<strong>Statements &gt; 75%</strong> if you issued the <code>test🇮🇹ci</code> command.
+    We will automate check the code coverage threshold by
+<strong>Statements &gt; 75%</strong> if you issue the <code>test:it:ci</code> command.
   </div>
 </div>
 <h4 id="end-to-end-test">End-to-End test</h4>
@@ -827,7 +829,7 @@ the following commands:</p>
 <ul>
 <li><code>yarn test:unit:ci</code></li>
 <li><code>yarn test:api:ci</code></li>
-<li><code>yarn test🇮🇹ci</code></li>
+<li><code>yarn test:it:ci</code></li>
 </ul>
 <p>we will generate the corresponded coverage reports in relative path as each test section described, and
 you could combine them to see the overall picture:</p>
@@ -875,6 +877,18 @@ code. You can format all <code>.js</code> files with:</p>
 <li>You can ignore files or folders when running <code>yarn format</code> by
 editing the <code>.prettierignore</code> in the Ohara-manager root.</li>
 </ul>
+<h3 id="type-checking">Type checking</h3>
+<p>We&rsquo;re in the progress of moving from plain JavaScript to TypeScript. Although not all source are moved to TS, you can still type checking files:</p>
+<pre><code class="language-shell">$ yarn typecheck
+</code></pre>
+<h3 id="license">License</h3>
+<p>We&rsquo;re enforcing all of our source code files to have a license header, so when creating a new file like <code>.js</code> or <code>.tsx</code> etc. You will need to include the license header or it would fail on our CI. We provide two npm scripts that your can take advantage of and so you won&rsquo;t need to add the license header manually</p>
+<p>Checking if all files include the license header</p>
+<pre><code class="language-shell">$ yarn license:test
+</code></pre>
+<p>Add license header for files that miss it</p>
+<pre><code class="language-shell">$ license:apply
+</code></pre>
 <h3 id="build">Build</h3>
 <p><strong>Note that this step is only required for the Client NOT THE SERVER</strong></p>
 <p>You can get production-ready static files by using the following
@@ -948,14 +962,16 @@ start the manager:</p>
 <p>There are more gradle tasks that are not listed in the above, you can
 view them in <code>/ohara-manager/build.gradle</code></p>
 <h3 id="clean">Clean</h3>
-<p>Clean up all running processes, removing <code>test-reports/</code> in the
-<strong>Server</strong> and <code>/build</code> directory in the <strong>Client</strong>:</p>
-<pre><code class="language-shell">$ yarn clean
-</code></pre>
 <p>Clean all running processes started with node.js</p>
-<pre><code class="language-shell">$ yarn clean:process
+<pre><code class="language-shell">$ yarn clean:processes
 </code></pre>
 <p>This is useful when you want to kill all node.js processes locally</p>
+<p>Clean test test reports, coverage reports and build artifacts</p>
+<pre><code class="language-shell">$ yarn clean:files
+</code></pre>
+<p>Remove both <code>node_modules</code> from Server and Client, this is useful when you want to do a clean install</p>
+<pre><code class="language-shell">$ yarn clean:deps
+</code></pre>
 <h3 id="prepush">Prepush</h3>
 <p>We also provide a npm script to run Client&rsquo;s unit test, linting, and
 format all the JavaScript files with. <strong>Ideally, you&rsquo;d run this
@@ -984,9 +1000,7 @@ author Ohara manager code.</p>
     &quot;**/coverage&quot;: true
   },
   &quot;javascript.updateImportsOnFileMove.enabled&quot;: &quot;always&quot;,
-  &quot;eslint.workingDirectories&quot;: [
-     &quot;./client&quot;
-   ]
+  &quot;eslint.workingDirectories&quot;: [&quot;./client&quot;]
 }
 </code></pre>
 <p><strong>Recommend extensions</strong></p>
@@ -1102,7 +1116,7 @@ won&rsquo;t be able to connect to the configurator without a real IP</p>
 <li>
 <p>As we mentioned in the previous sections. Please double
 check your configurator URL spelling. This is usually the
-cause of the above-mentioned error.</p>
+cause of the above-mentioned errors.</p>
 </li>
 </ul>
 
@@ -1116,7 +1130,7 @@ cause of the above-mentioned error.</p>
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 19, 2020</p>
+          <p>Last updated on Nov 27, 2020</p>
 
           
 

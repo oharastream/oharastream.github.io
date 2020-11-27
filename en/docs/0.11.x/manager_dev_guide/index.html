@@ -771,19 +771,19 @@ tests focus on the behaviors of UI flow (by different operations from UI), so th
 cover most of our UI logic.  You can run the test in different modes:</p>
 <p><strong>GUI mode</strong>: this will open Cypress test runner, you can then run
 your test manually through the UI.</p>
-<pre><code class="language-shell">$ yarn test🇮🇹open
+<pre><code class="language-shell">$ yarn test:it:open
 </code></pre>
 <p><strong>Electron mode(headless)</strong>: since we&rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.</p>
-<pre><code class="language-shell">$ yarn test🇮🇹ci --configurator ${http://host:port/v0 --port 0}
+<pre><code class="language-shell">$ yarn test:it:ci --configurator ${http://host:port/v0 --port 0}
 </code></pre>
 <p>This command will generate test coverage reports, which can be found in
 <code>ohara-manager/client/coverage/it/</code></p>
 <div class="alert alert-note">
   <div>
     We will automate check the threshold of code coverage by
-<strong>Statements &gt; 75%</strong> if you issued the <code>test🇮🇹ci</code> command.
+<strong>Statements &gt; 75%</strong> if you issued the <code>test:it:ci</code> command.
   </div>
 </div>
 <h4 id="end-to-end-test">End-to-End test</h4>
@@ -827,7 +827,7 @@ the following commands:</p>
 <ul>
 <li><code>yarn test:unit:ci</code></li>
 <li><code>yarn test:api:ci</code></li>
-<li><code>yarn test🇮🇹ci</code></li>
+<li><code>yarn test:it:ci</code></li>
 </ul>
 <p>we will generate the corresponded coverage reports in relative path as each test section described, and
 you could combine them to see the overall picture:</p>

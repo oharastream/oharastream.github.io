@@ -879,7 +879,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    You can create more workspace with the plus icon(➕) in the App bar.
+    You can create more workspace with the plus icon(:heavy_plus_sign:) in the App bar.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;alert alert-warning&#34;&gt;
@@ -5515,19 +5515,19 @@ tests focus on the behaviors of UI flow (by different operations from UI), so th
 cover most of our UI logic.  You can run the test in different modes:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;GUI mode&lt;/strong&gt;: this will open Cypress test runner, you can then run
 your test manually through the UI.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test🇮🇹open
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:it:open
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Electron mode(headless)&lt;/strong&gt;: since we&amp;rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test🇮🇹ci --configurator ${http://host:port/v0 --port 0}
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:it:ci --configurator ${http://host:port/v0 --port 0}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This command will generate test coverage reports, which can be found in
 &lt;code&gt;ohara-manager/client/coverage/it/&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     We will automate check the threshold of code coverage by
-&lt;strong&gt;Statements &amp;gt; 75%&lt;/strong&gt; if you issued the &lt;code&gt;test🇮🇹ci&lt;/code&gt; command.
+&lt;strong&gt;Statements &amp;gt; 75%&lt;/strong&gt; if you issued the &lt;code&gt;test:it:ci&lt;/code&gt; command.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;end-to-end-test&#34;&gt;End-to-End test&lt;/h4&gt;
@@ -5571,7 +5571,7 @@ the following commands:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;yarn test:unit:ci&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;yarn test:api:ci&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;yarn test🇮🇹ci&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yarn test:it:ci&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;we will generate the corresponded coverage reports in relative path as each test section described, and
 you could combine them to see the overall picture:&lt;/p&gt;

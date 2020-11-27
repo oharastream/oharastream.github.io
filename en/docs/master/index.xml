@@ -244,7 +244,7 @@ if there is already a &lt;code&gt;vboxnet0&lt;/code&gt; adapter in your VirtualB
 &lt;h4 id=&#34;for-maclinux&#34;&gt;for Mac/Linux&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Create new network adapter &amp;mdash; Click &lt;strong&gt;Tools&lt;/strong&gt; and then click &lt;strong&gt;Create&lt;/strong&gt;,
+&lt;p&gt;Create new network adapter &amp;mdash; Click &amp;ldquo;Tools&amp;rdquo; and then click &amp;ldquo;Create&amp;rdquo;,
 ensure that the DHCP Enable option is checked.
 
 
@@ -277,8 +277,8 @@ ensure that the DHCP Enable option is checked.
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Setting network adapter &amp;mdash; Select the imported &lt;strong&gt;ohara-quickstart-x.x.x&lt;/strong&gt; VM,
-click &lt;strong&gt;Setting&lt;/strong&gt;, then click &lt;strong&gt;Network&lt;/strong&gt;, and click &lt;strong&gt;Adapter2&lt;/strong&gt;,
-select &lt;strong&gt;Host-only Adapter&lt;/strong&gt;, and select the newly added network card.
+click &amp;ldquo;Setting&amp;rdquo;, then click &amp;ldquo;Network&amp;rdquo;, and click &amp;ldquo;Adapter2&amp;rdquo;,
+select &amp;ldquo;Host-only Adapter&amp;rdquo;, and select the newly added network card.
 
 
 
@@ -312,7 +312,7 @@ select &lt;strong&gt;Host-only Adapter&lt;/strong&gt;, and select the newly adde
 &lt;h4 id=&#34;for-windows&#34;&gt;for Windows&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Create new network adapter &amp;mdash; Click &lt;strong&gt;Global Tools&lt;/strong&gt; and then click &lt;strong&gt;Create&lt;/strong&gt;,
+&lt;p&gt;Create new network adapter &amp;mdash; Click &amp;ldquo;Global Tools&amp;rdquo; and then click &amp;ldquo;Create&amp;rdquo;,
 ensure that the DHCP Enable option is checked.
 
 
@@ -345,8 +345,8 @@ ensure that the DHCP Enable option is checked.
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Setting network adapter &amp;mdash; Select the imported &lt;strong&gt;ohara-quickstart-x.x.x&lt;/strong&gt; VM,
-click &lt;strong&gt;Setting&lt;/strong&gt;, click &lt;strong&gt;Network&lt;/strong&gt;, click &lt;strong&gt;Adapter2&lt;/strong&gt;,
-select &lt;strong&gt;Host-only Adapter&lt;/strong&gt;, and select the newly added network card.
+click &amp;ldquo;Setting&amp;rdquo;, click &amp;ldquo;Network&amp;rdquo;, click &amp;ldquo;Adapter2&amp;rdquo;,
+select &amp;ldquo;Host-only Adapter&amp;rdquo;, and select the newly added network card.
 
 
 
@@ -483,8 +483,8 @@ And pipelines are services that run in a workspace.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Pipeline&lt;/p&gt;
-&lt;p&gt;Pipeline allows you to define your data stream by utilizing &lt;strong&gt;Connector&lt;/strong&gt; to connect to
-external storage systems, as well as a &lt;strong&gt;Stream&lt;/strong&gt; to customize data transformation and stream processing.&lt;/p&gt;
+&lt;p&gt;Pipeline allows you to define your data stream by utilizing &amp;ldquo;Connector&amp;rdquo; to connect to
+external storage systems, as well as a &amp;ldquo;Stream&amp;rdquo; to customize data transformation and stream processing.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Connector&lt;/p&gt;
@@ -505,7 +505,7 @@ provides users a simple way to write their own stream processing application.&lt
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;ui-overview&#34;&gt;UI overview&lt;/h2&gt;
-&lt;p&gt;Before we proceed, here is a screenshot of &lt;strong&gt;Ohara Manager&lt;/strong&gt; where we show you each component&amp;rsquo;s name, so you are better prepared for the upcoming tutorial. You can always come back to this overview if you are lost or not sure what we&amp;rsquo;re talking about in the tutorial.&lt;/p&gt;
+&lt;p&gt;Before we proceed, here is a screenshot of &amp;ldquo;Ohara Manager&amp;rdquo; where we show you each component&amp;rsquo;s name, so you are better prepared for the upcoming tutorial. You can always come back to this overview if you are lost or not sure what we&amp;rsquo;re talking about in the tutorial.&lt;/p&gt;
 
 
 
@@ -561,11 +561,11 @@ Here are the steps that we will be going through together:&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;create-a-workspace&#34;&gt;Create a workspace&lt;/h2&gt;
-&lt;p&gt;Open Ohara Manager with your browser (http://192.168.56.102:5050) and you should see a dialog
+&lt;p&gt;Open Ohara Manager with your browser of choice (http://192.168.56.102:5050) and you should see a dialog
 showing up right in the middle of your screen:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Click on the &lt;strong&gt;QUICK CREATE&lt;/strong&gt; button to open a new dialog
+&lt;p&gt;Click on the &amp;ldquo;QUICK CREATE&amp;rdquo; button to open quick create workspace dialog
 
 
 
@@ -596,7 +596,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Using the default name: &lt;em&gt;workspace1&lt;/em&gt; and hit the &lt;strong&gt;NEXT&lt;/strong&gt; button
+&lt;p&gt;Using the default name: &lt;em&gt;workspace1&lt;/em&gt; and hit the &amp;ldquo;NEXT&amp;rdquo; button
 
 
 
@@ -627,9 +627,37 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Click on the Select nodes and click on the pencil icon to create a new node.&lt;/p&gt;
+&lt;p&gt;Click on the &amp;ldquo;Select nodes&amp;rdquo; and click on the &amp;ldquo;plus&amp;rdquo; icon to create a new node.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure &gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;../img/quick-create-workspace-node-icon.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;../img/quick-create-workspace-node-icon.png&#34; class=&#34;lazyload&#34; alt=&#34;Quick create workspace new node icon&#34; width=&#34;100%&#34; height=&#34;100%&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
 
 
 
@@ -690,7 +718,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;The node info that you need to enter are listed below:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Hostname: &lt;em&gt;192.168.56.102&lt;/em&gt; (fill your own hostname here)&lt;/li&gt;
+&lt;li&gt;Hostname: &lt;em&gt;192.168.56.102&lt;/em&gt; (replace with your own hostname here)&lt;/li&gt;
 &lt;li&gt;Port: &lt;em&gt;22&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;User: &lt;em&gt;ohara&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Password: &lt;em&gt;oharastream&lt;/em&gt;&lt;/li&gt;
@@ -726,7 +754,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The node should be added into the list. Select the node and click on the SAVE button to close the dialog&lt;/li&gt;
+&lt;li&gt;The node should be added into the list. Select the node and click on the &amp;ldquo;SAVE&amp;rdquo; button to close the dialog&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -757,7 +785,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Now, click the &lt;strong&gt;NEXT&lt;/strong&gt; button to finish selecting nodes&lt;/li&gt;
+&lt;li&gt;Now, click the &amp;ldquo;NEXT&amp;rdquo; button to finish this step&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -788,7 +816,38 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Click on the &lt;strong&gt;SUBMIT&lt;/strong&gt; button to create this workspace.&lt;/li&gt;
+&lt;li&gt;We won&amp;rsquo;t be using the volumes in this tutorial, so click on the &amp;ldquo;NEXT&amp;rdquo; button to skip this step.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure &gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;../img/quick-create-workspace-volumes.png&#34; &gt;
+
+
+  &lt;img data-src=&#34;../img/quick-create-workspace-volumes.png&#34; class=&#34;lazyload&#34; alt=&#34;Quick create workspace node summary&#34; width=&#34;100%&#34; height=&#34;100%&#34;&gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Here you can see a summary of your workspace settings. If everything looks good to you, let&amp;rsquo;s click on the &amp;ldquo;SUBMIT&amp;rdquo; button to create this workspace!&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -819,7 +878,7 @@ showing up right in the middle of your screen:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;A new dialog will open where it shows you the creating progress. This usually takes a while to finish. Once it&amp;rsquo;s done, You can close the dialog by clicking on the CLOSE button. And the UI will automatically redirect you to the newly created workspace: &lt;em&gt;Workspace1&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;A new dialog with the title &amp;ldquo;Create Workspace&amp;rdquo; will be opened where it shows you the creating progress. This usually takes a while to finish. Once it&amp;rsquo;s done, You can close the dialog by clicking on the &amp;ldquo;CLOSE&amp;rdquo; button. And the UI will redirect you to the newly created workspace: &lt;em&gt;Workspace1&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -879,23 +938,22 @@ showing up right in the middle of your screen:&lt;/p&gt;
 
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    You can create more workspace with the plus icon(➕) in the App bar.
+    You can create more workspace with the plus icon(:heavy_plus_sign:) in the App bar.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;alert alert-warning&#34;&gt;
   &lt;div&gt;
-    Please keep in mind that this is a quick start VM where we run everything on a single node
-with only 8GB of RAM and 2 CPU cores. We highly recommend you to add more RAM and CPU
-core to your VM if you plan to create more than one workspace or lots of pipelines, connectors,
-streams, etc. This is due to when Ohara is running without enough resources, it could be very
+    Please keep in mind that since this is a just a quick start VM where we run everything on a single node
+with only 8GB of RAM and 2 CPU cores. If you plan to create more workspace in this VM or services like pipelines, connectors or stream, etc. We highly recommend you to add more RAM and CPU
+core to your VM. And when Ohara is running without enough resources, it could be very
 unstable and causing unexpected errors.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;create-a-pipeline&#34;&gt;Create a pipeline&lt;/h2&gt;
 &lt;p&gt;Create a pipeline is fairly simple:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;On the Navigator, click on the plus icon.&lt;/li&gt;
-&lt;li&gt;In the popup window, enter the name: pipeline1 and click the &lt;strong&gt;ADD&lt;/strong&gt; button
+&lt;li&gt;On the Navigator, click on the &amp;ldquo;plus&amp;rdquo; icon.&lt;/li&gt;
+&lt;li&gt;In the dialog, enter the name: &amp;ldquo;pipeline1&amp;rdquo; and click the &amp;ldquo;ADD&amp;rdquo; button
 
 
 
@@ -924,7 +982,7 @@ unstable and causing unexpected errors.
 
 &lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;The new pipeline will be added into the workspace and listed in the Navigator.
+&lt;li&gt;The new pipeline will be added right into the workspace and listed in the Navigator.
 And just like creating workspace, you will be redirected to the pipeline you just created.
 
 
@@ -964,7 +1022,7 @@ The pipeline connection we&amp;rsquo;re about to create will look like:
 &lt;p&gt;&lt;strong&gt;FTP source:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;From the Toolbox (Please refer to the overview image for what is Toolbox if needed)&lt;/p&gt;
+&lt;p&gt;From the Toolbox (Please refer to the overview image for what Toolbox is if necessary)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Click on the title &amp;ldquo;Source&amp;rdquo;, the panel will be expanded and display all available source connectors
@@ -998,7 +1056,7 @@ The pipeline connection we&amp;rsquo;re about to create will look like:
 &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Drag the &amp;ldquo;FtpSource&amp;rdquo; from the list and drop into the Paper (Don&amp;rsquo;t worry about the position just yet. This can be changed later after it&amp;rsquo;s added into the Paper). A prompt will be asking you about the connector name, let&amp;rsquo;s name it &amp;ldquo;ftpsource&amp;rdquo; and click the ADD button.
+&lt;p&gt;Click and drag the &amp;ldquo;FtpSource&amp;rdquo; from the list and drop it into the Paper (Don&amp;rsquo;t worry about the position just yet. This can be changed after it&amp;rsquo;s added). A prompt will be asking you about the connector name, let&amp;rsquo;s name it &amp;ldquo;ftpsource&amp;rdquo; and click the &amp;ldquo;ADD&amp;rdquo; button.
 
 
 
@@ -1060,7 +1118,7 @@ The pipeline connection we&amp;rsquo;re about to create will look like:
 &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Now, hover over the Ftp source connector, a couple of buttons will show up. These are action buttons, let&amp;rsquo;s take a quick look and see what can we do with them (starting from left to right):
+&lt;p&gt;Now, hover over the Ftp source connector, a couple of buttons will show up. These are action buttons, let&amp;rsquo;s take a quick look to see what we can do with them (starting from left to right):
 
 
 
@@ -1100,14 +1158,14 @@ The pipeline connection we&amp;rsquo;re about to create will look like:
 &lt;/ul&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    A &lt;strong&gt;Link&lt;/strong&gt; can also be interacted with. You can remove it by clicking on the &amp;ldquo;x&amp;rdquo; button.
+    A &amp;ldquo;Link&amp;rdquo; can also be interacted with. You can remove it by clicking on the &amp;ldquo;x&amp;rdquo; button.
 And click on any point of the link creates a vertex. The vertex can be moved and tweaked to change its position.
 You can also delete a vertex by double clicking on it.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Okay, that&amp;rsquo;s enough of these button things. Let&amp;rsquo;s click on the &amp;ldquo;configure&amp;rdquo; icon (a wrench) and fill in the following fields (Note that you need to use your own settings, and create completed, error, input and output directories on your own FTP service). For fields that we did not mention below, the default is used:&lt;/p&gt;
+&lt;p&gt;Okay, that&amp;rsquo;s enough of these button things. Let&amp;rsquo;s click on the &amp;ldquo;configure&amp;rdquo; icon (a wrench) and fill in the following fields (Again, you need to use your own settings, and create &lt;em&gt;completed&lt;/em&gt;, &lt;em&gt;error&lt;/em&gt;, &lt;em&gt;input&lt;/em&gt; and &lt;em&gt;output&lt;/em&gt; directories on your own FTP service). For fields that we did not mention below, the default is used:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Completed Folder: &lt;em&gt;demo/completed&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Error Folder: &lt;em&gt;demo/error&lt;/em&gt;&lt;/li&gt;
@@ -1119,7 +1177,7 @@ You can also delete a vertex by double clicking on it.
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Once these settings had been filled out, click on the &lt;strong&gt;SAVE CHANGES&lt;/strong&gt; button.
+&lt;p&gt;Once these settings had been filled out, click on the &amp;ldquo;SAVE CHANGES&amp;rdquo; button.
 
 
 
@@ -1152,12 +1210,12 @@ You can also delete a vertex by double clicking on it.
 &lt;/ul&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    There are validation rules which will prevent you from submitting the form without filling require fields.
+    There are validation rules which will prevent you from submitting the form without filling required fields.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;FTP sink:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Just like FTP source connector, let&amp;rsquo;s drag and drop a FTP sink connector from the Toolbox and name it &amp;ldquo;ftpsink&amp;rdquo;.
-After it&amp;rsquo;s added in the Paper, click on its &amp;ldquo;configure&amp;rdquo; button. The settings are mostly like FTP source with the only exception: &amp;ldquo;output&amp;rdquo;:&lt;/p&gt;
+After it&amp;rsquo;s added into the Paper, click on its &amp;ldquo;configure&amp;rdquo; button. The settings are mostly like FTP source with the only exception: &amp;ldquo;output&amp;rdquo;:&lt;/p&gt;
 &lt;p&gt;
 
 
@@ -1204,10 +1262,10 @@ After it&amp;rsquo;s added in the Paper, click on its &amp;ldquo;configure&amp;r
 &lt;figure &gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;../img/ftpsink-config.png&#34; &gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;../img/ftpsink-add-config.png&#34; &gt;
 
 
-  &lt;img data-src=&#34;../img/ftpsink-config.png&#34; class=&#34;lazyload&#34; alt=&#34;Add a FTP sink configuration&#34; width=&#34;100%&#34; height=&#34;100%&#34;&gt;
+  &lt;img data-src=&#34;../img/ftpsink-add-config.png&#34; class=&#34;lazyload&#34; alt=&#34;Add a FTP sink configuration&#34; width=&#34;100%&#34; height=&#34;100%&#34;&gt;
 &lt;/a&gt;
 
 
@@ -1403,7 +1461,7 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Click on the plus icon to open select file dialog:&lt;/li&gt;
+&lt;li&gt;Click on the &amp;ldquo;plus&amp;rdquo; icon to open Select file dialog:&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -1434,7 +1492,7 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The workspace file list are currently empty, let&amp;rsquo;s add a new file by clicking on the upload icon. This will open your OS file system, you can then select the stream jar file you downloaded. The stream class will be loaded and displayed in the list:&lt;/li&gt;
+&lt;li&gt;The workspace file list are empty right now, let&amp;rsquo;s add a new file by clicking on the upload icon. This will open your OS file system, you can then select the stream jar file you downloaded. The stream class will be loaded and displayed in the list:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
 
@@ -1493,7 +1551,7 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 &lt;/figure&gt;
 &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Select the stream and click on the SAVE button to close select file dialog&lt;/li&gt;
+&lt;li&gt;Select the stream and click on the &amp;ldquo;SAVE&amp;rdquo; button to close select file dialog&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -1526,6 +1584,11 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The stream file should now listed in your Stream Jars page. Close this page by clicking on the close button on the upper-right corner&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The stream file listed in the list should have a green check icon in the valid column (see below screenshot), if it somehow doesn&amp;rsquo;t have that, double check your stream file is the one downloaded from our release page. Or file an issue to our GitHub repository if the issue persists.
+  &lt;/div&gt;
+&lt;/div&gt;
 
 
 
@@ -1587,11 +1650,11 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Now let&amp;rsquo;s work through the configuration together. Hover over the stream component and click on the &amp;ldquo;Configure&amp;rdquo; button to open the configure dialog&lt;/li&gt;
-&lt;li&gt;Fill out the form with the following settings and click the &amp;ldquo;&lt;strong&gt;SAVE CHANGES&lt;/strong&gt;&amp;rdquo; button:
+&lt;li&gt;Fill out the form with the following settings and click the &amp;ldquo;SAVE CHANGES&amp;rdquo; button:
 &lt;ul&gt;
 &lt;li&gt;header name to be filtered: &lt;em&gt;&amp;ldquo;Sex&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;column value to be filtered: &lt;em&gt;&amp;ldquo;M&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Node name list: &lt;em&gt;192.168.56.111&lt;/em&gt; (you should use you own IP)&lt;/li&gt;
+&lt;li&gt;Node name list: &lt;em&gt;192.168.56.111&lt;/em&gt; (replace with your own)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -1627,8 +1690,8 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
   &lt;div&gt;
     This stream is capable of filtering out columns and values that we specified and then push
 the new result to a topic. Here we&amp;rsquo;re specifically setting the &amp;ldquo;Sex&amp;rdquo; as the filtered header
-and &amp;ldquo;M&amp;rdquo; as the filtered value (stands for Man) and so our output data will only &amp;ldquo;include&amp;rdquo;
-data that contains &amp;ldquo;M&amp;rdquo; value in the &amp;ldquo;Sex&amp;rdquo; column. We will verify the result later in the tutorial.
+and &amp;ldquo;M&amp;rdquo; as the filtered value (M stands for Man) and so our output data will only &amp;ldquo;includes&amp;rdquo;
+data that contains &amp;ldquo;M&amp;rdquo; value in the &amp;ldquo;Sex&amp;rdquo; column. We will verify the result later.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Everything is ready. We can now create the connection like we mentioned earlier:
@@ -1697,8 +1760,9 @@ to work with (You can close the Toolbox by clicking on the close icon on the top
 
 &lt;ul&gt;
 &lt;li&gt;Repeat the same step but this time with &amp;ldquo;T1&amp;rdquo; to create a connection from T1 to stream&lt;/li&gt;
-&lt;li&gt;And stream -&amp;gt; T2 then T2 -&amp;gt; FTP sink connector. After you are done, you should have a graph like this (Components position have been tweaked so it&amp;rsquo;s better to see the relation between these components):&lt;/li&gt;
+&lt;li&gt;And stream -&amp;gt; T2 then T2 -&amp;gt; FTP sink connector.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;After you complete the whole connection, you should have a graph like this (Components position have been tweaked as well so it&amp;rsquo;s easier to see the relation between them):&lt;/p&gt;
 
 
 
@@ -1729,7 +1793,7 @@ to work with (You can close the Toolbox by clicking on the close icon on the top
 
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    You can also create the connection during configuring the connector or stream. For connector, just choose the topic from its topic list. For stream, you will need to choose both &lt;em&gt;&amp;ldquo;from&amp;rdquo;&lt;/em&gt; and &lt;em&gt;&amp;ldquo;to&amp;rdquo;&lt;/em&gt; topics from the topic list.
+    There is another way to create a connection. When configuring a connector, just choose the topic from its topic list. When configuring stream, you will need to choose both &lt;em&gt;&amp;ldquo;from&amp;rdquo;&lt;/em&gt; and &lt;em&gt;&amp;ldquo;to&amp;rdquo;&lt;/em&gt; topics from the topic list.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h3 id=&#34;start-pipeline-components&#34;&gt;Start pipeline components&lt;/h3&gt;
@@ -2144,7 +2208,7 @@ item from the Pipeline actions
 &lt;/figure&gt;
 
 &lt;ul&gt;
-&lt;li&gt;A confirm dialog will pop up. Enter the workspace name and click on the DELETE button to start deleting. (Note that if you still have some services running in the workspace, you won&amp;rsquo;t able to proceed. You should following the instruction mention in the above to stop all pipelines first)&lt;/li&gt;
+&lt;li&gt;A confirm dialog will pop up. Enter the workspace name and click on the &amp;ldquo;DELETE&amp;rdquo; button to start deleting. (Note that if you still have some services running in the workspace, you won&amp;rsquo;t able to proceed. You should following the instruction mention in the above to stop all pipelines first)&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -5469,7 +5533,7 @@ variable:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:unit:ci
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Please note that this is a one-off run command, often when you&amp;rsquo;re in
-the development, you would run test and stay in Jest&amp;rsquo;s watch mode
+the development, you would run the test and stay in Jest&amp;rsquo;s watch mode
 which reloads the test once you save your changes:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:unit:watch
 &lt;/code&gt;&lt;/pre&gt;
@@ -5479,8 +5543,8 @@ which reloads the test once you save your changes:&lt;/p&gt;
 &lt;code&gt;ohara-manager/client/coverage/ut/&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    We will automate check the threshold of code coverage by
-&lt;strong&gt;Statements &amp;gt; 40%&lt;/strong&gt; if you issued the &lt;code&gt;test:unit:ci&lt;/code&gt; command.
+    We will automatically check the code coverage threshold by
+&lt;strong&gt;Statements &amp;gt; 40%&lt;/strong&gt; if you issue the &lt;code&gt;test:unit:ci&lt;/code&gt; command.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;api-test&#34;&gt;API test&lt;/h4&gt;
@@ -5494,13 +5558,13 @@ your test manually through the UI.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Electron mode(headless)&lt;/strong&gt;: since we&amp;rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:api:ci --configurator ${http://host:port/v0 --port 0}
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:api:ci --configurator ${http://host:port/v0} --port 0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Generated test coverage reports could be found in &lt;code&gt;ohara-manager/client/coverage/api&lt;/code&gt;
 if you executed test with &lt;strong&gt;Electron mode&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;The &lt;code&gt;--port 0&lt;/code&gt; means randomly choose a port for this test run.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;--port 0&lt;/code&gt; means using a random port.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
@@ -5510,24 +5574,24 @@ if you executed test with &lt;strong&gt;Electron mode&lt;/strong&gt;.&lt;/li&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;it-test&#34;&gt;IT test&lt;/h4&gt;
-&lt;p&gt;To test our UI flows, we use Cypress to test our UI flow with &lt;strong&gt;fake&lt;/strong&gt; configurator. These
+&lt;p&gt;To test our UI flows, we run these test via Cypress with a &lt;strong&gt;fake&lt;/strong&gt; configurator. These
 tests focus on the behaviors of UI flow (by different operations from UI), so they should
-cover most of our UI logic.  You can run the test in different modes:&lt;/p&gt;
+cover most of our UI logic. You can run the test in different modes:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;GUI mode&lt;/strong&gt;: this will open Cypress test runner, you can then run
 your test manually through the UI.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test🇮🇹open
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:it:open
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Electron mode(headless)&lt;/strong&gt;: since we&amp;rsquo;re running our API test on CI
 under this mode. You might often want to run your tests in this mode
 locally as well.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test🇮🇹ci --configurator ${http://host:port/v0 --port 0}
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn test:it:ci --configurator ${http://host:port/v0} --port 0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This command will generate test coverage reports, which can be found in
 &lt;code&gt;ohara-manager/client/coverage/it/&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    We will automate check the threshold of code coverage by
-&lt;strong&gt;Statements &amp;gt; 75%&lt;/strong&gt; if you issued the &lt;code&gt;test🇮🇹ci&lt;/code&gt; command.
+    We will automate check the code coverage threshold by
+&lt;strong&gt;Statements &amp;gt; 75%&lt;/strong&gt; if you issue the &lt;code&gt;test:it:ci&lt;/code&gt; command.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;end-to-end-test&#34;&gt;End-to-End test&lt;/h4&gt;
@@ -5571,7 +5635,7 @@ the following commands:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;yarn test:unit:ci&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;yarn test:api:ci&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;yarn test🇮🇹ci&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yarn test:it:ci&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;we will generate the corresponded coverage reports in relative path as each test section described, and
 you could combine them to see the overall picture:&lt;/p&gt;
@@ -5619,6 +5683,18 @@ code. You can format all &lt;code&gt;.js&lt;/code&gt; files with:&lt;/p&gt;
 &lt;li&gt;You can ignore files or folders when running &lt;code&gt;yarn format&lt;/code&gt; by
 editing the &lt;code&gt;.prettierignore&lt;/code&gt; in the Ohara-manager root.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;type-checking&#34;&gt;Type checking&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re in the progress of moving from plain JavaScript to TypeScript. Although not all source are moved to TS, you can still type checking files:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn typecheck
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;license&#34;&gt;License&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re enforcing all of our source code files to have a license header, so when creating a new file like &lt;code&gt;.js&lt;/code&gt; or &lt;code&gt;.tsx&lt;/code&gt; etc. You will need to include the license header or it would fail on our CI. We provide two npm scripts that your can take advantage of and so you won&amp;rsquo;t need to add the license header manually&lt;/p&gt;
+&lt;p&gt;Checking if all files include the license header&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn license:test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Add license header for files that miss it&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ license:apply
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;build&#34;&gt;Build&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Note that this step is only required for the Client NOT THE SERVER&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You can get production-ready static files by using the following
@@ -5692,14 +5768,16 @@ start the manager:&lt;/p&gt;
 &lt;p&gt;There are more gradle tasks that are not listed in the above, you can
 view them in &lt;code&gt;/ohara-manager/build.gradle&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;clean&#34;&gt;Clean&lt;/h3&gt;
-&lt;p&gt;Clean up all running processes, removing &lt;code&gt;test-reports/&lt;/code&gt; in the
-&lt;strong&gt;Server&lt;/strong&gt; and &lt;code&gt;/build&lt;/code&gt; directory in the &lt;strong&gt;Client&lt;/strong&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn clean
-&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Clean all running processes started with node.js&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn clean:process
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn clean:processes
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is useful when you want to kill all node.js processes locally&lt;/p&gt;
+&lt;p&gt;Clean test test reports, coverage reports and build artifacts&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn clean:files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Remove both &lt;code&gt;node_modules&lt;/code&gt; from Server and Client, this is useful when you want to do a clean install&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ yarn clean:deps
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;prepush&#34;&gt;Prepush&lt;/h3&gt;
 &lt;p&gt;We also provide a npm script to run Client&amp;rsquo;s unit test, linting, and
 format all the JavaScript files with. &lt;strong&gt;Ideally, you&amp;rsquo;d run this
@@ -5728,9 +5806,7 @@ author Ohara manager code.&lt;/p&gt;
     &amp;quot;**/coverage&amp;quot;: true
   },
   &amp;quot;javascript.updateImportsOnFileMove.enabled&amp;quot;: &amp;quot;always&amp;quot;,
-  &amp;quot;eslint.workingDirectories&amp;quot;: [
-     &amp;quot;./client&amp;quot;
-   ]
+  &amp;quot;eslint.workingDirectories&amp;quot;: [&amp;quot;./client&amp;quot;]
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Recommend extensions&lt;/strong&gt;&lt;/p&gt;
@@ -5846,7 +5922,7 @@ won&amp;rsquo;t be able to connect to the configurator without a real IP&lt;/p&g
 &lt;li&gt;
 &lt;p&gt;As we mentioned in the previous sections. Please double
 check your configurator URL spelling. This is usually the
-cause of the above-mentioned error.&lt;/p&gt;
+cause of the above-mentioned errors.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>

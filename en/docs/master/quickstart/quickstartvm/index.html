@@ -245,7 +245,7 @@
     
       <meta property="article:published_time" content="2020-06-15T00:00:00&#43;01:00">
     
-    <meta property="article:modified_time" content="2020-07-31T18:41:45&#43;08:00">
+    <meta property="article:modified_time" content="2020-11-27T16:34:54&#43;08:00">
   
 
   
@@ -706,7 +706,7 @@ if there is already a <code>vboxnet0</code> adapter in your VirtualBox, you can 
 <h4 id="for-maclinux">for Mac/Linux</h4>
 <ol>
 <li>
-<p>Create new network adapter &mdash; Click <strong>Tools</strong> and then click <strong>Create</strong>,
+<p>Create new network adapter &mdash; Click &ldquo;Tools&rdquo; and then click &ldquo;Create&rdquo;,
 ensure that the DHCP Enable option is checked.
 
 
@@ -739,8 +739,8 @@ ensure that the DHCP Enable option is checked.
 </li>
 <li>
 <p>Setting network adapter &mdash; Select the imported <strong>ohara-quickstart-x.x.x</strong> VM,
-click <strong>Setting</strong>, then click <strong>Network</strong>, and click <strong>Adapter2</strong>,
-select <strong>Host-only Adapter</strong>, and select the newly added network card.
+click &ldquo;Setting&rdquo;, then click &ldquo;Network&rdquo;, and click &ldquo;Adapter2&rdquo;,
+select &ldquo;Host-only Adapter&rdquo;, and select the newly added network card.
 
 
 
@@ -774,7 +774,7 @@ select <strong>Host-only Adapter</strong>, and select the newly added network ca
 <h4 id="for-windows">for Windows</h4>
 <ol>
 <li>
-<p>Create new network adapter &mdash; Click <strong>Global Tools</strong> and then click <strong>Create</strong>,
+<p>Create new network adapter &mdash; Click &ldquo;Global Tools&rdquo; and then click &ldquo;Create&rdquo;,
 ensure that the DHCP Enable option is checked.
 
 
@@ -807,8 +807,8 @@ ensure that the DHCP Enable option is checked.
 </li>
 <li>
 <p>Setting network adapter &mdash; Select the imported <strong>ohara-quickstart-x.x.x</strong> VM,
-click <strong>Setting</strong>, click <strong>Network</strong>, click <strong>Adapter2</strong>,
-select <strong>Host-only Adapter</strong>, and select the newly added network card.
+click &ldquo;Setting&rdquo;, click &ldquo;Network&rdquo;, click &ldquo;Adapter2&rdquo;,
+select &ldquo;Host-only Adapter&rdquo;, and select the newly added network card.
 
 
 
@@ -945,8 +945,8 @@ And pipelines are services that run in a workspace.</p>
 </li>
 <li>
 <p>Pipeline</p>
-<p>Pipeline allows you to define your data stream by utilizing <strong>Connector</strong> to connect to
-external storage systems, as well as a <strong>Stream</strong> to customize data transformation and stream processing.</p>
+<p>Pipeline allows you to define your data stream by utilizing &ldquo;Connector&rdquo; to connect to
+external storage systems, as well as a &ldquo;Stream&rdquo; to customize data transformation and stream processing.</p>
 </li>
 <li>
 <p>Connector</p>
@@ -967,7 +967,7 @@ provides users a simple way to write their own stream processing application.</p
 </li>
 </ul>
 <h2 id="ui-overview">UI overview</h2>
-<p>Before we proceed, here is a screenshot of <strong>Ohara Manager</strong> where we show you each component&rsquo;s name, so you are better prepared for the upcoming tutorial. You can always come back to this overview if you are lost or not sure what we&rsquo;re talking about in the tutorial.</p>
+<p>Before we proceed, here is a screenshot of &ldquo;Ohara Manager&rdquo; where we show you each component&rsquo;s name, so you are better prepared for the upcoming tutorial. You can always come back to this overview if you are lost or not sure what we&rsquo;re talking about in the tutorial.</p>
 
 
 
@@ -1023,11 +1023,11 @@ Here are the steps that we will be going through together:</p>
   </div>
 </div>
 <h2 id="create-a-workspace">Create a workspace</h2>
-<p>Open Ohara Manager with your browser (http://192.168.56.102:5050) and you should see a dialog
+<p>Open Ohara Manager with your browser of choice (http://192.168.56.102:5050) and you should see a dialog
 showing up right in the middle of your screen:</p>
 <ul>
 <li>
-<p>Click on the <strong>QUICK CREATE</strong> button to open a new dialog
+<p>Click on the &ldquo;QUICK CREATE&rdquo; button to open quick create workspace dialog
 
 
 
@@ -1058,7 +1058,7 @@ showing up right in the middle of your screen:</p>
 </p>
 </li>
 <li>
-<p>Using the default name: <em>workspace1</em> and hit the <strong>NEXT</strong> button
+<p>Using the default name: <em>workspace1</em> and hit the &ldquo;NEXT&rdquo; button
 
 
 
@@ -1089,9 +1089,37 @@ showing up right in the middle of your screen:</p>
 </p>
 </li>
 <li>
-<p>Click on the Select nodes and click on the pencil icon to create a new node.</p>
+<p>Click on the &ldquo;Select nodes&rdquo; and click on the &ldquo;plus&rdquo; icon to create a new node.</p>
 </li>
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-node-icon.png" >
+
+
+  <img data-src="../img/quick-create-workspace-node-icon.png" class="lazyload" alt="Quick create workspace new node icon" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
 
 
 
@@ -1152,7 +1180,7 @@ showing up right in the middle of your screen:</p>
 <li>
 <p>The node info that you need to enter are listed below:</p>
 <ul>
-<li>Hostname: <em>192.168.56.102</em> (fill your own hostname here)</li>
+<li>Hostname: <em>192.168.56.102</em> (replace with your own hostname here)</li>
 <li>Port: <em>22</em></li>
 <li>User: <em>ohara</em></li>
 <li>Password: <em>oharastream</em></li>
@@ -1188,7 +1216,7 @@ showing up right in the middle of your screen:</p>
 </figure>
 
 <ul>
-<li>The node should be added into the list. Select the node and click on the SAVE button to close the dialog</li>
+<li>The node should be added into the list. Select the node and click on the &ldquo;SAVE&rdquo; button to close the dialog</li>
 </ul>
 
 
@@ -1219,7 +1247,7 @@ showing up right in the middle of your screen:</p>
 </figure>
 
 <ul>
-<li>Now, click the <strong>NEXT</strong> button to finish selecting nodes</li>
+<li>Now, click the &ldquo;NEXT&rdquo; button to finish this step</li>
 </ul>
 
 
@@ -1250,7 +1278,38 @@ showing up right in the middle of your screen:</p>
 </figure>
 
 <ul>
-<li>Click on the <strong>SUBMIT</strong> button to create this workspace.</li>
+<li>We won&rsquo;t be using the volumes in this tutorial, so click on the &ldquo;NEXT&rdquo; button to skip this step.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure >
+
+
+  <a data-fancybox="" href="../img/quick-create-workspace-volumes.png" >
+
+
+  <img data-src="../img/quick-create-workspace-volumes.png" class="lazyload" alt="Quick create workspace node summary" width="100%" height="100%">
+</a>
+
+
+
+</figure>
+
+<ul>
+<li>Here you can see a summary of your workspace settings. If everything looks good to you, let&rsquo;s click on the &ldquo;SUBMIT&rdquo; button to create this workspace!</li>
 </ul>
 
 
@@ -1281,7 +1340,7 @@ showing up right in the middle of your screen:</p>
 </figure>
 
 <ul>
-<li>A new dialog will open where it shows you the creating progress. This usually takes a while to finish. Once it&rsquo;s done, You can close the dialog by clicking on the CLOSE button. And the UI will automatically redirect you to the newly created workspace: <em>Workspace1</em></li>
+<li>A new dialog with the title &ldquo;Create Workspace&rdquo; will be opened where it shows you the creating progress. This usually takes a while to finish. Once it&rsquo;s done, You can close the dialog by clicking on the &ldquo;CLOSE&rdquo; button. And the UI will redirect you to the newly created workspace: <em>Workspace1</em></li>
 </ul>
 
 
@@ -1341,23 +1400,22 @@ showing up right in the middle of your screen:</p>
 
 <div class="alert alert-note">
   <div>
-    You can create more workspace with the plus icon(➕) in the App bar.
+    You can create more workspace with the plus icon(:heavy_plus_sign:) in the App bar.
   </div>
 </div>
 <div class="alert alert-warning">
   <div>
-    Please keep in mind that this is a quick start VM where we run everything on a single node
-with only 8GB of RAM and 2 CPU cores. We highly recommend you to add more RAM and CPU
-core to your VM if you plan to create more than one workspace or lots of pipelines, connectors,
-streams, etc. This is due to when Ohara is running without enough resources, it could be very
+    Please keep in mind that since this is a just a quick start VM where we run everything on a single node
+with only 8GB of RAM and 2 CPU cores. If you plan to create more workspace in this VM or services like pipelines, connectors or stream, etc. We highly recommend you to add more RAM and CPU
+core to your VM. And when Ohara is running without enough resources, it could be very
 unstable and causing unexpected errors.
   </div>
 </div>
 <h2 id="create-a-pipeline">Create a pipeline</h2>
 <p>Create a pipeline is fairly simple:</p>
 <ul>
-<li>On the Navigator, click on the plus icon.</li>
-<li>In the popup window, enter the name: pipeline1 and click the <strong>ADD</strong> button
+<li>On the Navigator, click on the &ldquo;plus&rdquo; icon.</li>
+<li>In the dialog, enter the name: &ldquo;pipeline1&rdquo; and click the &ldquo;ADD&rdquo; button
 
 
 
@@ -1386,7 +1444,7 @@ unstable and causing unexpected errors.
 
 </figure>
 </li>
-<li>The new pipeline will be added into the workspace and listed in the Navigator.
+<li>The new pipeline will be added right into the workspace and listed in the Navigator.
 And just like creating workspace, you will be redirected to the pipeline you just created.
 
 
@@ -1426,7 +1484,7 @@ The pipeline connection we&rsquo;re about to create will look like:
 <p><strong>FTP source:</strong></p>
 <ul>
 <li>
-<p>From the Toolbox (Please refer to the overview image for what is Toolbox if needed)</p>
+<p>From the Toolbox (Please refer to the overview image for what Toolbox is if necessary)</p>
 </li>
 <li>
 <p>Click on the title &ldquo;Source&rdquo;, the panel will be expanded and display all available source connectors
@@ -1460,7 +1518,7 @@ The pipeline connection we&rsquo;re about to create will look like:
 </p>
 </li>
 <li>
-<p>Drag the &ldquo;FtpSource&rdquo; from the list and drop into the Paper (Don&rsquo;t worry about the position just yet. This can be changed later after it&rsquo;s added into the Paper). A prompt will be asking you about the connector name, let&rsquo;s name it &ldquo;ftpsource&rdquo; and click the ADD button.
+<p>Click and drag the &ldquo;FtpSource&rdquo; from the list and drop it into the Paper (Don&rsquo;t worry about the position just yet. This can be changed after it&rsquo;s added). A prompt will be asking you about the connector name, let&rsquo;s name it &ldquo;ftpsource&rdquo; and click the &ldquo;ADD&rdquo; button.
 
 
 
@@ -1522,7 +1580,7 @@ The pipeline connection we&rsquo;re about to create will look like:
 </p>
 </li>
 <li>
-<p>Now, hover over the Ftp source connector, a couple of buttons will show up. These are action buttons, let&rsquo;s take a quick look and see what can we do with them (starting from left to right):
+<p>Now, hover over the Ftp source connector, a couple of buttons will show up. These are action buttons, let&rsquo;s take a quick look to see what we can do with them (starting from left to right):
 
 
 
@@ -1562,14 +1620,14 @@ The pipeline connection we&rsquo;re about to create will look like:
 </ul>
 <div class="alert alert-note">
   <div>
-    A <strong>Link</strong> can also be interacted with. You can remove it by clicking on the &ldquo;x&rdquo; button.
+    A &ldquo;Link&rdquo; can also be interacted with. You can remove it by clicking on the &ldquo;x&rdquo; button.
 And click on any point of the link creates a vertex. The vertex can be moved and tweaked to change its position.
 You can also delete a vertex by double clicking on it.
   </div>
 </div>
 <ul>
 <li>
-<p>Okay, that&rsquo;s enough of these button things. Let&rsquo;s click on the &ldquo;configure&rdquo; icon (a wrench) and fill in the following fields (Note that you need to use your own settings, and create completed, error, input and output directories on your own FTP service). For fields that we did not mention below, the default is used:</p>
+<p>Okay, that&rsquo;s enough of these button things. Let&rsquo;s click on the &ldquo;configure&rdquo; icon (a wrench) and fill in the following fields (Again, you need to use your own settings, and create <em>completed</em>, <em>error</em>, <em>input</em> and <em>output</em> directories on your own FTP service). For fields that we did not mention below, the default is used:</p>
 <ul>
 <li>Completed Folder: <em>demo/completed</em></li>
 <li>Error Folder: <em>demo/error</em></li>
@@ -1581,7 +1639,7 @@ You can also delete a vertex by double clicking on it.
 </ul>
 </li>
 <li>
-<p>Once these settings had been filled out, click on the <strong>SAVE CHANGES</strong> button.
+<p>Once these settings had been filled out, click on the &ldquo;SAVE CHANGES&rdquo; button.
 
 
 
@@ -1614,12 +1672,12 @@ You can also delete a vertex by double clicking on it.
 </ul>
 <div class="alert alert-note">
   <div>
-    There are validation rules which will prevent you from submitting the form without filling require fields.
+    There are validation rules which will prevent you from submitting the form without filling required fields.
   </div>
 </div>
 <p><strong>FTP sink:</strong></p>
 <p>Just like FTP source connector, let&rsquo;s drag and drop a FTP sink connector from the Toolbox and name it &ldquo;ftpsink&rdquo;.
-After it&rsquo;s added in the Paper, click on its &ldquo;configure&rdquo; button. The settings are mostly like FTP source with the only exception: &ldquo;output&rdquo;:</p>
+After it&rsquo;s added into the Paper, click on its &ldquo;configure&rdquo; button. The settings are mostly like FTP source with the only exception: &ldquo;output&rdquo;:</p>
 <p>
 
 
@@ -1666,10 +1724,10 @@ After it&rsquo;s added in the Paper, click on its &ldquo;configure&rdquo; button
 <figure >
 
 
-  <a data-fancybox="" href="../img/ftpsink-config.png" >
+  <a data-fancybox="" href="../img/ftpsink-add-config.png" >
 
 
-  <img data-src="../img/ftpsink-config.png" class="lazyload" alt="Add a FTP sink configuration" width="100%" height="100%">
+  <img data-src="../img/ftpsink-add-config.png" class="lazyload" alt="Add a FTP sink configuration" width="100%" height="100%">
 </a>
 
 
@@ -1865,7 +1923,7 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
 </figure>
 
 <ul>
-<li>Click on the plus icon to open select file dialog:</li>
+<li>Click on the &ldquo;plus&rdquo; icon to open Select file dialog:</li>
 </ul>
 
 
@@ -1896,7 +1954,7 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
 </figure>
 
 <ul>
-<li>The workspace file list are currently empty, let&rsquo;s add a new file by clicking on the upload icon. This will open your OS file system, you can then select the stream jar file you downloaded. The stream class will be loaded and displayed in the list:</li>
+<li>The workspace file list are empty right now, let&rsquo;s add a new file by clicking on the upload icon. This will open your OS file system, you can then select the stream jar file you downloaded. The stream class will be loaded and displayed in the list:</li>
 </ul>
 <p>
 
@@ -1955,7 +2013,7 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
 </figure>
 </p>
 <ul>
-<li>Select the stream and click on the SAVE button to close select file dialog</li>
+<li>Select the stream and click on the &ldquo;SAVE&rdquo; button to close select file dialog</li>
 </ul>
 
 
@@ -1988,6 +2046,11 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
 <ul>
 <li>The stream file should now listed in your Stream Jars page. Close this page by clicking on the close button on the upper-right corner</li>
 </ul>
+<div class="alert alert-note">
+  <div>
+    The stream file listed in the list should have a green check icon in the valid column (see below screenshot), if it somehow doesn&rsquo;t have that, double check your stream file is the one downloaded from our release page. Or file an issue to our GitHub repository if the issue persists.
+  </div>
+</div>
 
 
 
@@ -2049,11 +2112,11 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
 
 <ul>
 <li>Now let&rsquo;s work through the configuration together. Hover over the stream component and click on the &ldquo;Configure&rdquo; button to open the configure dialog</li>
-<li>Fill out the form with the following settings and click the &ldquo;<strong>SAVE CHANGES</strong>&rdquo; button:
+<li>Fill out the form with the following settings and click the &ldquo;SAVE CHANGES&rdquo; button:
 <ul>
 <li>header name to be filtered: <em>&ldquo;Sex&rdquo;</em></li>
 <li>column value to be filtered: <em>&ldquo;M&rdquo;</em></li>
-<li>Node name list: <em>192.168.56.111</em> (you should use you own IP)</li>
+<li>Node name list: <em>192.168.56.111</em> (replace with your own)</li>
 </ul>
 </li>
 </ul>
@@ -2089,8 +2152,8 @@ along with the quickstart image? It&rsquo;s time to use it:</p>
   <div>
     This stream is capable of filtering out columns and values that we specified and then push
 the new result to a topic. Here we&rsquo;re specifically setting the &ldquo;Sex&rdquo; as the filtered header
-and &ldquo;M&rdquo; as the filtered value (stands for Man) and so our output data will only &ldquo;include&rdquo;
-data that contains &ldquo;M&rdquo; value in the &ldquo;Sex&rdquo; column. We will verify the result later in the tutorial.
+and &ldquo;M&rdquo; as the filtered value (M stands for Man) and so our output data will only &ldquo;includes&rdquo;
+data that contains &ldquo;M&rdquo; value in the &ldquo;Sex&rdquo; column. We will verify the result later.
   </div>
 </div>
 <p>Everything is ready. We can now create the connection like we mentioned earlier:
@@ -2159,8 +2222,9 @@ to work with (You can close the Toolbox by clicking on the close icon on the top
 
 <ul>
 <li>Repeat the same step but this time with &ldquo;T1&rdquo; to create a connection from T1 to stream</li>
-<li>And stream -&gt; T2 then T2 -&gt; FTP sink connector. After you are done, you should have a graph like this (Components position have been tweaked so it&rsquo;s better to see the relation between these components):</li>
+<li>And stream -&gt; T2 then T2 -&gt; FTP sink connector.</li>
 </ul>
+<p>After you complete the whole connection, you should have a graph like this (Components position have been tweaked as well so it&rsquo;s easier to see the relation between them):</p>
 
 
 
@@ -2191,7 +2255,7 @@ to work with (You can close the Toolbox by clicking on the close icon on the top
 
 <div class="alert alert-note">
   <div>
-    You can also create the connection during configuring the connector or stream. For connector, just choose the topic from its topic list. For stream, you will need to choose both <em>&ldquo;from&rdquo;</em> and <em>&ldquo;to&rdquo;</em> topics from the topic list.
+    There is another way to create a connection. When configuring a connector, just choose the topic from its topic list. When configuring stream, you will need to choose both <em>&ldquo;from&rdquo;</em> and <em>&ldquo;to&rdquo;</em> topics from the topic list.
   </div>
 </div>
 <h3 id="start-pipeline-components">Start pipeline components</h3>
@@ -2606,7 +2670,7 @@ item from the Pipeline actions
 </figure>
 
 <ul>
-<li>A confirm dialog will pop up. Enter the workspace name and click on the DELETE button to start deleting. (Note that if you still have some services running in the workspace, you won&rsquo;t able to proceed. You should following the instruction mention in the above to stop all pipelines first)</li>
+<li>A confirm dialog will pop up. Enter the workspace name and click on the &ldquo;DELETE&rdquo; button to start deleting. (Note that if you still have some services running in the workspace, you won&rsquo;t able to proceed. You should following the instruction mention in the above to stop all pipelines first)</li>
 </ul>
 
 
@@ -2696,7 +2760,7 @@ dialog and changes you made should applied to the workspace by now.</li>
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Jul 31, 2020</p>
+          <p>Last updated on Nov 27, 2020</p>
 
           
 
