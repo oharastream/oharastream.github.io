@@ -159,7 +159,7 @@
   
   <url>
     <loc>https://oharastream.github.io/en/</loc>
-    <lastmod>2020-11-27T16:34:54+08:00</lastmod>
+    <lastmod>2020-11-30T10:27:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -259,7 +259,7 @@
   
   <url>
     <loc>https://oharastream.github.io/en/docs/master/user_guide/</loc>
-    <lastmod>2020-08-19T17:28:11+08:00</lastmod>
+    <lastmod>2020-11-30T10:27:21+08:00</lastmod>
   </url>
   
   <url>
@@ -447,6 +447,11 @@
                 hreflang="en"
                 href="https://oharastream.github.io/en/author/vito-jeng/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://oharastream.github.io/en/docs/master/rest-api/volumes/</loc>
+    <lastmod>2020-11-30T10:27:21+08:00</lastmod>
   </url>
   
 </urlset>

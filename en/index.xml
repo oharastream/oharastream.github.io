@@ -18857,6 +18857,8 @@ durability and balance.&lt;/li&gt;
 It hosts and execute 
 &lt;a href=&#34;https://oharastream.github.io/en/docs/master/custom_connector/&#34;&gt;Custom Connector&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
+&lt;a href=&#34;#volume&#34;&gt;Volumes&lt;/a&gt; &amp;mdash; Support the persistent data.&lt;/li&gt;
+&lt;li&gt;
 &lt;a href=&#34;#docker&#34;&gt;Docker&lt;/a&gt; &amp;mdash; It packages the configs, dependencies and binary
 required by services and execute them in a isolated environments&lt;/li&gt;
 &lt;li&gt;
@@ -23557,6 +23559,165 @@ Successfully connected to the configurator: http://10.2.0.32:5000/v0
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Volume</title>
+      <link>https://oharastream.github.io/en/docs/master/rest-api/volumes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://oharastream.github.io/en/docs/master/rest-api/volumes/</guid>
+      <description>&lt;p&gt;Ohara volume feature is persisting data by zookeeper container and broker container.&lt;/p&gt;
+&lt;p&gt;Note: Confirm your user name is ohara and UUID is 1000 in the running cluster environment.&lt;/p&gt;
+&lt;p&gt;The properties which can be set by user are shown below.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;name (&lt;strong&gt;String&lt;/strong&gt;) &amp;mdash; The legal character is lowercase alphanumerics characters and number.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;group (&lt;strong&gt;String&lt;/strong&gt;) &amp;mdash; The legal character is lowercase alphanumerics characters and number.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;path (&lt;strong&gt;String&lt;/strong&gt;) &amp;mdash; The data folder path in the node.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nodeNames (&lt;strong&gt;Set[String]&lt;/strong&gt;) &amp;mdash; The nodes to create ohara volume for zookeeper and broker containers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;tags (&lt;strong&gt;Object&lt;/strong&gt;) &amp;mdash; User-defined parameters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;create-properties&#34;&gt;create a volume properties&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;POST /v0/volumes&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Example Request&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;name&amp;quot;: &amp;quot;volume&amp;quot;,
+  &amp;quot;nodeNames&amp;quot;: [
+    &amp;quot;node00&amp;quot;
+  ],
+  &amp;quot;path&amp;quot;: &amp;quot;/tmp/workspace&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Example Response&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;group&amp;quot;: &amp;quot;default&amp;quot;,
+  &amp;quot;lastModified&amp;quot;: 1606457846012,
+  &amp;quot;name&amp;quot;: &amp;quot;volume1&amp;quot;,
+  &amp;quot;nodeNames&amp;quot;: [
+    &amp;quot;node00&amp;quot;
+  ],
+  &amp;quot;path&amp;quot;: &amp;quot;/tmp/workspace&amp;quot;,
+  &amp;quot;tags&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-hint&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;The /tmp/workspace data folder own MUST set ohara user name and UID is 1000&lt;/p&gt;
+&lt;h2 id=&#34;start-a-ohara-volume&#34;&gt;start a ohara volume&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;PUT /v0/volumes/$name/start?group=$group&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We will use the default value as the query parameter &amp;ldquo;?group=&amp;rdquo; if you don&amp;rsquo;t specify it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example Resposne
+&lt;pre&gt;&lt;code&gt;202 Accepted
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-hint&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;You should use 
+&lt;a href=&#34;#get&#34;&gt;Get volume info&lt;/a&gt; to show volume up-to-date status.&lt;/p&gt;
+&lt;h2 id=&#34;get&#34;&gt;get a volume info&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;GET /v0/volumes/$name?group=$group&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Get volume info by name and group. This API could fetch all volume info.
+We will use the default value as the query parameter &amp;ldquo;?group=&amp;rdquo; if you don&amp;rsquo;t
+specify it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example Response
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;group&amp;quot;: &amp;quot;default&amp;quot;,
+  &amp;quot;lastModified&amp;quot;: 1606457846012,
+  &amp;quot;name&amp;quot;: &amp;quot;volume1&amp;quot;,
+  &amp;quot;nodeNames&amp;quot;: [
+    &amp;quot;k8s-master&amp;quot;
+  ],
+  &amp;quot;path&amp;quot;: &amp;quot;/tmp/workspace1/bk12345&amp;quot;,
+  &amp;quot;state&amp;quot;: &amp;quot;RUNNING&amp;quot;,
+  &amp;quot;tags&amp;quot;: {}
+ }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;add-a-volume-to-a-running-volumes&#34;&gt;add a volume to a running volumes&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;PUT /v0/volumes/$name/$nodeName?group=$group&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Add a new volume for other node. We will use the default value as the query parameter &amp;ldquo;?group=&amp;rdquo; if you don&amp;rsquo;t specify it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example Resposne
+&lt;pre&gt;&lt;code&gt;202 Accepted
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;update-volume-properties-setting&#34;&gt;update volume properties setting&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;PUT /v0/volumes/$name?group=$group&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If the required volume (group, name) doesn&amp;rsquo;t exists, we will try to use this request as POST.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example Request
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;nodeNames&amp;quot;: [
+    &amp;quot;node00&amp;quot;, &amp;quot;node01&amp;quot;
+  ],
+  &amp;quot;path&amp;quot;: &amp;quot;/tmp/workspace2&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;Example Response
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;group&amp;quot;: &amp;quot;default&amp;quot;,
+  &amp;quot;lastModified&amp;quot;: 1606465299352, 
+  &amp;quot;name&amp;quot;: $name,
+  &amp;quot;nodeNames&amp;quot;: [&amp;quot;node00&amp;quot;, &amp;quot;node01&amp;quot;],
+  &amp;quot;path&amp;quot;: &amp;quot;/tmp/workspace2&amp;quot;,
+  &amp;quot;tags&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;stop-a-volume-info&#34;&gt;stop a volume info&lt;/h2&gt;
+&lt;p&gt;Stop a running volume and remove the volume data folder (dangerous). It is disallowed to stop a volume cluster used by a running zookeeper or broker container.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;PUT /v0/volumes/$name/stop?group=$group[&amp;amp;force=true]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;We will use the default value as the query parameter &amp;ldquo;?group=&amp;rdquo; if you don&amp;rsquo;t specify it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Query Parameters&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;force (&lt;strong&gt;boolean&lt;/strong&gt;) - true if you don&amp;rsquo;t want to wait the graceful
+shutdown (it can save your time but may damage your data).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Example Response&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;202 Accepted
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;delete-a-volume-properties&#34;&gt;delete a volume properties&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;DELETE /v0/volumes/$name?group=$group&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;After the stop volume, you could delete volume setting.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Example Response
+&lt;pre&gt;&lt;code&gt;202 Accepted
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     

@@ -4126,6 +4126,8 @@ durability and balance.&lt;/li&gt;
 It hosts and execute 
 &lt;a href=&#34;https://oharastream.github.io/en/docs/master/custom_connector/&#34;&gt;Custom Connector&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
+&lt;a href=&#34;#volume&#34;&gt;Volumes&lt;/a&gt; &amp;mdash; Support the persistent data.&lt;/li&gt;
+&lt;li&gt;
 &lt;a href=&#34;#docker&#34;&gt;Docker&lt;/a&gt; &amp;mdash; It packages the configs, dependencies and binary
 required by services and execute them in a isolated environments&lt;/li&gt;
 &lt;li&gt;

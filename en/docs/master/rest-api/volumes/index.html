@@ -27,10 +27,12 @@
   
     
   
-  <meta name="description" content="Team Leader">
+  <meta name="description" content="Ohara volume feature is persisting data by zookeeper container and broker container.
+Note: Confirm your user name is ohara and UUID is 1000 in the running cluster environment.
+The properties which can be set by user are shown below.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/master/rest-api/">
+  <link rel="alternate" hreflang="en-us" href="https://oharastream.github.io/en/docs/master/rest-api/volumes/">
 
   
 
@@ -212,14 +214,12 @@
   
 
   
-  <link rel="alternate" href="/en/docs/master/rest-api/index.xml" type="application/rss+xml" title="OharaStream">
-  
 
   <link rel="manifest" href="/en/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://oharastream.github.io/en/docs/master/rest-api/">
+  <link rel="canonical" href="https://oharastream.github.io/en/docs/master/rest-api/volumes/">
 
   
   
@@ -235,29 +235,34 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="OharaStream">
-  <meta property="og:url" content="https://oharastream.github.io/en/docs/master/rest-api/">
-  <meta property="og:title" content="Ohara REST Interface | OharaStream">
-  <meta property="og:description" content="Team Leader"><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://oharastream.github.io/en/docs/master/rest-api/volumes/">
+  <meta property="og:title" content="Volume | OharaStream">
+  <meta property="og:description" content="Ohara volume feature is persisting data by zookeeper container and broker container.
+Note: Confirm your user name is ohara and UUID is 1000 in the running cluster environment.
+The properties which can be set by user are shown below."><meta property="og:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://oharastream.github.io/images/icon_huf5f81cd12511c4e8b7f06b033f435f0f_18329_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
+    <meta property="article:modified_time" content="2020-11-30T10:27:21&#43;08:00">
   
 
   
 
 
 
-
   
 
 
   
 
 
+  
 
 
 
-  <title>Ohara REST Interface | OharaStream</title>
+
+
+  <title>Volume | OharaStream</title>
 
 </head>
 
@@ -504,7 +509,7 @@
     <a class="docs-toc-link" href="/en/docs/master/rest-api/">REST APIs</a>
     <ul class="nav docs-sidenav">
       
-      <li class="active">
+      <li >
         <a href="/en/docs/master/rest-api/">API Overview</a>
       </li>
       
@@ -564,7 +569,7 @@
         <a href="/en/docs/master/rest-api/workers/">Worker API</a>
       </li>
       
-      <li >
+      <li class="active">
         <a href="/en/docs/master/rest-api/volumes/">Volume API</a>
       </li>
       
@@ -583,65 +588,180 @@
     </div>
 
     
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-properties">create a volume properties</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
 
     <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
 
       <article class="article">
 
         <div class="docs-article-container">
-          <h1>Ohara REST Interface</h1>
+          <h1>Volume</h1>
 
           <div class="article-style">
-            <p>Ohara provides a bunch of REST APIs of managing data, applications and
-cluster for Ohara users. Both request and response must have
-application/json content type, hence you should set content type to
-application/json in your request.</p>
-<blockquote>
-<p>Content-Type: application/json</p>
-</blockquote>
-<p>and add content type of the response via the HTTP Accept header:</p>
-<blockquote>
-<p>Accept: application/json</p>
-</blockquote>
-<p><strong>Statuses &amp; Errors</strong></p>
-<p>Ohara leverages 
-<a href="https://github.com/akka/akka-http" target="_blank" rel="noopener">akka http</a> to support standards-compliant HTTP statuses.
-your clients should check the HTTP status before parsing response
-entities. The error message in response body are format to json content.</p>
+            <p>Ohara volume feature is persisting data by zookeeper container and broker container.</p>
+<p>Note: Confirm your user name is ohara and UUID is 1000 in the running cluster environment.</p>
+<p>The properties which can be set by user are shown below.</p>
+<ol>
+<li>
+<p>name (<strong>String</strong>) &mdash; The legal character is lowercase alphanumerics characters and number.</p>
+</li>
+<li>
+<p>group (<strong>String</strong>) &mdash; The legal character is lowercase alphanumerics characters and number.</p>
+</li>
+<li>
+<p>path (<strong>String</strong>) &mdash; The data folder path in the node.</p>
+</li>
+<li>
+<p>nodeNames (<strong>Set[String]</strong>) &mdash; The nodes to create ohara volume for zookeeper and broker containers.</p>
+</li>
+<li>
+<p>tags (<strong>Object</strong>) &mdash; User-defined parameters.</p>
+</li>
+</ol>
+<h2 id="create-properties">create a volume properties</h2>
+<p><em>POST /v0/volumes</em></p>
+<ul>
+<li>
+<p>Example Request</p>
 <pre><code class="language-json">{
- &quot;code&quot;: &quot;java.lang.IllegalArgumentException&quot;,
- &quot;message&quot;: &quot;Unsupported restful api:vasdasd. Or the request is invalid to the vasdasd&quot;,
- &quot;stack&quot;: &quot;java.lang.IllegalArgumentException: Unsupported restful api:vasdasd. Or the request is invalid to the vasdasd at&quot;
+  &quot;name&quot;: &quot;volume&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;node00&quot;
+  ],
+  &quot;path&quot;: &quot;/tmp/workspace&quot;
 }
 </code></pre>
-<ul>
-<li>code (<strong>string</strong>) — the type of error. It is normally a type of java exception.</li>
-<li>message (<strong>string</strong>) — a brief description of error</li>
-<li>stack (<strong>string</strong>) — error stack captured by server</li>
+</li>
+<li>
+<p>Example Response</p>
+<pre><code class="language-json">{
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;lastModified&quot;: 1606457846012,
+  &quot;name&quot;: &quot;volume1&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;node00&quot;
+  ],
+  &quot;path&quot;: &quot;/tmp/workspace&quot;,
+  &quot;tags&quot;: {}
+}
+</code></pre>
+</li>
 </ul>
-<p><strong>Manage clusters</strong></p>
-<p>You are tired to host a bunch of clusters when you just want to build a
-pure streaming application. So do we! Ohara aims to take over the heavy
-management and simplify your life. Ohara leverage the docker technology
-to run all process in containers. If you are able to use k8s, Ohara is
-good at deploying all containers via k8s. If you are too afraid to touch
-k8s, Ohara is doable to be based on ssh connection to control all
-containers.</p>
-<p>Ohara automatically configure all clusters for you. Of course, you have
-the freedom to overwrite any settings. see section
-
-<a href="/en/docs/master/rest-api/zookeepers/">zookeeper</a>, 
-<a href="/en/docs/master/rest-api/brokers/">broker</a> and
-
-<a href="/en/docs/master/rest-api/workers/">worker</a> to see more details.</p>
-<p>In order to provide a great experience in exercising containers, Ohara
-pre-builds a lot of docker images with custom scripts. Of course, Ohara
-APIs allow you to choose other image instead of Ohara official images.
-However, it works only if the images you pick up are compatible to Ohara
-command. see 
-<a href="/en/docs/master/docker/">here</a> for more details. Also, all official
-images are hosted by 
-<a href="https://cloud.docker.com/u/oharastream/repository/list" target="_blank" rel="noopener">docker hub</a></p>
+<div class="alert alert-hint">
+  <div>
+    <p>The /tmp/workspace data folder own MUST set ohara user name and UID is 1000</p>
+<h2 id="start-a-ohara-volume">start a ohara volume</h2>
+<p><em>PUT /v0/volumes/$name/start?group=$group</em></p>
+<p>We will use the default value as the query parameter &ldquo;?group=&rdquo; if you don&rsquo;t specify it.</p>
+<ul>
+<li>Example Resposne
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<div class="alert alert-hint">
+  <div>
+    <p>You should use 
+<a href="#get">Get volume info</a> to show volume up-to-date status.</p>
+<h2 id="get">get a volume info</h2>
+<p><em>GET /v0/volumes/$name?group=$group</em></p>
+<p>Get volume info by name and group. This API could fetch all volume info.
+We will use the default value as the query parameter &ldquo;?group=&rdquo; if you don&rsquo;t
+specify it.</p>
+<ul>
+<li>Example Response
+<pre><code class="language-json">{
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;lastModified&quot;: 1606457846012,
+  &quot;name&quot;: &quot;volume1&quot;,
+  &quot;nodeNames&quot;: [
+    &quot;k8s-master&quot;
+  ],
+  &quot;path&quot;: &quot;/tmp/workspace1/bk12345&quot;,
+  &quot;state&quot;: &quot;RUNNING&quot;,
+  &quot;tags&quot;: {}
+ }
+</code></pre>
+</li>
+</ul>
+<h2 id="add-a-volume-to-a-running-volumes">add a volume to a running volumes</h2>
+<p><em>PUT /v0/volumes/$name/$nodeName?group=$group</em></p>
+<p>Add a new volume for other node. We will use the default value as the query parameter &ldquo;?group=&rdquo; if you don&rsquo;t specify it.</p>
+<ul>
+<li>Example Resposne
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<h2 id="update-volume-properties-setting">update volume properties setting</h2>
+<p><em>PUT /v0/volumes/$name?group=$group</em></p>
+<p>If the required volume (group, name) doesn&rsquo;t exists, we will try to use this request as POST.</p>
+<ul>
+<li>Example Request
+<pre><code class="language-json">{
+  &quot;nodeNames&quot;: [
+    &quot;node00&quot;, &quot;node01&quot;
+  ],
+  &quot;path&quot;: &quot;/tmp/workspace2&quot;
+}
+</code></pre>
+</li>
+<li>Example Response
+<pre><code class="language-json">{
+  &quot;group&quot;: &quot;default&quot;,
+  &quot;lastModified&quot;: 1606465299352, 
+  &quot;name&quot;: $name,
+  &quot;nodeNames&quot;: [&quot;node00&quot;, &quot;node01&quot;],
+  &quot;path&quot;: &quot;/tmp/workspace2&quot;,
+  &quot;tags&quot;: {}
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="stop-a-volume-info">stop a volume info</h2>
+<p>Stop a running volume and remove the volume data folder (dangerous). It is disallowed to stop a volume cluster used by a running zookeeper or broker container.</p>
+<p><em>PUT /v0/volumes/$name/stop?group=$group[&amp;force=true]</em></p>
+<p>We will use the default value as the query parameter &ldquo;?group=&rdquo; if you don&rsquo;t specify it.</p>
+<ul>
+<li>
+<p>Query Parameters</p>
+<ol>
+<li>force (<strong>boolean</strong>) - true if you don&rsquo;t want to wait the graceful
+shutdown (it can save your time but may damage your data).</li>
+</ol>
+</li>
+<li>
+<p>Example Response</p>
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+<h2 id="delete-a-volume-properties">delete a volume properties</h2>
+<p><em>DELETE /v0/volumes/$name?group=$group</em></p>
+<p>After the stop volume, you could delete volume setting.</p>
+<ul>
+<li>Example Response
+<pre><code>202 Accepted
+</code></pre>
+</li>
+</ul>
+  </div>
+</div>
+  </div>
+</div>
 
           </div>
 
@@ -653,7 +773,7 @@ images are hosted by
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 19, 2020</p>
+          <p>Last updated on Nov 30, 2020</p>
 
           
 
@@ -666,7 +786,7 @@ images are hosted by
   
 
 <p class="edit-page">
-  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/master/rest-api/_index.md">
+  <a href="https://github.com/oharastream/ohara-docs/edit/master/content/en/docs/master/rest-api/volumes.md">
     <i class="fas fa-pen pr-2"></i>Edit this page
   </a>
 </p>
