@@ -1652,8 +1652,8 @@ along with the quickstart image? It&amp;rsquo;s time to use it:&lt;/p&gt;
 &lt;li&gt;Now let&amp;rsquo;s work through the configuration together. Hover over the stream component and click on the &amp;ldquo;Configure&amp;rdquo; button to open the configure dialog&lt;/li&gt;
 &lt;li&gt;Fill out the form with the following settings and click the &amp;ldquo;SAVE CHANGES&amp;rdquo; button:
 &lt;ul&gt;
-&lt;li&gt;header name to be filtered: &lt;em&gt;&amp;ldquo;Sex&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;column value to be filtered: &lt;em&gt;&amp;ldquo;M&amp;rdquo;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;header name to be filtered: &lt;code&gt;&amp;quot;Sex&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;column value to be filtered: &lt;code&gt;&amp;quot;M&amp;quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Node name list: &lt;em&gt;192.168.56.111&lt;/em&gt; (replace with your own)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
